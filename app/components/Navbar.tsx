@@ -196,8 +196,8 @@ export default function Navbar(props: Props) {
                     paddingRight: "100px",
                     paddingLeft: "100px",
                     background: scrolling ? "#000000" : "none",
-                    boxShadow: !scrolling && "none",
-                    border: !scrolling && "none",
+                    boxShadow: scrolling ? undefined : "none",
+                    border: scrolling ? undefined : "none",
                 }}
             >
                 <Toolbar

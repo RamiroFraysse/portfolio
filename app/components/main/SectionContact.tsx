@@ -55,7 +55,7 @@ function SectionContact() {
         const API_KEY = process.env.NEXT_PUBLIC_APIKEY_EMAILJS;
         setIsLoading(true);
         emailjs
-            .sendForm(serviceId, templateId, formRef.current!, API_KEY)
+            .sendForm(serviceId!, templateId!, formRef.current!, API_KEY)
             .then(result => {
                 if (result.status === 200) {
                     setMessageSent(true);
