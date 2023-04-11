@@ -63,7 +63,13 @@ function SectionEducation() {
             sx={{
                 display: "flex",
                 gap: "16px",
-                flexDirection: {sm: "column", xs: "column", xl: "row"},
+                flexDirection: {
+                    sm: "column",
+                    xs: "column",
+                    md: "row",
+                    lg: "row",
+                    xl: "row",
+                },
             }}
         >
             {ITEMS.map(item => (
