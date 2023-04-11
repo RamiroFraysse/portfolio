@@ -1,91 +1,55 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from './page.module.css'
+"use client";
+import {useState, useEffect} from "react";
 
-const inter = Inter({ subsets: ['latin'] })
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
+import Main from "./components/main";
+import {Box} from "@mui/material";
+import PopoverChat from "./components/PopoverChat";
+import {createTheme} from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import {Open_Sans} from "next/font/google";
+import {ThemeConfig} from "./theme/ThemeConfig";
 
+const darkTheme = createTheme({
+    palette: {
+        mode: "light",
+    },
+    typography: {
+        fontFamily: "Open Sans",
+    },
+});
+const openSans = Open_Sans({
+    weight: ["400", "700"],
+    style: ["normal", "italic"],
+    subsets: ["latin"],
+});
 export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    const [scrolling, setScrolling] = useState(false);
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY < 100) setScrolling(false);
+            else setScrolling(true);
+        };
+        if (window !== undefined) addEventListener("scroll", handleScroll);
+        return () => {
+            removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+    return (
+        <ThemeConfig>
+            <style jsx global>{`
+                html {
+                    font-family: ${openSans.style.fontFamily};
+                }
+            `}</style>
+            <Box>
+                <Navbar scrolling={scrolling} />
+                <Main />
+                <Footer />
+                <PopoverChat />
+            </Box>
+        </ThemeConfig>
+    );
 }
