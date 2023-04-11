@@ -38,8 +38,6 @@ const TEXT_BUTTON_SENT = {
 };
 
 function SectionContact() {
-    console.log({process: process.env});
-    console.log(process.env.NEXT_PUBLIC_APIKEY_EMAILJS);
     const {language} = useLanguage(state => state);
 
     const formRef = useRef<HTMLFormElement>(null);
@@ -50,7 +48,6 @@ function SectionContact() {
     const [message, setMessage] = useState<string>("");
 
     const handleSubmit = (e: React.FormEvent) => {
-        console.log("submitting");
         e.preventDefault();
         const serviceId = process.env.NEXT_PUBLIC_SERVICEID_EMAILJS;
         console.log({serviceId});

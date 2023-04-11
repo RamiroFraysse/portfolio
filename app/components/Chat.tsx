@@ -42,8 +42,8 @@ function Chat() {
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
         if (isLoading) return;
-        const questionText = question.current.value;
-        question.current.value = "";
+        const questionText = question.current?.innerText || "";
+        if (question.current !== null) question.current.innerText = "";
         setIsLoading(true);
         setMessages(messages =>
             messages.concat({
