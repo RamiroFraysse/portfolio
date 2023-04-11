@@ -10,7 +10,7 @@ const ButtonWrapper = styled(Button)(({}) => ({
     "borderRadius": "100%",
     "height": 70,
     "width": 70,
-    "backgroundImage": `url(/img/me.PNG)`,
+    "backgroundImage": `url(/img/me.webp)`,
     "backgroundSize": "cover",
     "&::before": {
         content: '""',

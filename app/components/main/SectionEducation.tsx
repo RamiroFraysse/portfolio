@@ -22,7 +22,7 @@ const ITEMS = [
             sp: "Universidad Nacional del Sur, Bahía Blanca, Buenos Aires, Argentina.",
             en: "National University of the South, Bahía Blanca, Buenos Aires, Argentina.",
         },
-        img: "/img/graduate.jpg",
+        img: "/img/graduate.webp",
         href: "https://www.uns.edu.ar/ingreso/carreras/carrera-detalle%7Ccarrera=186",
     },
     {
@@ -36,7 +36,7 @@ const ITEMS = [
             sp: "Fernando Herrera - UDEMY",
             en: "Fernando Herrera - UDEMY",
         },
-        img: "/img/courses/reactPro.PNG",
+        img: "/img/courses/reactPro.webp",
         href: "https://www.udemy.com/course/react-pro/",
     },
     {
@@ -50,7 +50,7 @@ const ITEMS = [
             sp: "Fernando Herrera - UDEMY",
             en: "Fernando Herrera - UDEMY",
         },
-        img: "/img/courses/pwa.PNG",
+        img: "/img/courses/pwa.webp",
         href: "https://www.udemy.com/course/aplicaciones-web-progresivas/",
     },
 ];

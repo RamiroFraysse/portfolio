@@ -17,7 +17,7 @@ const DESCRIPTION = {
     en: "Hi! My name is Ramiro. I am a computer engineer, and my strength is Frontend development, although I have also worked as a Full Stack developer. I have more than 3 years of experience participating in high-performance teams to develop quality products with agility and efficiency. I have a proactive mind and am a team player who is passionate about what I do.",
 };
 
-const TECHNOLOGIES = [
+export const CONTACT = [
     {
         icon: "https://icongr.am/entypo/linkedin-with-circle.svg?size=28&color=ffffff",
         url: "https://www.linkedin.com/in/ramiro-fraysse-404991215/",
@@ -81,16 +81,16 @@ function SectionCoverPage() {
                             marginTop: "6px",
                         }}
                     >
-                        {TECHNOLOGIES.map(tec => (
-                            <Link href={tec.url} key={tec.url} target="_blank">
+                        {CONTACT.map(con => (
+                            <Link href={con.url} key={con.url} target="_blank">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width={28}
                                     height={28}
-                                    key={tec.url}
+                                    key={con.url}
                                 >
                                     <image
-                                        href={tec.icon}
+                                        href={con.icon}
                                         width={28}
                                         height={28}
                                     />
@@ -109,19 +109,15 @@ function SectionCoverPage() {
                     </Box>
                 </CardContent>
             </Box>
-            {/* <CardMedia
-                component="img"
-                sx={{width: 400, height: 400, borderRadius: "400px"}}
-                image="/img/me.PNG"
-                alt="Live from space album cover"
-            /> */}
             <Image
-                src={"/img/me.PNG"}
+                src={"/img/me.webp"}
                 alt="imagen propia"
                 style={{
                     borderRadius: "30px",
-                    objectFit: "contain",
+                    // objectFit: "contain",
+                    margin: "auto",
                 }}
+                priority={true}
                 height={350}
                 width={350}
             />

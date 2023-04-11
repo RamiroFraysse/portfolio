@@ -128,47 +128,28 @@ export default function Navbar(props: Props) {
             onClick={handleDrawerToggle}
             sx={{
                 textAlign: "center",
+                height: "100vh",
                 background:
                     "linear-gradient(to bottom right, #667eea, #764ba2)!important",
             }}
         >
-            <Typography variant="h6" sx={{my: 2}}>
+            <Typography variant="h6" sx={{my: 2, color: "#ffff"}}>
                 RF
             </Typography>
             <Divider />
-            <List>
+            <List sx={{display: "flex", flexDirection: "column"}}>
                 {navItems.map(item => (
                     <ListItem key={item.key} disablePadding>
                         <ListItemButton
                             sx={{textAlign: "center"}}
                             onClick={() => {
                                 console.log("click");
-                                // handleClickNavItem(item.key);
+                                handleClickNavItem(item.key);
                             }}
                         >
-                            {item.key === "CV" ? (
-                                <Link
-                                    href="https://ramirofraysse.notion.site/Ramiro-Fraysse-Computer-Engineer-fa8303a305964f90b8cbae8e78f95040"
-                                    target="_blank"
-                                >
-                                    {" "}
-                                    <ListItemText
-                                        primary={
-                                            item?.text
-                                                ? item.text[language]
-                                                : ""
-                                        }
-                                    />
-                                </Link>
-                            ) : (
-                                <ListItemText
-                                    primary={
-                                        item?.text ? item.text[language] : ""
-                                    }
-                                />
-                            )}
                             <ListItemText
                                 primary={item?.text ? item.text[language] : ""}
+                                sx={{color: "#fff"}}
                             />
                         </ListItemButton>
                     </ListItem>
@@ -193,9 +174,11 @@ export default function Navbar(props: Props) {
                 position="fixed"
                 sx={{
                     marginBottom: "100px",
-                    paddingRight: "100px",
-                    paddingLeft: "100px",
-                    background: scrolling ? "#000000" : "none",
+                    paddingRight: {xs: "0px", sm: "0px", md: "100px"},
+                    paddingLeft: {xs: "0px", sm: "0px", md: "100px"},
+                    background: scrolling
+                        ? "radial-gradient(circle at 50% 50%, #667eea, #764ba2)"
+                        : "none",
                     boxShadow: scrolling ? undefined : "none",
                     border: scrolling ? undefined : "none",
                 }}
@@ -203,29 +186,43 @@ export default function Navbar(props: Props) {
                 <Toolbar
                     sx={{
                         display: "flex",
-                        justifyContent: "space-evenly",
+                        justifyContent: {
+                            xs: "space-between",
+                            sm: "space-between",
+                            md: "space-evenly",
+                        },
+                        width: "100%",
                     }}
                 >
-                    <Box sx={{width: "300px"}}>
-                        <IconButton
-                            color="inherit"
-                            aria-label="open drawer"
-                            edge="start"
-                            onClick={handleDrawerToggle}
-                            sx={{display: {sm: "none"}}}
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Button
-                            sx={{
-                                color: "#fff",
-                                flexGrow: 1,
-                                display: {xs: "none", sm: "block"},
-                            }}
-                        >
-                            RF
-                        </Button>
-                    </Box>
+                    {/* <Box
+                        sx={{
+                            width: {xs: "100%", sm: "100%", md: "300px"},
+                            display: {sm: "flex", xs: "flex", md: "block"},
+                            flexDirection: {sm: "row"},
+                            justifyContent: {sm: "space-between"},
+                        }}
+                    > */}
+                    <IconButton
+                        color="inherit"
+                        aria-label="open drawer"
+                        edge="start"
+                        onClick={handleDrawerToggle}
+                        sx={{display: {sm: "none"}}}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                    <Button
+                        sx={{
+                            color: "#fff",
+                            display: {xs: "flex", sm: "flex"},
+                            flexDirection: "row",
+                            justifyContent: "space-between",
+                            width: {md: "300px"},
+                        }}
+                    >
+                        RF
+                    </Button>
+                    {/* </Box> */}
                     <Box
                         sx={{margin: "auto", display: {xs: "none", sm: "flex"}}}
                     >
@@ -297,7 +294,11 @@ export default function Navbar(props: Props) {
                     </Box>
                 </Toolbar>
             </AppBar>
-            <Box component="nav">
+            <Box
+                component="nav"
+                className="este"
+                sx={{display: "flex", justifyContent: "space-between"}}
+            >
                 <Drawer
                     container={container}
                     variant="temporary"
