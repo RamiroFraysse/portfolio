@@ -25,6 +25,7 @@ import {
 } from "@mui/icons-material";
 import {useLanguage} from "../store/language";
 import Link from "next/link";
+import {Link as Scroll} from "react-scroll";
 
 interface Props {
     window?: () => Window;
@@ -115,10 +116,13 @@ export default function Navbar(props: Props) {
         console.log({key});
         const targetSection = document.getElementById(key);
         console.log({targetSection});
-        if (targetSection !== null)
+        if (targetSection !== null) {
+            console.log("entra aca");
             targetSection.scrollIntoView({
                 behavior: "smooth",
             });
+            console.log("esto no funciona");
+        }
     };
 
     const handleDrawerToggle = () => {
@@ -141,20 +145,23 @@ export default function Navbar(props: Props) {
             <Divider />
             <List sx={{display: "flex", flexDirection: "column"}}>
                 {navItems.map(item => (
-                    <ListItem key={item.key} disablePadding>
-                        <ListItemButton
-                            sx={{textAlign: "center"}}
-                            onClick={() => {
-                                console.log("click");
-                                handleClickNavItem(item.key);
-                            }}
-                        >
-                            <ListItemText
-                                primary={item?.text ? item.text[language] : ""}
-                                sx={{color: "#fff"}}
-                            />
-                        </ListItemButton>
-                    </ListItem>
+                    <Scroll
+                        to={item.key}
+                        duration={400}
+                        smooth={true}
+                        offset={-100}
+                    >
+                        <ListItem disablePadding>
+                            <ListItemButton sx={{textAlign: "center"}}>
+                                <ListItemText
+                                    primary={
+                                        item?.text ? item.text[language] : ""
+                                    }
+                                    sx={{color: "#fff"}}
+                                />
+                            </ListItemButton>
+                        </ListItem>
+                    </Scroll>
                 ))}
                 {navItemsActions.map(action => (
                     <ListItem key={action.key} disablePadding>
@@ -182,9 +189,18 @@ export default function Navbar(props: Props) {
                             ) : (
                                 <ListItemText
                                     primary={
-                                        action?.text
-                                            ? action.text[language]
-                                            : ""
+                                        action.key === "themeAction" &&
+                                        action.icon ? (
+                                            theme === "dark" ? (
+                                                <action.icon.dark />
+                                            ) : (
+                                                <action.icon.light />
+                                            )
+                                        ) : (
+                                            (action?.text &&
+                                                action?.text[language]) ||
+                                            ""
+                                        )
                                     }
                                     sx={{color: "#fff"}}
                                 />

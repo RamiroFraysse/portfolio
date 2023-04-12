@@ -27,7 +27,9 @@ function Main() {
                 variant="h5"
                 color={theme === "dark" ? "#fffff" : "#00000"}
                 id="Education"
-                sx={{paddingLeft: {xs: "32px", sm: "32px", md: "0px"}}}
+                sx={{
+                    paddingLeft: {xs: "32px", sm: "32px", md: "0px"},
+                }}
             >
                 {language === "sp" ? "Educación" : "Education"}
             </Typography>
