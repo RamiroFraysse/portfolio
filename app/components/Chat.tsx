@@ -1,5 +1,6 @@
-import {Box, TextField} from "@mui/material";
+import {Box, Button, TextField} from "@mui/material";
 import React, {useEffect, useRef, useState} from "react";
+import SendIcon from "@mui/icons-material/Send";
 
 type Message = {
     id: string;
@@ -20,8 +21,8 @@ const EXAMPLES = [
     {text: "Como es tu Github?", label: "contact"},
     {text: "Cual es tu expectativa salarial?", label: "contact"},
 ];
-const API_KEY = "s9Qc3qWUqm4WIk3nH7Gp5BDfSgHea0xnEiL1QQ0m";
-const URL = "https://api.cohere.ai/classify";
+const API_KEY = process.env.NEXT_PUBLIC_APIKEY_COHERE;
+const URL = process.env.NEXT_PUBLIC_URL_COHERE;
 
 function Chat() {
     const [messages, setMessages] = useState<Message[]>([
@@ -36,14 +37,15 @@ function Chat() {
             text: "Hola soy un usuario",
         },
     ]);
-    const question = useRef<HTMLDivElement>(null);
+    const question = useRef<HTMLInputElement>(null);
     const containerChat = useRef<HTMLDivElement>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
-        if (isLoading) return;
-        const questionText = question.current?.innerText || "";
-        if (question.current !== null) question.current.innerText = "";
+        const questionText = question?.current?.value || "";
+        if (isLoading || questionText === "") return;
+        console.log({questionText});
+        if (question.current !== null) question.current.value = "";
         setIsLoading(true);
         setMessages(messages =>
             messages.concat({
@@ -85,10 +87,17 @@ function Chat() {
             sx={{
                 display: "flex",
                 flexDirection: "column",
+                background: "black",
                 gap: "16px",
                 border: "1px solid gray",
                 borderRadius: "8px",
-                maxWidth: "30vw",
+                maxWidth: {
+                    xs: "60vw",
+                    sm: "60vw",
+                    md: "30vw",
+                    lg: "30vw",
+                    xl: "30vw",
+                },
             }}
             p={4}
         >
@@ -105,14 +114,12 @@ function Chat() {
                 {messages.map(message => (
                     <Box
                         key={message.id}
-                        p={4}
+                        p={2}
                         sx={{
                             borderRadius: "24px",
                             maxWidth: "80%",
                             background:
-                                message.type === "bot"
-                                    ? "slategray"
-                                    : "slateblue",
+                                message.type === "bot" ? "#667eea" : "#764ba2",
                             color: "white",
                             alignSelf:
                                 message.type === "bot"
@@ -124,7 +131,11 @@ function Chat() {
                     </Box>
                 ))}
             </Box>
-            <form onSubmit={handleSubmit}>
+            <Box
+                component="form"
+                onSubmit={handleSubmit}
+                sx={{display: "flex", alignItems: "center"}}
+            >
                 <TextField
                     id="outlined-basic"
                     variant="outlined"
@@ -133,10 +144,10 @@ function Chat() {
                     name="question"
                 />
 
-                <TextField type="submit" disabled={isLoading}>
-                    Enviar
-                </TextField>
-            </form>
+                <Button type="submit" disabled={isLoading}>
+                    <SendIcon sx={{color: "#fff"}} />
+                </Button>
+            </Box>
         </Box>
     );
 }

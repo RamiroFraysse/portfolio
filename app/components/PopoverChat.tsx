@@ -32,13 +32,6 @@ function PopoverChat() {
 
     return (
         <div>
-            {/* <IconButton>
-                <image
-                    href="https://icongr.am/jam/messenger.svg?size=128&color=764ba2"
-                    width={28}
-                    height={28}
-                />
-            </IconButton> */}
             <ButtonWrapper
                 aria-describedby={id}
                 onClick={handleClick}
@@ -55,7 +48,7 @@ function PopoverChat() {
                     style={{cursor: "pointer"}}
                 >
                     <img
-                        src="fallback.png"
+                        src={"/img/graduate.jpg"}
                         alt="SVG icon"
                         style={{cursor: "pointer"}}
                     />
@@ -69,11 +62,11 @@ function PopoverChat() {
                 onClose={handleClose}
                 anchorOrigin={{
                     vertical: "top",
-                    horizontal: "center",
+                    horizontal: "left",
                 }}
                 transformOrigin={{
                     vertical: "bottom",
-                    horizontal: "center",
+                    horizontal: "left",
                 }}
                 disablePortal={true}
             >

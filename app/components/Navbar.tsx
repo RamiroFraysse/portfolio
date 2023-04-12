@@ -150,6 +150,7 @@ export default function Navbar(props: Props) {
                         duration={400}
                         smooth={true}
                         offset={-100}
+                        key={item.key}
                     >
                         <ListItem disablePadding>
                             <ListItemButton sx={{textAlign: "center"}}>

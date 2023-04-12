@@ -105,8 +105,7 @@ function SectionCoverPage() {
                                     </Link>
                                 ))}
                             </Box>
-                        </Box>
-                        {/* <Box sx={{display: {md: "none"}, marginTop: "6px"}}>
+                            {/* <Box sx={{display: {md: "none"}, marginTop: "6px"}}>
                             <Image
                                 src={meImg}
                                 alt="imagen propia"
@@ -119,6 +118,7 @@ function SectionCoverPage() {
                                 placeholder="blur"
                             />
                         </Box> */}
+                        </Box>
                     </Box>
                     <Box
                         sx={{
