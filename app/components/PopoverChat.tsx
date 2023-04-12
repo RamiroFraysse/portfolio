@@ -5,11 +5,15 @@ import Chat from "./Chat";
 import IconButton from "@mui/material/IconButton/IconButton";
 
 const ButtonWrapper = styled(Button)(({}) => ({
-    position: "fixed",
-    bottom: "10px",
-    borderRadius: "100%",
-    height: 60,
-    width: 60,
+    "position": "fixed",
+    "bottom": "10px",
+    "borderRadius": "100%",
+    "height": 60,
+    "width": 60,
+    "cursor": "pointer",
+    "& object": {
+        pointerEvents: "none",
+    },
 }));
 
 function PopoverChat() {
@@ -48,8 +52,13 @@ function PopoverChat() {
                     type="image/svg+xml"
                     data="https://icongr.am/jam/messenger.svg?size=40&color=667eea"
                     aria-label="SVG icon"
+                    style={{cursor: "pointer"}}
                 >
-                    <img src="fallback.png" alt="SVG icon" />
+                    <img
+                        src="fallback.png"
+                        alt="SVG icon"
+                        style={{cursor: "pointer"}}
+                    />
                 </object>
             </ButtonWrapper>
 
