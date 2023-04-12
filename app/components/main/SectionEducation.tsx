@@ -78,7 +78,7 @@ function SectionEducation() {
                 <Card
                     sx={{
                         height: 350,
-                        width: 350,
+                        width: 250,
                         margin: "auto",
                         borderRadius: "16px",
                         background: theme === "dark" ? "#667eea" : undefined,
