@@ -131,16 +131,28 @@ function SectionCoverPage() {
                     </Box>
                 </CardContent>
             </Box>
-            <Box sx={{display: {sm: "none", xs: "none"}}}>
+            <Box
+                sx={{
+                    display: {
+                        sm: "none",
+                        xs: "none",
+                        md: "block",
+                        lg: "block",
+                        xl: "block",
+                    },
+                    width: "400px",
+                    height: "400px",
+                }}
+            >
                 <Image
                     src={meImg}
                     alt="imagen propia"
                     style={{
                         borderRadius: "30px",
-                        // objectFit: "contain",
+                        objectFit: "contain",
                         margin: "auto",
                     }}
-                    layout="responsive"
+                    // layout="responsive"
                     placeholder="blur"
                 />
             </Box>
