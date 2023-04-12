@@ -12,7 +12,7 @@ import {Box, Typography} from "@mui/material";
 import Image from "next/image";
 
 function SectionExperience() {
-    const {language} = useLanguage(state => state);
+    const {language, theme} = useLanguage(state => state);
 
     const items = [
         {
@@ -20,14 +20,16 @@ function SectionExperience() {
             position: "Frontend Engineer",
             company: "Nuqlea",
             date: {
-                en: "Dec 2021 - Dec 2022",
-                sp: "Dic 2021 - Dic 2022",
+                en: ["Dec 2021", "Dec 2022"],
+                sp: ["Dic 2021", "Dic 2022"],
             },
             technologies: [
                 "https://icongr.am/devicon/javascript-original.svg?size=128&color=currentColor",
                 "https://icongr.am/devicon/typescript-original.svg?size=128&color=currentColor",
                 "https://icongr.am/devicon/react-original.svg?size=128&color=currentColor",
-                "./icons/nextjs-rounded.svg",
+                theme === "dark"
+                    ? "./icons/next.svg"
+                    : "./icons/nextjs-rounded.svg",
                 "./icons/mui.svg",
             ],
             responsabilities: {
@@ -44,18 +46,18 @@ function SectionExperience() {
             position: "Fullstack Developer",
             company: "Nexosmart",
             date: {
-                en: "Nov 2020 - Oct 2021",
-                sp: "Nov 2020 - Oct 2021",
+                en: ["Nov 2020", "Oct 2021"],
+                sp: ["Nov 2020", "Oct 2021"],
             },
             technologies: [
                 "https://icongr.am/devicon/javascript-original.svg?size=28&color=currentColor",
                 "https://icongr.am/devicon/css3-original-wordmark.svg?size=28&color=currentColor",
                 "https://icongr.am/devicon/html5-original-wordmark.svg?size=28&color=currentColor",
-                "https://icongr.am/devicon/php-original.svg?size=128&color=currentColor",
+                "https://icongr.am/devicon/php-original.svg?size=28&color=currentColor",
                 "https://icongr.am/devicon/react-original.svg?size=28&color=currentColor",
-                "https://icongr.am/devicon/laravel-plain-wordmark.svg?size=128&color=currentColor",
-                "https://icongr.am/devicon/postgresql-original-wordmark.svg?size=128&color=currentColor",
-                "https://icongr.am/devicon/mysql-original-wordmark.svg?size=128&color=currentColor",
+                "https://icongr.am/material/laravel.svg?size=128&color=c20000",
+                "https://icongr.am/devicon/postgresql-original-wordmark.svg?size=28&color=currentColor",
+                "https://icongr.am/devicon/mysql-original-wordmark.svg?size=28&color=currentColor",
             ],
 
             responsabilities: {
@@ -83,41 +85,17 @@ function SectionExperience() {
                 <TimelineItem key={item.key}>
                     <TimelineOppositeContent
                         color="textSecondary"
-                        sx={{maxWidth: "100px"}}
+                        sx={{maxWidth: "130px", flexWrap: "wrap"}}
                     >
                         <Typography variant="subtitle1" color="textSecondary">
                             {item.company}
                         </Typography>
                         <Typography variant="subtitle1" color="textSecondary">
-                            {item.date[language]}
+                            {item.date[language][1]}
                         </Typography>
-                        <Box
-                            sx={{
-                                display: "flex",
-                                gap: "10px",
-                                justifyContent: "end",
-                                maxWidth: "400px",
-                                flexWrap: "wrap",
-                            }}
-                        >
-                            {item.technologies.map(tec => (
-                                // <Image
-                                //     src={tec}
-                                //     alt={tec}
-                                //     width={300}
-                                //     height={500}
-                                //     style={{objectFit: "contain"}}
-                                // />
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width={28}
-                                    height={28}
-                                    key={tec}
-                                >
-                                    <image href={tec} width={28} height={28} />
-                                </svg>
-                            ))}
-                        </Box>
+                        <Typography variant="subtitle1" color="textSecondary">
+                            {item.date[language][0]}
+                        </Typography>
                     </TimelineOppositeContent>
                     <TimelineSeparator>
                         <TimelineDot />
@@ -127,6 +105,28 @@ function SectionExperience() {
                         <Typography variant="h6" component="p" fontWeight={500}>
                             {item.position}
                         </Typography>
+                        <Box
+                            sx={{
+                                display: "flex",
+                                gap: "10px",
+                                flexWrap: "wrap",
+                            }}
+                        >
+                            {item.technologies.map(tec => (
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width={28}
+                                    height={28}
+                                    key={tec}
+                                    style={{
+                                        boxShadow:
+                                            "0 0 5px 2px rgb(118,75,162,0.5)",
+                                    }}
+                                >
+                                    <image href={tec} width={28} height={28} />
+                                </svg>
+                            ))}
+                        </Box>
                         <Typography
                             variant="subtitle2"
                             component="p"

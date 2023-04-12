@@ -106,7 +106,7 @@ function SectionCoverPage() {
                                 ))}
                             </Box>
                         </Box>
-                        <Box sx={{display: {md: "none"}, marginTop: "6px"}}>
+                        {/* <Box sx={{display: {md: "none"}, marginTop: "6px"}}>
                             <Image
                                 src={meImg}
                                 alt="imagen propia"
@@ -118,7 +118,7 @@ function SectionCoverPage() {
                                 layout="responsive"
                                 placeholder="blur"
                             />
-                        </Box>
+                        </Box> */}
                     </Box>
                     <Box
                         sx={{
@@ -131,42 +131,18 @@ function SectionCoverPage() {
                     </Box>
                 </CardContent>
             </Box>
-            <Box
-                sx={{
-                    display: {
-                        sm: "none",
-                        xs: "none",
-                        md: "block",
-                        lg: "block",
-                        xl: "block",
-                    },
-                    width: "400px",
-                    height: "400px",
-                }}
-            >
-                <Image
-                    src={meImg}
-                    alt="imagen propia"
-                    style={{
-                        borderRadius: "30px",
-                        objectFit: "contain",
-                        margin: "auto",
-                    }}
-                    // layout="responsive"
-                    placeholder="blur"
-                />
-            </Box>
-            {/* <Image
-                src={"/img/me.webp"}
+
+            <Image
+                src={meImg}
                 alt="imagen propia"
                 style={{
-                    borderRadius: "30px",
-                    // objectFit: "contain",
+                    borderRadius: "54px",
                     margin: "auto",
+                    padding: "24px",
                 }}
-                layout="fill"
+                layout="responsive"
                 placeholder="blur"
-            /> */}
+            />
         </Card>
     );
     // <Grid container spacing={2}>

@@ -76,7 +76,7 @@ const navItemsActions: NavItemsProps[] = [
         key: "cvAction",
     },
     {
-        text: {sp: "INGLÉS", en: "ESPAÑOL"},
+        text: {sp: "INGLÉS", en: "SPANISH"},
         key: "lanAction",
     },
     {
@@ -96,6 +96,7 @@ export default function Navbar(props: Props) {
     const {theme, language, toggleLanguage, toggleTheme} = useLanguage(
         state => state,
     );
+    console.log({language});
 
     const handleClickAction = (key: string) => {
         switch (key) {
@@ -113,6 +114,7 @@ export default function Navbar(props: Props) {
     const handleClickNavItem = (key: string) => {
         console.log({key});
         const targetSection = document.getElementById(key);
+        console.log({targetSection});
         if (targetSection !== null)
             targetSection.scrollIntoView({
                 behavior: "smooth",
@@ -151,6 +153,42 @@ export default function Navbar(props: Props) {
                                 primary={item?.text ? item.text[language] : ""}
                                 sx={{color: "#fff"}}
                             />
+                        </ListItemButton>
+                    </ListItem>
+                ))}
+                {navItemsActions.map(action => (
+                    <ListItem key={action.key} disablePadding>
+                        <ListItemButton
+                            sx={{textAlign: "center"}}
+                            onClick={() => {
+                                console.log("click");
+                                handleClickAction(action.key);
+                            }}
+                        >
+                            {action.key === "cvAction" ? (
+                                <Link
+                                    href="/docs/cv.pdf"
+                                    target="_blank"
+                                    download
+                                    style={{
+                                        color: "#ffff",
+                                        textDecoration: "none",
+                                        textAlign: "center",
+                                        margin: "auto",
+                                    }}
+                                >
+                                    CV
+                                </Link>
+                            ) : (
+                                <ListItemText
+                                    primary={
+                                        action?.text
+                                            ? action.text[language]
+                                            : ""
+                                    }
+                                    sx={{color: "#fff"}}
+                                />
+                            )}
                         </ListItemButton>
                     </ListItem>
                 ))}
@@ -194,14 +232,6 @@ export default function Navbar(props: Props) {
                         width: "100%",
                     }}
                 >
-                    {/* <Box
-                        sx={{
-                            width: {xs: "100%", sm: "100%", md: "300px"},
-                            display: {sm: "flex", xs: "flex", md: "block"},
-                            flexDirection: {sm: "row"},
-                            justifyContent: {sm: "space-between"},
-                        }}
-                    > */}
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
@@ -222,7 +252,6 @@ export default function Navbar(props: Props) {
                     >
                         RF
                     </Button>
-                    {/* </Box> */}
                     <Box
                         sx={{margin: "auto", display: {xs: "none", sm: "flex"}}}
                     >

@@ -27,6 +27,7 @@ function Main() {
                 variant="h5"
                 color={theme === "dark" ? "#fffff" : "#00000"}
                 id="Education"
+                sx={{paddingLeft: {xs: "32px", sm: "32px", md: "0px"}}}
             >
                 {language === "sp" ? "Educación" : "Education"}
             </Typography>
@@ -35,6 +36,7 @@ function Main() {
                 variant="h5"
                 color={theme === "dark" ? "#fffff" : "#00000"}
                 id="Experience"
+                sx={{paddingLeft: {xs: "32px", sm: "32px", md: "0px"}}}
             >
                 {language === "sp" ? "Experiencia" : "Experience"}
             </Typography>
@@ -43,6 +45,7 @@ function Main() {
                 variant="h5"
                 color={theme === "dark" ? "#fffff" : "#00000"}
                 id="Contact"
+                sx={{paddingLeft: {xs: "32px", sm: "32px", md: "0px"}}}
             >
                 {language === "sp" ? "Contacto" : "Contact"}
             </Typography>

@@ -2,6 +2,7 @@ import {useState} from "react";
 import {Typography, Popover, Button} from "@mui/material";
 import {styled} from "@mui/material/styles";
 import Chat from "./Chat";
+import IconButton from "@mui/material/IconButton/IconButton";
 
 const ButtonWrapper = styled(Button)(({}) => ({
     "position": "fixed",
@@ -43,6 +44,13 @@ function PopoverChat() {
 
     return (
         <div>
+            {/* <IconButton>
+                <image
+                    href="https://icongr.am/jam/messenger.svg?size=128&color=764ba2"
+                    width={28}
+                    height={28}
+                />
+            </IconButton> */}
             <ButtonWrapper
                 aria-describedby={id}
                 variant="contained"

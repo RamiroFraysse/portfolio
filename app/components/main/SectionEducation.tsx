@@ -1,17 +1,13 @@
 import {
-    Grid,
     Card,
     CardContent,
     Typography,
     Box,
-    CardMedia,
     CardActionArea,
 } from "@mui/material";
-import Link from "next/link";
 import {useLanguage} from "../../store/language";
 import Image from "next/image";
 import pwaImg from "../../../public/img/courses/pwa.webp";
-import graduateImg from "../../../public/img/graduate.webp";
 import titleImg from "../../../public/img/title.jpeg";
 import reactProImg from "../../../public/img/courses/reactPro.webp";
 
@@ -96,6 +92,7 @@ function SectionEducation() {
                                 height={170}
                                 width={250}
                                 style={{
+                                    width: "100%",
                                     objectFit: "cover",
                                     objectPosition: "bottom",
                                 }}
@@ -107,6 +104,9 @@ function SectionEducation() {
                             <Image
                                 height={170}
                                 src={item.img}
+                                style={{
+                                    width: "100%",
+                                }}
                                 alt="imagen propia"
                                 placeholder="blur"
                             />
