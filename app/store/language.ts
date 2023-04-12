@@ -13,7 +13,7 @@ interface Store{
 
 export const useLanguage = create<Store>((set) => ({
   language: 'sp',
-  theme: 'light',
+  theme: 'dark',
   toggleLanguage: () =>
     set((state: Store) => ({ ...state, language: (state.language==="sp" ? "en" : "sp") })),
   toggleTheme:()=>

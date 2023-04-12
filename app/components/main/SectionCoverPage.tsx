@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
+import meImg from "../../../public/img/me.webp";
 
 const DESCRIPTION = {
     sp: "Hola! Mi nombre es Ramiro. Soy Ingeniero en Computación y mi fuerte es el desarrollo Frontend, aunque tambien he trabajado como Full stack. Llevo mas de 3 años trabajando en equipos de alta performance, desarrollando productos de alta calidad con agilidad y eficiencia. Soy una persona proactiva y un jugador de equipo apasionado por lo que hace.",
@@ -63,40 +64,61 @@ function SectionCoverPage() {
                         flexDirection: "column",
                     }}
                 >
-                    <Typography component="div" variant="h5">
-                        Ramiro Fraysse
-                    </Typography>
-                    <Typography variant="subtitle1" component="div">
-                        {language === "sp"
-                            ? "Ingeniero en Computación"
-                            : "Computer Engineer"}
-                    </Typography>
-                    <Typography variant="subtitle1" component="div">
-                        Frontend Engineer
-                    </Typography>
-                    <Box
-                        sx={{
-                            display: "flex",
-                            gap: "10px",
-                            marginTop: "6px",
-                        }}
-                    >
-                        {CONTACT.map(con => (
-                            <Link href={con.url} key={con.url} target="_blank">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width={28}
-                                    height={28}
-                                    key={con.url}
-                                >
-                                    <image
-                                        href={con.icon}
-                                        width={28}
-                                        height={28}
-                                    />
-                                </svg>
-                            </Link>
-                        ))}
+                    <Box>
+                        <Box>
+                            <Typography component="div" variant="h5">
+                                Ramiro Fraysse
+                            </Typography>
+                            <Typography variant="subtitle1" component="div">
+                                {language === "sp"
+                                    ? "Ingeniero en Computación"
+                                    : "Computer Engineer"}
+                            </Typography>
+                            <Typography variant="subtitle1" component="div">
+                                Frontend Engineer
+                            </Typography>
+                            <Box
+                                sx={{
+                                    display: "flex",
+                                    gap: "10px",
+                                    marginTop: "6px",
+                                }}
+                            >
+                                {CONTACT.map(con => (
+                                    <Link
+                                        href={con.url}
+                                        key={con.url}
+                                        target="_blank"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width={28}
+                                            height={28}
+                                            key={con.url}
+                                        >
+                                            <image
+                                                href={con.icon}
+                                                width={28}
+                                                height={28}
+                                            />
+                                        </svg>
+                                    </Link>
+                                ))}
+                            </Box>
+                        </Box>
+                        <Box sx={{display: {md: "none"}, marginTop: "6px"}}>
+                            <Image
+                                src={meImg}
+                                alt="imagen propia"
+                                style={{
+                                    borderRadius: "30px",
+                                    // objectFit: "contain",
+                                    margin: "auto",
+                                }}
+                                layout="responsive"
+                                placeholder="blur"
+                            />
+                        </Box>
                     </Box>
                     <Box
                         sx={{
@@ -109,7 +131,20 @@ function SectionCoverPage() {
                     </Box>
                 </CardContent>
             </Box>
-            <Image
+            <Box sx={{display: {sm: "none", xs: "none"}}}>
+                <Image
+                    src={meImg}
+                    alt="imagen propia"
+                    style={{
+                        borderRadius: "30px",
+                        // objectFit: "contain",
+                        margin: "auto",
+                    }}
+                    layout="responsive"
+                    placeholder="blur"
+                />
+            </Box>
+            {/* <Image
                 src={"/img/me.webp"}
                 alt="imagen propia"
                 style={{
@@ -117,10 +152,9 @@ function SectionCoverPage() {
                     // objectFit: "contain",
                     margin: "auto",
                 }}
-                priority={true}
-                height={350}
-                width={350}
-            />
+                layout="fill"
+                placeholder="blur"
+            /> */}
         </Card>
     );
     // <Grid container spacing={2}>

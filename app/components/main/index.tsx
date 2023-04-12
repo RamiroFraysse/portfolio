@@ -10,7 +10,7 @@ import SectionContact from "./SectionContact";
 import Chat from "../Chat";
 
 function Main() {
-    const {language} = useLanguage(state => state);
+    const {language, theme} = useLanguage(state => state);
 
     return (
         <Box
@@ -23,15 +23,27 @@ function Main() {
                 marginTop: "32px",
             }}
         >
-            <Typography variant="h5" color="initial" id="Education">
+            <Typography
+                variant="h5"
+                color={theme === "dark" ? "#fffff" : "#00000"}
+                id="Education"
+            >
                 {language === "sp" ? "Educación" : "Education"}
             </Typography>
             <SectionEducation />
-            <Typography variant="h5" color="initial" id="Experience">
+            <Typography
+                variant="h5"
+                color={theme === "dark" ? "#fffff" : "#00000"}
+                id="Experience"
+            >
                 {language === "sp" ? "Experiencia" : "Experience"}
             </Typography>
             <SectionExperience />
-            <Typography variant="h5" color="initial" id="Contact">
+            <Typography
+                variant="h5"
+                color={theme === "dark" ? "#fffff" : "#00000"}
+                id="Contact"
+            >
                 {language === "sp" ? "Contacto" : "Contact"}
             </Typography>
             <SectionContact />

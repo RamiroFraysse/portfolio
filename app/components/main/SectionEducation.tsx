@@ -9,6 +9,11 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import {useLanguage} from "../../store/language";
+import Image from "next/image";
+import pwaImg from "../../../public/img/courses/pwa.webp";
+import graduateImg from "../../../public/img/graduate.webp";
+import titleImg from "../../../public/img/title.jpeg";
+import reactProImg from "../../../public/img/courses/reactPro.webp";
 
 const ITEMS = [
     {
@@ -22,7 +27,7 @@ const ITEMS = [
             sp: "Universidad Nacional del Sur, Bahía Blanca, Buenos Aires, Argentina.",
             en: "National University of the South, Bahía Blanca, Buenos Aires, Argentina.",
         },
-        img: "/img/graduate.webp",
+        img: titleImg,
         href: "https://www.uns.edu.ar/ingreso/carreras/carrera-detalle%7Ccarrera=186",
     },
     {
@@ -36,7 +41,7 @@ const ITEMS = [
             sp: "Fernando Herrera - UDEMY",
             en: "Fernando Herrera - UDEMY",
         },
-        img: "/img/courses/reactPro.webp",
+        img: reactProImg,
         href: "https://www.udemy.com/course/react-pro/",
     },
     {
@@ -50,19 +55,20 @@ const ITEMS = [
             sp: "Fernando Herrera - UDEMY",
             en: "Fernando Herrera - UDEMY",
         },
-        img: "/img/courses/pwa.webp",
+        img: pwaImg,
         href: "https://www.udemy.com/course/aplicaciones-web-progresivas/",
     },
 ];
 
 function SectionEducation() {
-    const {language} = useLanguage(state => state);
+    const {language, theme} = useLanguage(state => state);
 
     return (
         <Box
             sx={{
                 display: "flex",
-                gap: "16px",
+                gap: "24px",
+                justifyContent: "space-between",
                 flexDirection: {
                     sm: "column",
                     xs: "column",
@@ -73,19 +79,49 @@ function SectionEducation() {
             }}
         >
             {ITEMS.map(item => (
-                <Card sx={{maxWidth: {md: 250}}} key={item.key}>
+                <Card
+                    sx={{
+                        height: 350,
+                        width: 350,
+                        margin: "auto",
+                        borderRadius: "16px",
+                        background: theme === "dark" ? "#667eea" : undefined,
+                        boxShadow: "0 0 10px 5px rgb(118,75,162,0.5)",
+                    }}
+                    key={item.key}
+                >
                     <CardActionArea href={item.href} target="_blanck">
-                        <CardMedia
-                            component="img"
-                            height="140"
-                            image={item.img}
-                            alt={item.key}
-                            sx={{objectFit: "contain"}}
-                        />
-                        <CardContent>
+                        {item.key === "ic" ? (
+                            <Image
+                                height={170}
+                                width={250}
+                                style={{
+                                    objectFit: "cover",
+                                    objectPosition: "bottom",
+                                }}
+                                src={item.img}
+                                alt="imagen propia"
+                                placeholder="blur"
+                            />
+                        ) : (
+                            <Image
+                                height={170}
+                                src={item.img}
+                                alt="imagen propia"
+                                placeholder="blur"
+                            />
+                        )}
+
+                        <CardContent
+                            sx={{
+                                display: "flex",
+                                flexDirection: "column",
+                                justifyContent: "end",
+                            }}
+                        >
                             <Typography
                                 gutterBottom
-                                variant="h5"
+                                variant="h6"
                                 component="div"
                             >
                                 {item.title[language]}

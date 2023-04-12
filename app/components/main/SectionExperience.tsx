@@ -81,7 +81,10 @@ function SectionExperience() {
         >
             {items.map(item => (
                 <TimelineItem key={item.key}>
-                    <TimelineOppositeContent color="textSecondary">
+                    <TimelineOppositeContent
+                        color="textSecondary"
+                        sx={{maxWidth: "100px"}}
+                    >
                         <Typography variant="subtitle1" color="textSecondary">
                             {item.company}
                         </Typography>

@@ -1,4 +1,4 @@
-import {Box, CircularProgress} from "@mui/material";
+import {Box, CircularProgress, Card, CardContent} from "@mui/material";
 import {Button, Typography, TextField} from "@mui/material";
 import {styled} from "@mui/material/styles";
 import emailjs from "@emailjs/browser";
@@ -14,7 +14,7 @@ const FormStyled = styled(Box)(({}) => ({
     justifyContent: "center",
 }));
 
-const InputStyled = styled(TextField)(({}) => ({
+const InputStyled = styled(TextField)(({theme}) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -38,7 +38,7 @@ const TEXT_BUTTON_SENT = {
 };
 
 function SectionContact() {
-    const {language} = useLanguage(state => state);
+    const {language, theme} = useLanguage(state => state);
 
     const formRef = useRef<HTMLFormElement>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -80,61 +80,91 @@ function SectionContact() {
     }, [isLoading, language, messageSent]);
 
     return (
-        <div>
-            <FormStyled onSubmit={handleSubmit} component="form" ref={formRef}>
-                <InputStyled
-                    label={language === "sp" ? "Nombre" : "Name"}
-                    type="text"
-                    variant="outlined"
-                    name="username"
-                    value={username}
-                    onChange={e => {
-                        setUsername(e.target.value);
-                        if (messageSent) setMessageSent(false);
-                    }}
-                    required
-                />
-                <InputStyled
-                    label="Email"
-                    variant="outlined"
-                    type="email"
-                    name="email"
-                    value={email}
-                    onChange={e => {
-                        setEmail(e.target.value);
-                        if (messageSent) setMessageSent(false);
-                    }}
-                    required
-                />
-                <InputStyled
-                    label={language === "en" ? "Message" : "Mensaje"}
-                    variant="outlined"
-                    type="text"
-                    multiline
-                    rows={4}
-                    name="message"
-                    value={message}
-                    onChange={e => {
-                        setMessage(e.target.value);
-                        if (messageSent) setMessageSent(false);
-                    }}
-                    required
-                />
-                <Button
-                    color="primary"
-                    variant="contained"
-                    type="submit"
-                    sx={{
-                        minWidth: "150px",
-                        background: "#667eea",
-                        // "radial-gradient(circle at 50% 50%, #667eea, #764ba2)!important",
-                    }}
-                    disabled={isLoading || messageSent}
+        <Card
+            sx={{
+                width: "fit-content",
+                margin: "auto",
+                borderRadius: "16px",
+                boxShadow: "0 0 10px 5px rgb(118,75,162,0.5)",
+                background: theme === "dark" ? "#667eea" : undefined,
+            }}
+        >
+            <CardContent>
+                <FormStyled
+                    onSubmit={handleSubmit}
+                    component="form"
+                    ref={formRef}
                 >
-                    {textButtonSubmit}
-                </Button>
-            </FormStyled>
-        </div>
+                    <InputStyled
+                        label={language === "sp" ? "Nombre" : "Name"}
+                        type="text"
+                        variant="outlined"
+                        name="username"
+                        value={username}
+                        onChange={e => {
+                            setUsername(e.target.value);
+                            if (messageSent) setMessageSent(false);
+                        }}
+                        sx={{
+                            "& .MuiInputLabel-root": {
+                                color: theme === "dark" ? "white" : "black", // Reemplaza con el color deseado
+                            },
+                        }}
+                        required
+                    />
+                    <InputStyled
+                        label="Email"
+                        variant="outlined"
+                        type="email"
+                        name="email"
+                        value={email}
+                        onChange={e => {
+                            setEmail(e.target.value);
+                            if (messageSent) setMessageSent(false);
+                        }}
+                        required
+                        sx={{
+                            "& .MuiInputLabel-root": {
+                                color: theme === "dark" ? "white" : "black", // Reemplaza con el color deseado
+                            },
+                        }}
+                    />
+                    <InputStyled
+                        label={language === "en" ? "Message" : "Mensaje"}
+                        variant="outlined"
+                        type="text"
+                        multiline
+                        rows={4}
+                        name="message"
+                        value={message}
+                        onChange={e => {
+                            setMessage(e.target.value);
+                            if (messageSent) setMessageSent(false);
+                        }}
+                        required
+                        sx={{
+                            "& .MuiInputLabel-root": {
+                                color: theme === "dark" ? "white" : "black", // Reemplaza con el color deseado
+                            },
+                        }}
+                    />
+                    <Button
+                        color="primary"
+                        variant="contained"
+                        type="submit"
+                        sx={{
+                            minWidth: "150px",
+                            background: "#764ba2",
+                            color: "white",
+                            // "radial-gradient(circle at 50% 50%, #667eea, #764ba2)!important",
+                        }}
+                        disabled={isLoading || messageSent}
+                    >
+                        {textButtonSubmit}
+                    </Button>
+                </FormStyled>
+            </CardContent>
+        </Card>
     );
 }
 
