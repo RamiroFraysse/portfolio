@@ -87,7 +87,13 @@ function SectionExperience() {
                         color="textSecondary"
                         sx={{maxWidth: "130px", flexWrap: "wrap"}}
                     >
-                        <Typography variant="subtitle1" color="textSecondary">
+                        <Typography
+                            variant="subtitle1"
+                            color="textSecondary"
+                            sx={{
+                                display: {xs: "none", sm: "none", md: "block"},
+                            }}
+                        >
                             {item.company}
                         </Typography>
                         <Typography variant="subtitle1" color="textSecondary">
@@ -102,6 +108,13 @@ function SectionExperience() {
                         <TimelineConnector />
                     </TimelineSeparator>
                     <TimelineContent sx={{py: "12px", px: 2}}>
+                        <Typography
+                            variant="subtitle1"
+                            color="textSecondary"
+                            sx={{display: {sm: "block", md: "none"}}}
+                        >
+                            {item.company}
+                        </Typography>
                         <Typography variant="h6" component="p" fontWeight={500}>
                             {item.position}
                         </Typography>
