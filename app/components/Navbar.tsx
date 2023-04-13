@@ -222,7 +222,7 @@ export default function Navbar(props: Props) {
                 display: "flex",
                 background: scrolling
                     ? theme === "dark"
-                        ? "#000"
+                        ? "#121212"
                         : "radial-gradient(circle at 50% 50%, #667eea, #764ba2)"
                     : "radial-gradient(circle at 50% 50%, #667eea, #764ba2)",
                 paddingBottom: "70px",
