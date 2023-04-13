@@ -263,8 +263,8 @@ function Chat() {
                 border: "1px solid gray",
                 borderRadius: "8px",
                 maxWidth: {
-                    xs: "60vw",
-                    sm: "60vw",
+                    xs: "100vw",
+                    sm: "100vw",
                     md: "40vw",
                     lg: "40vw",
                     xl: "40vw",

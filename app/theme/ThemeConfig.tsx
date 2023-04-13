@@ -73,7 +73,7 @@ const themeDark = createTheme({
                         borderRadius: 20,
                     },
                     "input::-webkit-inner-spin-button": {
-                        "-webkit-appearance": "none",
+                        "-webkitAppearance": "none",
                         "margin": 0,
                     },
                 },
