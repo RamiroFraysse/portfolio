@@ -220,9 +220,13 @@ export default function Navbar(props: Props) {
         <Box
             sx={{
                 display: "flex",
-                background:
-                    "radial-gradient(circle at 50% 50%, #667eea, #764ba2)!important",
+                background: scrolling
+                    ? theme === "dark"
+                        ? "#000"
+                        : "radial-gradient(circle at 50% 50%, #667eea, #764ba2)"
+                    : "radial-gradient(circle at 50% 50%, #667eea, #764ba2)",
                 paddingBottom: "70px",
+                transition: "background ease 2s",
             }}
         >
             <AppBar

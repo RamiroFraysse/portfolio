@@ -36,7 +36,7 @@ function PopoverChat() {
                 aria-describedby={id}
                 onClick={handleClick}
                 sx={{
-                    left: {xs: "80vw", sm: "80vw", md: "92vw"},
+                    left: {xs: "90vw", sm: "90vw", md: "92vw"},
                     backgroundColor: "#ffff",
                     boxShadow: "0 0 5px 5px rgb(118,75,162,0.5)",
                 }}
