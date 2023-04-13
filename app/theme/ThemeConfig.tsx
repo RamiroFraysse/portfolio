@@ -22,6 +22,31 @@ const themeLight = createTheme({
     typography: {
         fontFamily: "Open Sans",
     },
+    components: {
+        MuiCssBaseline: {
+            styleOverrides: {
+                html: {
+                    "*::-webkit-scrollbar-track": {
+                        webkitBoxShadow: "inset 0 0 6px rgba(0, 0, 0, .4)",
+                        backgroundColor: "#CFCFCF",
+                        borderRadius: 20,
+                    },
+                    "*::-webkit-scrollbar": {
+                        width: ".3em",
+                        borderRadius: 20,
+                    },
+                    "*::-webkit-scrollbar-thumb": {
+                        backgroundColor: "rgba(0,0,0,.8)",
+                        borderRadius: 20,
+                    },
+                    "input::-webkit-inner-spin-button": {
+                        "-webkit-appearance": "none",
+                        "margin": 0,
+                    },
+                },
+            },
+        },
+    },
 });
 const themeDark = createTheme({
     palette: {
@@ -29,6 +54,31 @@ const themeDark = createTheme({
     },
     typography: {
         fontFamily: "Open Sans",
+    },
+    components: {
+        MuiCssBaseline: {
+            styleOverrides: {
+                html: {
+                    "*::-webkit-scrollbar-track": {
+                        webkitBoxShadow: "inset 0 0 6px rgba(0, 0, 0, .4)",
+                        backgroundColor: "#FFFFFF",
+                        borderRadius: 20,
+                    },
+                    "*::-webkit-scrollbar": {
+                        width: ".4em",
+                        borderRadius: 20,
+                    },
+                    "*::-webkit-scrollbar-thumb": {
+                        backgroundColor: "rgba(0,0,0,.8)",
+                        borderRadius: 20,
+                    },
+                    "input::-webkit-inner-spin-button": {
+                        "-webkit-appearance": "none",
+                        "margin": 0,
+                    },
+                },
+            },
+        },
     },
 });
 

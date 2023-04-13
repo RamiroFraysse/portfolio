@@ -141,7 +141,6 @@ function SectionCoverPage() {
                             alt="imagen propia"
                             style={{
                                 borderRadius: "30px",
-                                // objectFit: "contain",
                                 margin: "auto",
                             }}
                             layout="responsive"
@@ -152,20 +151,6 @@ function SectionCoverPage() {
             </CardContent>
         </Card>
     );
-    // <Grid container spacing={2}>
-    //     <Grid item xs={6} sx={{margin: "auto", placeContent: "center"}}>
-    // <Image
-    //     src={"/img/graduate.jpg"}
-    //     alt="imagen propia"
-    //     width={300}
-    //     height={500}
-    //     style={{objectFit: "contain"}}
-    // />
-    //     </Grid>
-    //     <Grid item xs={6} sx={{margin: "auto", placeContent: "center"}}>
-    //         <Typography>{DESCRIPTION[language]}</Typography>
-    //     </Grid>
-    // </Grid>
 }
 
 export default SectionCoverPage;
