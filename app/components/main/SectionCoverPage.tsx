@@ -75,7 +75,16 @@ function SectionCoverPage() {
                         },
                     }}
                 >
-                    <Box sx={{gridArea: "info"}}>
+                    <Box
+                        sx={{
+                            gridArea: "info",
+                            padding: "1em",
+
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "center",
+                        }}
+                    >
                         <Typography component="div" variant="h5">
                             Ramiro Fraysse
                         </Typography>
@@ -121,13 +130,12 @@ function SectionCoverPage() {
                             display: "flex",
                             alignItems: "center",
                             gridArea: "desc",
-                            marginTop: "16px",
-                            height: "fit-content",
+                            padding: "1em",
                         }}
                     >
                         <Typography>{DESCRIPTION[language]}</Typography>
                     </Box>
-                    <Box sx={{gridArea: "img"}}>
+                    <Box sx={{gridArea: "img", padding: "1em"}}>
                         <Image
                             src={meImg}
                             alt="imagen propia"
