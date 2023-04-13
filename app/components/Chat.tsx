@@ -54,7 +54,7 @@ function Chat() {
                 text: questionText,
             }),
         );
-        const {classifications} = await fetch(URL, {
+        const {classifications} = await fetch(String(URL), {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${API_KEY}`,

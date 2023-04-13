@@ -50,99 +50,98 @@ function SectionCoverPage() {
                 color: "white",
             }}
         >
-            <Box
+            <CardContent
                 sx={{
                     display: "flex",
                     flexDirection: "column",
-                    paddingLeft: "16px",
-                    paddingRight: "16px",
                 }}
             >
-                <CardContent
+                <Box
                     sx={{
-                        display: "flex",
-                        flexDirection: "column",
+                        display: "grid",
+                        gridTemplateColumns: "repeat(2, 1fr)",
+                        gridTemplateRows: "auto",
+                        gridTemplateAreas: {
+                            md: `
+                                    "info img"
+                                    "desc img"
+                        `,
+                            sm: `"info info"
+                        "img img"
+                        "desc desc"`,
+                            xs: `"info info"
+                        "img img"
+                        "desc desc"`,
+                        },
                     }}
                 >
-                    <Box>
-                        <Box>
-                            <Typography component="div" variant="h5">
-                                Ramiro Fraysse
-                            </Typography>
-                            <Typography variant="subtitle1" component="div">
-                                {language === "sp"
-                                    ? "Ingeniero en Computación"
-                                    : "Computer Engineer"}
-                            </Typography>
-                            <Typography variant="subtitle1" component="div">
-                                Frontend Engineer
-                            </Typography>
-                            <Box
-                                sx={{
-                                    display: "flex",
-                                    gap: "10px",
-                                    marginTop: "6px",
-                                }}
-                            >
-                                {CONTACT.map(con => (
-                                    <Link
-                                        href={con.url}
+                    <Box sx={{gridArea: "info"}}>
+                        <Typography component="div" variant="h5">
+                            Ramiro Fraysse
+                        </Typography>
+                        <Typography variant="subtitle1" component="div">
+                            {language === "sp"
+                                ? "Ingeniero en Computación"
+                                : "Computer Engineer"}
+                        </Typography>
+                        <Typography variant="subtitle1" component="div">
+                            Frontend Engineer
+                        </Typography>
+                        <Box
+                            sx={{
+                                display: "flex",
+                                gap: "10px",
+                                marginTop: "6px",
+                            }}
+                        >
+                            {CONTACT.map(con => (
+                                <Link
+                                    href={con.url}
+                                    key={con.url}
+                                    target="_blank"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width={28}
+                                        height={28}
                                         key={con.url}
-                                        target="_blank"
                                     >
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
+                                        <image
+                                            href={con.icon}
                                             width={28}
                                             height={28}
-                                            key={con.url}
-                                        >
-                                            <image
-                                                href={con.icon}
-                                                width={28}
-                                                height={28}
-                                            />
-                                        </svg>
-                                    </Link>
-                                ))}
-                            </Box>
-                            {/* <Box sx={{display: {md: "none"}, marginTop: "6px"}}>
-                            <Image
-                                src={meImg}
-                                alt="imagen propia"
-                                style={{
-                                    borderRadius: "30px",
-                                    // objectFit: "contain",
-                                    margin: "auto",
-                                }}
-                                layout="responsive"
-                                placeholder="blur"
-                            />
-                        </Box> */}
+                                        />
+                                    </svg>
+                                </Link>
+                            ))}
                         </Box>
                     </Box>
                     <Box
                         sx={{
                             display: "flex",
                             alignItems: "center",
+                            gridArea: "desc",
                             marginTop: "16px",
+                            height: "fit-content",
                         }}
                     >
                         <Typography>{DESCRIPTION[language]}</Typography>
                     </Box>
-                </CardContent>
-            </Box>
-
-            <Image
-                src={meImg}
-                alt="imagen propia"
-                style={{
-                    borderRadius: "54px",
-                    margin: "auto",
-                    padding: "24px",
-                }}
-                layout="responsive"
-                placeholder="blur"
-            />
+                    <Box sx={{gridArea: "img"}}>
+                        <Image
+                            src={meImg}
+                            alt="imagen propia"
+                            style={{
+                                borderRadius: "30px",
+                                // objectFit: "contain",
+                                margin: "auto",
+                            }}
+                            layout="responsive"
+                            placeholder="blur"
+                        />
+                    </Box>
+                </Box>
+            </CardContent>
         </Card>
     );
     // <Grid container spacing={2}>
