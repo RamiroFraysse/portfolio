@@ -1,12 +1,18 @@
-import {Box, CircularProgress, Card, CardContent} from "@mui/material";
-import {Button, Typography, TextField} from "@mui/material";
-import {styled} from "@mui/material/styles";
 import emailjs from "@emailjs/browser";
-import {useLanguage} from "../../store/language";
+import {
+    Box,
+    Button,
+    Card,
+    CardContent,
+    CircularProgress,
+    TextField,
+} from "@mui/material";
+import {styled} from "@mui/material/styles";
+import React, {useMemo, useRef, useState} from "react";
 
-import React, {useState, useRef, useMemo} from "react";
+import {type Store, useLanguage} from "../../store/language";
 
-const FormStyled = styled(Box)(({}) => ({
+const FormStyled = styled(Box)(() => ({
     display: "flex",
     flexDirection: "column",
     gap: "30px",
@@ -14,7 +20,7 @@ const FormStyled = styled(Box)(({}) => ({
     justifyContent: "center",
 }));
 
-const InputStyled = styled(TextField)(({theme}) => ({
+const InputStyled = styled(TextField)(() => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -37,8 +43,8 @@ const TEXT_BUTTON_SENT = {
     en: "Sent",
 };
 
-function SectionContact() {
-    const {language, theme} = useLanguage(state => state);
+function SectionContact(): React.ReactElement {
+    const {language, theme} = useLanguage<Store>(state => state);
 
     const formRef = useRef<HTMLFormElement>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -47,12 +53,13 @@ function SectionContact() {
     const [email, setEmail] = useState<string>("");
     const [message, setMessage] = useState<string>("");
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = (e: React.FormEvent): void => {
         e.preventDefault();
         const serviceId = process.env.NEXT_PUBLIC_SERVICEID_EMAILJS;
-        console.log({serviceId});
+
         const templateId = process.env.NEXT_PUBLIC_TEMPLATEID_EMAILJS;
         const API_KEY = process.env.NEXT_PUBLIC_APIKEY_EMAILJS;
+
         setIsLoading(true);
         emailjs
             .sendForm(serviceId!, templateId!, formRef.current!, API_KEY)
@@ -76,6 +83,7 @@ function SectionContact() {
     const textButtonSubmit = useMemo(() => {
         if (isLoading) return <CircularProgress size={24} />;
         if (messageSent) return TEXT_BUTTON_SENT[language];
+
         return TEXT_BUTTON[language];
     }, [isLoading, language, messageSent]);
 
@@ -91,74 +99,73 @@ function SectionContact() {
         >
             <CardContent>
                 <FormStyled
-                    onSubmit={handleSubmit}
-                    component="form"
                     ref={formRef}
+                    component="form"
+                    onSubmit={handleSubmit}
                 >
                     <InputStyled
+                        required
                         label={language === "sp" ? "Nombre" : "Name"}
-                        type="text"
-                        variant="outlined"
                         name="username"
+                        sx={{
+                            "& .MuiInputLabel-root": {
+                                color: theme === "dark" ? "white" : "black", // Reemplaza con el color deseado
+                            },
+                        }}
+                        type="text"
                         value={username}
+                        variant="outlined"
                         onChange={e => {
                             setUsername(e.target.value);
                             if (messageSent) setMessageSent(false);
                         }}
+                    />
+                    <InputStyled
+                        required
+                        label="Email"
+                        name="email"
                         sx={{
                             "& .MuiInputLabel-root": {
                                 color: theme === "dark" ? "white" : "black", // Reemplaza con el color deseado
                             },
                         }}
-                        required
-                    />
-                    <InputStyled
-                        label="Email"
-                        variant="outlined"
                         type="email"
-                        name="email"
                         value={email}
+                        variant="outlined"
                         onChange={e => {
                             setEmail(e.target.value);
                             if (messageSent) setMessageSent(false);
                         }}
+                    />
+                    <InputStyled
+                        multiline
                         required
+                        label={language === "en" ? "Message" : "Mensaje"}
+                        name="message"
+                        rows={4}
                         sx={{
                             "& .MuiInputLabel-root": {
                                 color: theme === "dark" ? "white" : "black", // Reemplaza con el color deseado
                             },
                         }}
-                    />
-                    <InputStyled
-                        label={language === "en" ? "Message" : "Mensaje"}
-                        variant="outlined"
                         type="text"
-                        multiline
-                        rows={4}
-                        name="message"
                         value={message}
+                        variant="outlined"
                         onChange={e => {
                             setMessage(e.target.value);
                             if (messageSent) setMessageSent(false);
                         }}
-                        required
-                        sx={{
-                            "& .MuiInputLabel-root": {
-                                color: theme === "dark" ? "white" : "black", // Reemplaza con el color deseado
-                            },
-                        }}
                     />
                     <Button
                         color="primary"
-                        variant="contained"
-                        type="submit"
+                        disabled={isLoading || messageSent}
                         sx={{
                             minWidth: "150px",
                             background: "#764ba2",
                             color: "white",
-                            // "radial-gradient(circle at 50% 50%, #667eea, #764ba2)!important",
                         }}
-                        disabled={isLoading || messageSent}
+                        type="submit"
+                        variant="contained"
                     >
                         {textButtonSubmit}
                     </Button>

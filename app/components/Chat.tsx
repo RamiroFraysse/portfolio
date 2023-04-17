@@ -1,13 +1,16 @@
+import SendIcon from "@mui/icons-material/Send";
 import {Box, Button, TextField} from "@mui/material";
 import React, {useEffect, useRef, useState} from "react";
-import SendIcon from "@mui/icons-material/Send";
+
 import {useLanguage} from "../store/language";
 
-type Message = {
+import styles from "./styles/chat.module.css";
+
+interface Message {
     id: string;
     type: "bot" | "user";
     text: React.ReactNode;
-};
+}
 
 const ANSWERS = {
     intro: {
@@ -78,17 +81,17 @@ const ANSWERS = {
             <p>
                 Si querés contactarme podes hacerlo a través de mi
                 <a
+                    className={styles.black500}
                     href="https://www.linkedin.com/in/ramiro-fraysse-404991215/"
                     target="_blanck"
-                    style={{color: "black", fontWeight: "500"}}
                 >
                     {" "}
                     Linkedin
                 </a>
                 , o por mail a{" "}
                 <a
+                    className={styles.black500}
                     href="mailto:ramirofraysse@gmail.com"
-                    style={{color: "black", fontWeight: "500"}}
                     target="_blanck"
                 >
                     ramirofraysse@gmail.com.
@@ -137,6 +140,24 @@ const ANSWERS = {
             </p>
         ),
     },
+    team: {
+        sp: <p>Boca Juniors</p>,
+        en: <p>Boca Juniors</p>,
+    },
+    openPositions: {
+        sp: (
+            <p>
+                Si estoy abierto a escuchar propuestas, tanto en relación de
+                dependencia como en trabajos particulares
+            </p>
+        ),
+        en: (
+            <p>
+                If I am open to hearing proposals for both employment and
+                freelance work
+            </p>
+        ),
+    },
     default: {
         sp: (
             <p>
@@ -158,13 +179,13 @@ const EXAMPLES = [
     {text: "Hola", label: "intro"},
     {text: "Como estas?", label: "intro"},
     {text: "Quien sos?", label: "intro"},
-    {text: "Tengo un trabajo para vos", label: "contact"},
+    {text: "Tengo un trabajo para vos", label: "openPositions"},
     {text: "Por donde te puedo contactar?", label: "contact"},
-    {text: "Estas buscando trabajo?", label: "contact"},
-    {text: "Estás escuchando propuestas?", label: "contact"},
+    {text: "Estas buscando trabajo?", label: "openPositions"},
+    {text: "Estás escuchando propuestas?", label: "openPositions"},
     {text: "Como es tu LinkedIn?", label: "contact"},
     {text: "Como es tu Github?", label: "contact"},
-    {text: "Cual es tu expectativa salarial?", label: "contact"},
+    {text: "Cual es tu expectativa salarial?", label: "openPositions"},
     {text: "Con que tecnologías trabajás?", label: "skills"},
     {text: "Con que tecnologías tenés experiencia?", label: "skills"},
     {text: "Sabés inglés?", label: "language"},
@@ -172,12 +193,12 @@ const EXAMPLES = [
     {text: "Hi", label: "intro"},
     {text: "How are you?", label: "intro"},
     {text: "Who are you?", label: "intro"},
-    {text: "I have a job for you", label: "contact"},
+    {text: "I have a job for you", label: "openPositions"},
     {text: "How can I contact you?", label: "contact"},
-    {text: "Are you looking for a job?", label: "contact"},
-    {text: "Are you open to proposals?", label: "contact"},
+    {text: "Are you looking for a job?", label: "openPositions"},
+    {text: "Are you open to proposals?", label: "openPositions"},
     {text: "What's your linkedin?", label: "contact"},
-    {text: "What's your salary expectation?", label: "contact"},
+    {text: "What's your salary expectation?", label: "openPositions"},
     {text: "What technologies do you work with?", label: "skills"},
     {text: "What technologies do you have experience?    ", label: "skills"},
     {text: "Do you speak English?", label: "language"},
@@ -190,11 +211,15 @@ const EXAMPLES = [
     {text: "How would you describe yourself?    ", label: "me"},
     {text: "Cuales son tus hobbies?", label: "hobbies"},
     {text: "What are your hobbies?    ", label: "hobbies"},
+    {text: "De que hincha sos?", label: "team"},
+    {text: "Cual es tu equipo de fútbol favorito?", label: "team"},
+    {text: "What fan are you?", label: "team"},
+    {text: "What is your favorite soccer team?", label: "team"},
 ];
 const API_KEY = process.env.NEXT_PUBLIC_APIKEY_COHERE;
 const URL = process.env.NEXT_PUBLIC_URL_COHERE;
 
-function Chat() {
+function Chat(): React.ReactElement {
     const {language} = useLanguage(state => state);
 
     const [messages, setMessages] = useState<Message[]>([
@@ -210,11 +235,12 @@ function Chat() {
     const question = useRef<HTMLInputElement>(null);
     const containerChat = useRef<HTMLDivElement>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const handleSubmit = async (event: React.FormEvent) => {
+    const handleSubmit = async (event: React.FormEvent): Promise<void> => {
         event.preventDefault();
-        const questionText = question?.current?.value || "";
+        const questionText =
+            question?.current?.value != null ? question.current.value : "";
+
         if (isLoading || questionText === "") return;
-        console.log({questionText});
         if (question.current !== null) question.current.value = "";
         setIsLoading(true);
         setMessages(messages =>
@@ -227,7 +253,7 @@ function Chat() {
         const {classifications} = await fetch(String(URL), {
             method: "POST",
             headers: {
-                "Authorization": `Bearer ${API_KEY}`,
+                "Authorization": `Bearer ${API_KEY!}`,
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
@@ -236,15 +262,20 @@ function Chat() {
                 examples: EXAMPLES,
             }),
         })
-            .then(res => res.json())
-            .finally(() => setIsLoading(false));
-        console.log(classifications);
-        const key = classifications[0].prediction as keyof typeof ANSWERS;
+            .then(async res => await res.json())
+            .finally(() => {
+                setIsLoading(false);
+            });
+
+        if (classifications === undefined || classifications.length === 0)
+            return;
+        const key = classifications[0]?.prediction as keyof typeof ANSWERS;
+
         setMessages(messages =>
             messages.concat({
                 id: String(Date.now()),
                 type: "bot",
-                text: ANSWERS[key][language] || ANSWERS["default"][language],
+                text: ANSWERS[key][language],
             }),
         );
     };
@@ -255,10 +286,11 @@ function Chat() {
 
     return (
         <Box
+            p={4}
             sx={{
                 display: "flex",
                 flexDirection: "column",
-                background: "black",
+                background: "#090b13",
                 gap: "16px",
                 border: "1px solid gray",
                 borderRadius: "8px",
@@ -270,9 +302,9 @@ function Chat() {
                     xl: "40vw",
                 },
             }}
-            p={4}
         >
             <Box
+                ref={containerChat}
                 sx={{
                     display: "flex",
                     flexDirection: "column",
@@ -280,7 +312,6 @@ function Chat() {
                     height: "300px",
                     overflowY: "auto",
                 }}
-                ref={containerChat}
             >
                 {messages.map(message => (
                     <Box
@@ -307,19 +338,19 @@ function Chat() {
             </Box>
             <Box
                 component="form"
-                onSubmit={handleSubmit}
                 sx={{display: "flex", alignItems: "center", width: "100%"}}
+                onSubmit={handleSubmit}
             >
                 <TextField
+                    fullWidth
                     id="outlined-basic"
-                    variant="outlined"
-                    type="text"
                     inputRef={question}
                     name="question"
-                    fullWidth
+                    type="text"
+                    variant="outlined"
                 />
 
-                <Button type="submit" disabled={isLoading}>
+                <Button disabled={isLoading} type="submit">
                     <SendIcon sx={{color: "#fff"}} />
                 </Button>
             </Box>

@@ -1,17 +1,13 @@
 "use client";
 
-import {useLanguage} from "@/app/store/language";
-import {
-    Box,
-    Card,
-    CardContent,
-    CardMedia,
-    Grid,
-    Typography,
-} from "@mui/material";
+import {Box, Card, CardContent, Typography} from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
+
+import {useLanguage} from "@/app/store/language";
+
 import meImg from "../../../public/img/me.webp";
+import styles from "../styles/main/cover.module.css";
 
 const DESCRIPTION = {
     sp: "Hola! Mi nombre es Ramiro. Soy Ingeniero en Computación y mi fuerte es el desarrollo Frontend, aunque tambien he trabajado como Full stack. Llevo mas de 3 años trabajando en equipos de alta performance, desarrollando productos de alta calidad con agilidad y eficiencia. Soy una persona proactiva y un jugador de equipo apasionado por lo que hace.",
@@ -33,7 +29,7 @@ export const CONTACT = [
     },
 ];
 
-function SectionCoverPage() {
+function SectionCoverPage(): React.ReactElement {
     const {language} = useLanguage(state => state);
 
     return (
@@ -88,12 +84,12 @@ function SectionCoverPage() {
                         <Typography component="div" variant="h5">
                             Ramiro Fraysse
                         </Typography>
-                        <Typography variant="subtitle1" component="div">
+                        <Typography component="div" variant="subtitle1">
                             {language === "sp"
                                 ? "Ingeniero en Computación"
                                 : "Computer Engineer"}
                         </Typography>
-                        <Typography variant="subtitle1" component="div">
+                        <Typography component="div" variant="subtitle1">
                             Frontend Engineer
                         </Typography>
                         <Box
@@ -105,20 +101,20 @@ function SectionCoverPage() {
                         >
                             {CONTACT.map(con => (
                                 <Link
-                                    href={con.url}
                                     key={con.url}
+                                    href={con.url}
                                     target="_blank"
                                 >
                                     <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width={28}
-                                        height={28}
                                         key={con.url}
+                                        height={28}
+                                        width={28}
+                                        xmlns="http://www.w3.org/2000/svg"
                                     >
                                         <image
+                                            height={28}
                                             href={con.icon}
                                             width={28}
-                                            height={28}
                                         />
                                     </svg>
                                 </Link>
@@ -137,14 +133,11 @@ function SectionCoverPage() {
                     </Box>
                     <Box sx={{gridArea: "img", padding: "1em"}}>
                         <Image
-                            src={meImg}
                             alt="imagen propia"
-                            style={{
-                                borderRadius: "30px",
-                                margin: "auto",
-                            }}
+                            className={styles.imgBorder}
                             layout="responsive"
                             placeholder="blur"
+                            src={meImg}
                         />
                     </Box>
                 </Box>

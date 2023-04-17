@@ -1,17 +1,18 @@
 import Timeline from "@mui/lab/Timeline";
-import TimelineItem from "@mui/lab/TimelineItem";
-import TimelineSeparator from "@mui/lab/TimelineSeparator";
 import TimelineConnector from "@mui/lab/TimelineConnector";
 import TimelineContent from "@mui/lab/TimelineContent";
 import TimelineDot from "@mui/lab/TimelineDot";
+import TimelineItem from "@mui/lab/TimelineItem";
 import TimelineOppositeContent, {
     timelineOppositeContentClasses,
 } from "@mui/lab/TimelineOppositeContent";
-import {useLanguage} from "../../store/language";
+import TimelineSeparator from "@mui/lab/TimelineSeparator";
 import {Box, Typography} from "@mui/material";
-import Image from "next/image";
 
-function SectionExperience() {
+import {useLanguage} from "../../store/language";
+import styles from "../styles/main/experience.module.css";
+
+function SectionExperience(): React.ReactElement {
     const {language, theme} = useLanguage(state => state);
 
     const items = [
@@ -70,6 +71,7 @@ function SectionExperience() {
             },
         },
     ];
+
     return (
         <Timeline
             sx={{
@@ -88,18 +90,18 @@ function SectionExperience() {
                         sx={{maxWidth: "130px", flexWrap: "wrap"}}
                     >
                         <Typography
-                            variant="subtitle1"
                             color="textSecondary"
                             sx={{
                                 display: {xs: "none", sm: "none", md: "block"},
                             }}
+                            variant="subtitle1"
                         >
                             {item.company}
                         </Typography>
-                        <Typography variant="subtitle1" color="textSecondary">
+                        <Typography color="textSecondary" variant="subtitle1">
                             {item.date[language][1]}
                         </Typography>
-                        <Typography variant="subtitle1" color="textSecondary">
+                        <Typography color="textSecondary" variant="subtitle1">
                             {item.date[language][0]}
                         </Typography>
                     </TimelineOppositeContent>
@@ -109,13 +111,13 @@ function SectionExperience() {
                     </TimelineSeparator>
                     <TimelineContent sx={{py: "12px", px: 2}}>
                         <Typography
-                            variant="subtitle1"
                             color="textSecondary"
                             sx={{display: {sm: "block", md: "none"}}}
+                            variant="subtitle1"
                         >
                             {item.company}
                         </Typography>
-                        <Typography variant="h6" component="p" fontWeight={500}>
+                        <Typography component="p" fontWeight={500} variant="h6">
                             {item.position}
                         </Typography>
                         <Box
@@ -127,41 +129,38 @@ function SectionExperience() {
                         >
                             {item.technologies.map(tec => (
                                 <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width={28}
-                                    height={28}
                                     key={tec}
-                                    style={{
-                                        boxShadow:
-                                            "0 0 5px 2px rgb(118,75,162,0.5)",
-                                    }}
+                                    className={styles.boxShadow}
+                                    height={28}
+                                    width={28}
+                                    xmlns="http://www.w3.org/2000/svg"
                                 >
-                                    <image href={tec} width={28} height={28} />
+                                    <image height={28} href={tec} width={28} />
                                 </svg>
                             ))}
                         </Box>
                         <Typography
-                            variant="subtitle2"
                             component="p"
                             fontWeight={500}
+                            variant="subtitle2"
                         >
                             {language === "sp"
                                 ? "RESPONSABILIDADES"
                                 : "RESPONSABILITIES"}
                         </Typography>
-                        <Typography variant="subtitle2" component="p">
+                        <Typography component="p" variant="subtitle2">
                             {item.responsabilities[language]}
                         </Typography>
                         <Typography
-                            variant="subtitle2"
                             component="span"
                             fontWeight={500}
+                            variant="subtitle2"
                         >
                             {language === "sp"
                                 ? "PRINCIPALES LOGROS"
                                 : "KEY ACCOMPLISHMENTS"}
                         </Typography>
-                        <Typography variant="subtitle2" component="p">
+                        <Typography component="p" variant="subtitle2">
                             {item.accomplishments[language]}
                         </Typography>
                     </TimelineContent>

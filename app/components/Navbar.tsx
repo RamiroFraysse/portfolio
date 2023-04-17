@@ -1,8 +1,5 @@
 "use client";
-import {useState, useEffect} from "react";
-import {ElementType} from "react";
-import SectionCoverPage from "./main/SectionCoverPage";
-
+import {useState, type ElementType} from "react";
 import {
     AppBar,
     Box,
@@ -17,15 +14,18 @@ import {
     Typography,
     Button,
 } from "@mui/material";
-
 import {
     LightMode as LightModeIcon,
     Bedtime as BedtimeIcon,
     Menu as MenuIcon,
 } from "@mui/icons-material";
-import {useLanguage} from "../store/language";
 import Link from "next/link";
 import {Link as Scroll} from "react-scroll";
+
+import {useLanguage} from "../store/language";
+
+import styles from "./styles/navbar.module.css";
+import SectionCoverPage from "./main/SectionCoverPage";
 
 interface Props {
     window?: () => Window;
@@ -34,9 +34,7 @@ interface Props {
 
 const drawerWidth = 240;
 
-type LanguageStrings = {
-    [key: string]: string;
-};
+type LanguageStrings = Record<string, string>;
 
 interface NavItemsProps {
     text: LanguageStrings | undefined;
@@ -90,16 +88,15 @@ const navItemsActions: NavItemsProps[] = [
     },
 ];
 
-export default function Navbar(props: Props) {
+export default function Navbar(props: Props): React.ReactElement {
     const {window, scrolling} = props;
     const [mobileOpen, setMobileOpen] = useState(false);
 
     const {theme, language, toggleLanguage, toggleTheme} = useLanguage(
         state => state,
     );
-    console.log({language});
 
-    const handleClickAction = (key: string) => {
+    const handleClickAction = (key: string): void => {
         switch (key) {
             case "lanAction":
                 toggleLanguage();
@@ -112,51 +109,50 @@ export default function Navbar(props: Props) {
         }
     };
 
-    const handleClickNavItem = (key: string) => {
-        console.log({key});
+    const handleClickNavItem = (key: string): void => {
         const targetSection = document.getElementById(key);
-        console.log({targetSection});
+
         if (targetSection !== null) {
-            console.log("entra aca");
             targetSection.scrollIntoView({
                 behavior: "smooth",
             });
-            console.log("esto no funciona");
         }
     };
 
-    const handleDrawerToggle = () => {
+    const handleDrawerToggle = (): void => {
         setMobileOpen(prevState => !prevState);
     };
 
     const drawer = (
         <Box
-            onClick={handleDrawerToggle}
             sx={{
                 textAlign: "center",
                 height: "100vh",
                 background:
                     "linear-gradient(to bottom right, #667eea, #764ba2)!important",
             }}
+            onClick={handleDrawerToggle}
         >
-            <Typography variant="h6" sx={{my: 2, color: "#ffff"}}>
+            <Typography sx={{my: 2, color: "#ffff"}} variant="h6">
                 RF
             </Typography>
             <Divider />
             <List sx={{display: "flex", flexDirection: "column"}}>
                 {navItems.map(item => (
                     <Scroll
-                        to={item.key}
-                        duration={400}
-                        smooth={true}
-                        offset={-100}
                         key={item.key}
+                        duration={400}
+                        offset={-100}
+                        smooth={true}
+                        to={item.key}
                     >
                         <ListItem disablePadding>
                             <ListItemButton sx={{textAlign: "center"}}>
                                 <ListItemText
                                     primary={
-                                        item?.text ? item.text[language] : ""
+                                        item?.text != null
+                                            ? item.text[language]
+                                            : ""
                                     }
                                     sx={{color: "#fff"}}
                                 />
@@ -169,39 +165,32 @@ export default function Navbar(props: Props) {
                         <ListItemButton
                             sx={{textAlign: "center"}}
                             onClick={() => {
-                                console.log("click");
                                 handleClickAction(action.key);
                             }}
                         >
                             {action.key === "cvAction" ? (
                                 <Link
+                                    download
+                                    className={styles.linkCv}
                                     href="/docs/cv.pdf"
                                     target="_blank"
-                                    download
-                                    style={{
-                                        color: "#ffff",
-                                        textDecoration: "none",
-                                        textAlign: "center",
-                                        margin: "auto",
-                                    }}
                                 >
                                     CV
                                 </Link>
                             ) : (
                                 <ListItemText
                                     primary={
-                                        action.key === "themeAction" &&
-                                        action.icon ? (
+                                        action?.key === "themeAction" &&
+                                        action?.icon != null ? (
                                             theme === "dark" ? (
                                                 <action.icon.dark />
                                             ) : (
                                                 <action.icon.light />
                                             )
-                                        ) : (
-                                            (action?.text &&
-                                                action?.text[language]) ||
-                                            ""
-                                        )
+                                        ) : action?.text != null &&
+                                          action?.text[language] !== "" ? (
+                                            action?.text[language]
+                                        ) : null
                                     }
                                     sx={{color: "#fff"}}
                                 />
@@ -222,7 +211,7 @@ export default function Navbar(props: Props) {
                 display: "flex",
                 background: scrolling
                     ? theme === "dark"
-                        ? "#121212"
+                        ? "#090b13"
                         : "radial-gradient(circle at 50% 50%, #667eea, #764ba2)"
                     : "radial-gradient(circle at 50% 50%, #667eea, #764ba2)",
                 paddingBottom: "70px",
@@ -254,11 +243,11 @@ export default function Navbar(props: Props) {
                     }}
                 >
                     <IconButton
-                        color="inherit"
                         aria-label="open drawer"
+                        color="inherit"
                         edge="start"
-                        onClick={handleDrawerToggle}
                         sx={{display: {sm: "none"}}}
+                        onClick={handleDrawerToggle}
                     >
                         <MenuIcon />
                     </IconButton>
@@ -281,18 +270,17 @@ export default function Navbar(props: Props) {
                                 key={item.key}
                                 sx={{color: "#fff"}}
                                 onClick={() => {
-                                    console.log("click");
                                     handleClickNavItem(item.key);
                                 }}
                             >
                                 {item.key === "themeAction" &&
-                                    item.icon &&
+                                    item.icon != null &&
                                     (theme === "dark" ? (
                                         <item.icon.dark />
                                     ) : (
                                         <item.icon.light />
                                     ))}
-                                {item?.text ? item.text[language] : ""}
+                                {item?.text != null ? item.text[language] : ""}
                             </Button>
                         ))}
                     </Box>
@@ -301,6 +289,7 @@ export default function Navbar(props: Props) {
                             display: {xs: "none", sm: "flex"},
                             width: "300px",
                             justifyContent: "end",
+                            a: {textDecoration: "none"},
                         }}
                     >
                         {navItemsActions.map(item => {
@@ -310,7 +299,6 @@ export default function Navbar(props: Props) {
                                         key={item.key}
                                         href="https://ramirofraysse.notion.site/Ramiro-Fraysse-Computer-Engineer-fa8303a305964f90b8cbae8e78f95040"
                                         target="_blank"
-                                        style={{textDecoration: "none"}}
                                     >
                                         <Button
                                             sx={{
@@ -318,26 +306,31 @@ export default function Navbar(props: Props) {
                                                 textDecoration: "none",
                                             }}
                                         >
-                                            {(item?.text &&
-                                                item?.text[language]) ||
-                                                ""}
+                                            {item?.text != null
+                                                ? item.text[language]
+                                                : ""}
                                         </Button>
                                     </Link>
                                 );
+
                             return (
                                 <Button
                                     key={item.key}
                                     sx={{color: "#fff"}}
-                                    onClick={() => handleClickAction(item.key)}
+                                    onClick={() => {
+                                        handleClickAction(item.key);
+                                    }}
                                 >
                                     {item.key === "themeAction" &&
-                                        item.icon &&
+                                        item.icon != null &&
                                         (theme === "dark" ? (
                                             <item.icon.dark />
                                         ) : (
                                             <item.icon.light />
                                         ))}
-                                    {(item?.text && item?.text[language]) || ""}
+                                    {item?.text != null
+                                        ? item.text[language]
+                                        : ""}
                                 </Button>
                             );
                         })}
@@ -345,18 +338,16 @@ export default function Navbar(props: Props) {
                 </Toolbar>
             </AppBar>
             <Box
-                component="nav"
                 className="este"
+                component="nav"
                 sx={{display: "flex", justifyContent: "space-between"}}
             >
                 <Drawer
-                    container={container}
-                    variant="temporary"
-                    open={mobileOpen}
-                    onClose={handleDrawerToggle}
                     ModalProps={{
                         keepMounted: true, // Better open performance on mobile.
                     }}
+                    container={container}
+                    open={mobileOpen}
                     sx={{
                         "display": {xs: "block", sm: "none"},
                         "& .MuiDrawer-paper": {
@@ -364,6 +355,8 @@ export default function Navbar(props: Props) {
                             width: drawerWidth,
                         },
                     }}
+                    variant="temporary"
+                    onClose={handleDrawerToggle}
                 >
                     {drawer}
                 </Drawer>

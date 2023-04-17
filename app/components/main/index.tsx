@@ -1,15 +1,15 @@
 "use client";
+
 import {Box, Typography} from "@mui/material";
-import SectionCoverPage from "./SectionCoverPage";
-import SectionEducation from "./SectionEducation";
-import SectionExperience from "./SectionExperience";
-import SectionProjects from "./SectionProjects";
+import React from "react";
+
 import {useLanguage} from "@/app/store/language";
 
 import SectionContact from "./SectionContact";
-import Chat from "../Chat";
+import SectionEducation from "./SectionEducation";
+import SectionExperience from "./SectionExperience";
 
-function Main() {
+function Main(): React.ReactElement {
     const {language, theme} = useLanguage(state => state);
 
     return (
@@ -24,30 +24,30 @@ function Main() {
             }}
         >
             <Typography
-                variant="h5"
                 color={theme === "dark" ? "#fffff" : "#00000"}
                 id="Education"
                 sx={{
                     paddingLeft: {xs: "32px", sm: "32px", md: "0px"},
                 }}
+                variant="h5"
             >
                 {language === "sp" ? "Educación" : "Education"}
             </Typography>
             <SectionEducation />
             <Typography
-                variant="h5"
                 color={theme === "dark" ? "#fffff" : "#00000"}
                 id="Experience"
                 sx={{paddingLeft: {xs: "32px", sm: "32px", md: "0px"}}}
+                variant="h5"
             >
                 {language === "sp" ? "Experiencia" : "Experience"}
             </Typography>
             <SectionExperience />
             <Typography
-                variant="h5"
                 color={theme === "dark" ? "#fffff" : "#00000"}
                 id="Contact"
                 sx={{paddingLeft: {xs: "32px", sm: "32px", md: "0px"}}}
+                variant="h5"
             >
                 {language === "sp" ? "Contacto" : "Contact"}
             </Typography>

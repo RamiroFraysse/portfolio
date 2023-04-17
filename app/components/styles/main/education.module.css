@@ -1,0 +1,13 @@
+.coverBottom{
+  width: 100%;
+  object-fit: cover;
+  object-position: bottom;
+}
+.wauto{
+  width: auto;
+}
+
+.w100{
+  width:100%;
+  height:auto;
+}

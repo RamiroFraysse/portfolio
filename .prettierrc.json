@@ -4,6 +4,12 @@
     "singleQuote": false,
     "tabWidth": 4,
     "trailingComma": "all",
+    "importOrder": [
+        "^components/(.*)$",
+        "^[./]"
+    ],
+    "importOrderSeparation": true,
+    "importOrderSortSpecifiers": true,
     "quoteProps": "consistent",
     "bracketSpacing": false
 }

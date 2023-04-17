@@ -1,10 +1,10 @@
-import {useState} from "react";
-import {Typography, Popover, Button} from "@mui/material";
+import {Button, Popover} from "@mui/material";
 import {styled} from "@mui/material/styles";
-import Chat from "./Chat";
-import IconButton from "@mui/material/IconButton/IconButton";
+import {useState} from "react";
 
-const ButtonWrapper = styled(Button)(({}) => ({
+import Chat from "./Chat";
+
+const ButtonWrapper = styled(Button)(() => ({
     "position": "fixed",
     "bottom": "10px",
     "borderRadius": "100%",
@@ -16,14 +16,14 @@ const ButtonWrapper = styled(Button)(({}) => ({
     },
 }));
 
-function PopoverChat() {
+function PopoverChat(): React.ReactElement {
     const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
 
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
         setAnchorEl(event.currentTarget);
     };
 
-    const handleClose = () => {
+    const handleClose = (): void => {
         setAnchorEl(null);
     };
 
@@ -34,41 +34,34 @@ function PopoverChat() {
         <div>
             <ButtonWrapper
                 aria-describedby={id}
-                onClick={handleClick}
                 sx={{
                     left: {xs: "80vw", sm: "80vw", md: "92vw"},
                     backgroundColor: "#ffff",
                     boxShadow: "0 0 5px 5px rgb(118,75,162,0.5)",
                 }}
+                onClick={handleClick}
             >
                 <object
-                    type="image/svg+xml"
-                    data="https://icongr.am/jam/messenger.svg?size=40&color=667eea"
                     aria-label="SVG icon"
-                    style={{cursor: "pointer"}}
-                >
-                    <img
-                        src={"/img/graduate.jpg"}
-                        alt="SVG icon"
-                        style={{cursor: "pointer"}}
-                    />
-                </object>
+                    data="https://icongr.am/jam/messenger.svg?size=40&color=667eea"
+                    type="image/svg+xml"
+                />
             </ButtonWrapper>
 
             <Popover
-                id={id}
-                open={open}
                 anchorEl={anchorEl}
-                onClose={handleClose}
                 anchorOrigin={{
                     vertical: "top",
                     horizontal: "left",
                 }}
+                disablePortal={true}
+                id={id}
+                open={open}
                 transformOrigin={{
                     vertical: "bottom",
                     horizontal: "left",
                 }}
-                disablePortal={true}
+                onClose={handleClose}
             >
                 <Chat />
             </Popover>

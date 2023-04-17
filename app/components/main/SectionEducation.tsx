@@ -1,15 +1,17 @@
 import {
+    Box,
     Card,
+    CardActionArea,
     CardContent,
     Typography,
-    Box,
-    CardActionArea,
 } from "@mui/material";
-import {useLanguage} from "../../store/language";
 import Image from "next/image";
+
 import pwaImg from "../../../public/img/courses/pwa.webp";
-import titleImg from "../../../public/img/title.jpeg";
 import reactProImg from "../../../public/img/courses/reactPro.webp";
+import titleImg from "../../../public/img/title.jpeg";
+import {useLanguage} from "../../store/language";
+import styles from "../styles/main/education.module.css";
 
 const ITEMS = [
     {
@@ -56,7 +58,7 @@ const ITEMS = [
     },
 ];
 
-function SectionEducation() {
+function SectionEducation(): React.ReactElement {
     const {language, theme} = useLanguage(state => state);
 
     return (
@@ -76,6 +78,7 @@ function SectionEducation() {
         >
             {ITEMS.map(item => (
                 <Card
+                    key={item.key}
                     sx={{
                         height: 350,
                         width: 250,
@@ -84,31 +87,24 @@ function SectionEducation() {
                         background: theme === "dark" ? "#667eea" : undefined,
                         boxShadow: "0 0 10px 5px rgb(118,75,162,0.5)",
                     }}
-                    key={item.key}
                 >
                     <CardActionArea href={item.href} target="_blanck">
                         {item.key === "ic" ? (
                             <Image
+                                alt={`image ${String(item.title)}`}
+                                className={`${styles.coverBottom}`}
                                 height={170}
-                                width={250}
-                                style={{
-                                    width: "100%",
-                                    objectFit: "cover",
-                                    objectPosition: "bottom",
-                                }}
-                                src={item.img}
-                                alt="imagen propia"
+                                layout="fixed"
                                 placeholder="blur"
+                                src={item.img}
                             />
                         ) : (
                             <Image
+                                alt={`image ${String(item.title)}`}
+                                className={styles.wauto}
                                 height={170}
-                                src={item.img}
-                                style={{
-                                    width: "100%",
-                                }}
-                                alt="imagen propia"
                                 placeholder="blur"
+                                src={item.img}
                             />
                         )}
 
@@ -121,15 +117,15 @@ function SectionEducation() {
                         >
                             <Typography
                                 gutterBottom
-                                variant="h6"
                                 component="div"
+                                variant="h6"
                             >
                                 {item.title[language]}
                             </Typography>
-                            <Typography variant="body2" color="text.secondary">
+                            <Typography color="text.secondary" variant="body2">
                                 {item.time}
                             </Typography>
-                            <Typography variant="body2" color="text.secondary">
+                            <Typography color="text.secondary" variant="body2">
                                 {item.place[language]}
                             </Typography>
                         </CardContent>

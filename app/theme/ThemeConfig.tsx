@@ -1,15 +1,17 @@
 import {CssBaseline} from "@mui/material";
 import {ThemeProvider, createTheme} from "@mui/material/styles";
+
 import {useLanguage} from "../store/language";
 
-type ThemeProp = {
+interface ThemeProp {
     children: JSX.Element[];
-};
+}
 
 export enum themePaletteDark {
     BG = "#12181b",
     LIME = "#7400b8",
 }
+
 export enum themePaletteLight {
     BG = "#514343",
     PRIMARY = "#7400b8",
@@ -40,8 +42,8 @@ const themeLight = createTheme({
                         borderRadius: 20,
                     },
                     "input::-webkit-inner-spin-button": {
-                        "-webkit-appearance": "none",
-                        "margin": 0,
+                        WebkitAppearance: "none",
+                        margin: 0,
                     },
                 },
             },
@@ -73,8 +75,8 @@ const themeDark = createTheme({
                         borderRadius: 20,
                     },
                     "input::-webkit-inner-spin-button": {
-                        "-webkitAppearance": "none",
-                        "margin": 0,
+                        WebkitAppareance: "none",
+                        margin: 0,
                     },
                 },
             },
