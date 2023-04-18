@@ -206,6 +206,7 @@ function SectionContact(): React.ReactElement {
                         color="primary"
                         disabled={isLoading || messageSent}
                         sx={{
+                            padding: "12px 24px",
                             minWidth: "150px",
                             color: theme === "dark" ? "white" : "black",
                         }}
