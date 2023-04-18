@@ -12,7 +12,7 @@ export default function RootLayout({
 }): React.ReactElement {
     return (
         <html lang="en">
-            <body style={{background: "#090b13"}}>{children}</body>
+            <body>{children}</body>
         </html>
     );
 }
