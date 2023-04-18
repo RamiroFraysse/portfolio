@@ -112,6 +112,7 @@ function SectionEducation(): React.ReactElement {
                                 alt={`image ${String(item.title)}`}
                                 className={styles.wauto}
                                 height={170}
+                                layout="responsive"
                                 placeholder="blur"
                                 src={item.img}
                             />

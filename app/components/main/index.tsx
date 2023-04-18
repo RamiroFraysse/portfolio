@@ -20,7 +20,7 @@ function Main(): React.ReactElement {
                 display: "flex",
                 flexDirection: "column",
                 gap: "32px",
-                padding: "32px",
+                padding: {xs: "16px", sm: "16px", md: "32px"},
                 // background: theme === "dark" ? "#090b13" : "#ffffff",
                 background: theme === "dark" ? "rgb(0, 30, 60)" : "#ffffff",
             }}
@@ -33,7 +33,6 @@ function Main(): React.ReactElement {
                     color={theme === "dark" ? "#fffff" : "#00000"}
                     id="Education"
                     sx={{
-                        paddingLeft: {xs: "32px", sm: "32px", md: "0px"},
                         fontWeight: 600,
                     }}
                     variant="h5"
@@ -47,7 +46,6 @@ function Main(): React.ReactElement {
                     color={theme === "dark" ? "#fffff" : "#00000"}
                     id="Experience"
                     sx={{
-                        paddingLeft: {xs: "32px", sm: "32px", md: "0px"},
                         fontWeight: 600,
                     }}
                     variant="h5"
@@ -61,7 +59,6 @@ function Main(): React.ReactElement {
                     color={theme === "dark" ? "#fffff" : "#00000"}
                     id="Contact"
                     sx={{
-                        paddingLeft: {xs: "32px", sm: "32px", md: "0px"},
                         fontWeight: 600,
                     }}
                     variant="h5"
