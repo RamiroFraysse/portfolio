@@ -3,6 +3,7 @@ import {useState, useEffect} from "react";
 import {Box} from "@mui/material";
 import {Open_Sans as OpenSans} from "next/font/google";
 
+import {useLanguage} from "./store/language";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Main from "./components/main";
@@ -17,6 +18,7 @@ const openSans = OpenSans({
 
 export default function Home(): React.ReactElement {
     const [scrolling, setScrolling] = useState(false);
+    const {theme} = useLanguage((state: any) => state);
 
     useEffect(() => {
         const handleScroll = (): void => {
@@ -38,7 +40,11 @@ export default function Home(): React.ReactElement {
                     font-family: ${openSans.style.fontFamily};
                 }
             `}</style>
-            <Box>
+            <Box
+                sx={{
+                    background: theme === "dark" ? "rgb(0, 30, 60)" : "#667eea",
+                }}
+            >
                 <Navbar scrolling={scrolling} />
                 <Main />
                 <Footer />

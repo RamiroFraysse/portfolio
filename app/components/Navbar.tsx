@@ -207,15 +207,16 @@ export default function Navbar(props: Props): React.ReactElement {
 
     return (
         <Box
+            className="cover"
             sx={{
                 display: "flex",
-                background: scrolling
-                    ? theme === "dark"
-                        ? "#090b13"
-                        : "radial-gradient(circle at 50% 50%, #667eea, #764ba2)"
-                    : "radial-gradient(circle at 50% 50%, #667eea, #764ba2)",
-                paddingBottom: "70px",
-                transition: "background ease 2s",
+                background:
+                    theme === "dark"
+                        ? "radial-gradient(circle at 50% 50%, #667eea, #3d235a)"
+                        : "radial-gradient(circle at 50% 50%, #667eea, #764ba2)",
+                margin: "auto",
+                transition: "background ease .3s",
+                height: {md: "100vh", sm: "fit-content", xs: "fit-content"},
             }}
         >
             <AppBar
@@ -225,7 +226,9 @@ export default function Navbar(props: Props): React.ReactElement {
                     paddingRight: {xs: "0px", sm: "0px", md: "100px"},
                     paddingLeft: {xs: "0px", sm: "0px", md: "100px"},
                     background: scrolling
-                        ? "radial-gradient(circle at 50% 50%, #667eea, #764ba2)"
+                        ? theme === "dark"
+                            ? "radial-gradient(circle at 50% 50%, #667eea, #3d235a)"
+                            : "radial-gradient(circle at 50% 50%, #667eea, #764ba2)"
                         : "none",
                     boxShadow: scrolling ? undefined : "none",
                     border: scrolling ? undefined : "none",
@@ -251,7 +254,7 @@ export default function Navbar(props: Props): React.ReactElement {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Button
+                    <Typography
                         sx={{
                             color: "#fff",
                             display: {xs: "flex", sm: "flex"},
@@ -261,14 +264,23 @@ export default function Navbar(props: Props): React.ReactElement {
                         }}
                     >
                         RF
-                    </Button>
+                    </Typography>
                     <Box
                         sx={{margin: "auto", display: {xs: "none", sm: "flex"}}}
                     >
                         {navItems.map(item => (
                             <Button
                                 key={item.key}
-                                sx={{color: "#fff"}}
+                                sx={{
+                                    "color": "#fff",
+                                    "transition": "transform 0.3s ease-in-out", // Agregar transición para hacerlo más suave
+
+                                    ":hover": {
+                                        background: "#667eea",
+                                        transform: "translateY(-2px)",
+                                        boxShadow: "0px 4px 2px rgb(0,0,0,0.4)",
+                                    },
+                                }}
                                 onClick={() => {
                                     handleClickNavItem(item.key);
                                 }}
@@ -302,8 +314,18 @@ export default function Navbar(props: Props): React.ReactElement {
                                     >
                                         <Button
                                             sx={{
-                                                color: "#fff",
-                                                textDecoration: "none",
+                                                "color": "#fff",
+                                                "textDecoration": "none",
+                                                "transition":
+                                                    "transform 0.3s ease-in-out", // Agregar transición para hacerlo más suave
+
+                                                ":hover": {
+                                                    background: "#667eea",
+                                                    transform:
+                                                        "translateY(-2px)",
+                                                    boxShadow:
+                                                        "0px 4px 2px rgb(0,0,0,0.4)",
+                                                },
                                             }}
                                         >
                                             {item?.text != null
@@ -316,7 +338,18 @@ export default function Navbar(props: Props): React.ReactElement {
                             return (
                                 <Button
                                     key={item.key}
-                                    sx={{color: "#fff"}}
+                                    sx={{
+                                        "color": "#fff",
+                                        "transition":
+                                            "transform 0.3s ease-in-out", // Agregar transición para hacerlo más suave
+
+                                        ":hover": {
+                                            background: "#667eea",
+                                            transform: "translateY(-2px)",
+                                            boxShadow:
+                                                "0px 4px 2px rgb(0,0,0,0.4)",
+                                        },
+                                    }}
                                     onClick={() => {
                                         handleClickAction(item.key);
                                     }}

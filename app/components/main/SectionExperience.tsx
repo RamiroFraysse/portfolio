@@ -81,6 +81,9 @@ function SectionExperience(): React.ReactElement {
                 marginTop: 0,
                 marginBottom: 0,
                 paddingTop: 0,
+                borderRadius: "16px",
+
+                // background: theme === "dark" ? "#667eea" : "#ffffff",
             }}
         >
             {items.map(item => (
@@ -91,6 +94,7 @@ function SectionExperience(): React.ReactElement {
                     >
                         <Typography
                             color="textSecondary"
+                            fontWeight={500}
                             sx={{
                                 display: {xs: "none", sm: "none", md: "block"},
                             }}
@@ -106,8 +110,15 @@ function SectionExperience(): React.ReactElement {
                         </Typography>
                     </TimelineOppositeContent>
                     <TimelineSeparator>
-                        <TimelineDot />
-                        <TimelineConnector />
+                        <TimelineDot sx={{background: "#667eea"}} />
+                        <TimelineConnector
+                            sx={{
+                                background:
+                                    theme === "dark"
+                                        ? "radial-gradient(circle at 50% 50%, #667eea, #3d235a)"
+                                        : "radial-gradient(circle at 50% 50%, #667eea, #764ba2)",
+                            }}
+                        />
                     </TimelineSeparator>
                     <TimelineContent sx={{py: "12px", px: 2}}>
                         <Typography

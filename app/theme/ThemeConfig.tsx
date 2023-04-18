@@ -20,6 +20,9 @@ export enum themePaletteLight {
 const themeLight = createTheme({
     palette: {
         mode: "light",
+        text: {
+            secondary: "#00003B", // Cambiar el color del texto secundario
+        },
     },
     typography: {
         fontFamily: "Open Sans",

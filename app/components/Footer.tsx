@@ -2,18 +2,24 @@
 import {AppBar, Toolbar, Box, Typography} from "@mui/material";
 import Link from "next/link";
 
+import {useLanguage} from "@/app/store/language";
+
 import styles from "./styles/footer.module.css";
 import {CONTACT} from "./main/SectionCoverPage";
 
 function Footer(): React.ReactElement {
+    const {theme} = useLanguage(state => state);
+
     return (
         <AppBar
+            component="footer"
             position="static"
             sx={{
-                marginTop: "32px",
                 padding: "16px",
                 background:
-                    "radial-gradient(circle at 50% 50%, #667eea, #764ba2)!important",
+                    theme === "dark"
+                        ? "radial-gradient(circle at 50% 50%, #667eea, #3d235a)"
+                        : "radial-gradient(circle at 50% 50%, #667eea, #7721bf)!important",
             }}
         >
             <Toolbar sx={{display: "flex", justifyContent: "space-around"}}>
@@ -46,6 +52,7 @@ function Footer(): React.ReactElement {
                             >
                                 <svg
                                     key={con.url}
+                                    className={styles.action}
                                     height={28}
                                     width={28}
                                     xmlns="http://www.w3.org/2000/svg"

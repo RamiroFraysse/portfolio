@@ -15,43 +15,61 @@ function Main(): React.ReactElement {
     return (
         <Box
             sx={{
-                maxWidth: "750px",
+                maxWidth: "950px",
                 margin: "auto",
                 display: "flex",
                 flexDirection: "column",
                 gap: "32px",
-                marginTop: "32px",
+                padding: "32px",
+                // background: theme === "dark" ? "#090b13" : "#ffffff",
+                background: theme === "dark" ? "rgb(0, 30, 60)" : "#ffffff",
             }}
         >
-            <Typography
-                color={theme === "dark" ? "#fffff" : "#00000"}
-                id="Education"
-                sx={{
-                    paddingLeft: {xs: "32px", sm: "32px", md: "0px"},
-                }}
-                variant="h5"
+            <Box
+                component="section"
+                sx={{display: "flex", flexDirection: "column", rowGap: 2}}
             >
-                {language === "sp" ? "Educación" : "Education"}
-            </Typography>
-            <SectionEducation />
-            <Typography
-                color={theme === "dark" ? "#fffff" : "#00000"}
-                id="Experience"
-                sx={{paddingLeft: {xs: "32px", sm: "32px", md: "0px"}}}
-                variant="h5"
-            >
-                {language === "sp" ? "Experiencia" : "Experience"}
-            </Typography>
-            <SectionExperience />
-            <Typography
-                color={theme === "dark" ? "#fffff" : "#00000"}
-                id="Contact"
-                sx={{paddingLeft: {xs: "32px", sm: "32px", md: "0px"}}}
-                variant="h5"
-            >
-                {language === "sp" ? "Contacto" : "Contact"}
-            </Typography>
-            <SectionContact />
+                <Typography
+                    color={theme === "dark" ? "#fffff" : "#00000"}
+                    id="Education"
+                    sx={{
+                        paddingLeft: {xs: "32px", sm: "32px", md: "0px"},
+                        fontWeight: 600,
+                    }}
+                    variant="h5"
+                >
+                    {language === "sp" ? "Educación" : "Education"}
+                </Typography>
+                <SectionEducation />
+            </Box>
+            <Box component="section">
+                <Typography
+                    color={theme === "dark" ? "#fffff" : "#00000"}
+                    id="Experience"
+                    sx={{
+                        paddingLeft: {xs: "32px", sm: "32px", md: "0px"},
+                        fontWeight: 600,
+                    }}
+                    variant="h5"
+                >
+                    {language === "sp" ? "Experiencia" : "Experience"}
+                </Typography>
+                <SectionExperience />
+            </Box>
+            <Box component="section">
+                <Typography
+                    color={theme === "dark" ? "#fffff" : "#00000"}
+                    id="Contact"
+                    sx={{
+                        paddingLeft: {xs: "32px", sm: "32px", md: "0px"},
+                        fontWeight: 600,
+                    }}
+                    variant="h5"
+                >
+                    {language === "sp" ? "Contacto" : "Contact"}
+                </Typography>
+                <SectionContact />
+            </Box>
         </Box>
     );
 }

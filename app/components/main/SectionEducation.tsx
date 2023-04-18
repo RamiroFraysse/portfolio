@@ -80,12 +80,21 @@ function SectionEducation(): React.ReactElement {
                 <Card
                     key={item.key}
                     sx={{
-                        height: 350,
-                        width: 250,
-                        margin: "auto",
-                        borderRadius: "16px",
-                        background: theme === "dark" ? "#667eea" : undefined,
-                        boxShadow: "0 0 10px 5px rgb(118,75,162,0.5)",
+                        "height": 350,
+                        "width": 250,
+                        "margin": "auto",
+                        "borderRadius": "16px",
+                        "transition": "transform 0.3s ease-in-out", // Agregar transición para hacerlo más suave
+                        "boxShadow":
+                            theme === "dark"
+                                ? "0px 0px 8px 4px #667eea77"
+                                : "0px 0px 8px 4px #3d235a77",
+                        // "background": theme === "dark" ? "#3d235a" : "none",
+                        "background": "none",
+                        ":hover": {
+                            transform: "translateY(-5px)",
+                            boxShadow: "0px 8px 4px rgb(0,0,0,0.4)",
+                        },
                     }}
                 >
                     <CardActionArea href={item.href} target="_blanck">
@@ -118,14 +127,30 @@ function SectionEducation(): React.ReactElement {
                             <Typography
                                 gutterBottom
                                 component="div"
+                                sx={{
+                                    backgroundClip: "text",
+                                    textFillColor: "transparent",
+                                    backgroundImage:
+                                        theme === "dark"
+                                            ? "linear-gradient(90deg,#667eea,#FFFFFF)"
+                                            : "linear-gradient(90deg,#3d235a,#FF0080)",
+                                }}
                                 variant="h6"
                             >
                                 {item.title[language]}
                             </Typography>
-                            <Typography color="text.secondary" variant="body2">
+                            <Typography
+                                color="text.primary"
+                                fontWeight={500}
+                                variant="body2"
+                            >
                                 {item.time}
                             </Typography>
-                            <Typography color="text.secondary" variant="body2">
+                            <Typography
+                                color="text.primary"
+                                fontWeight={500}
+                                variant="body2"
+                            >
                                 {item.place[language]}
                             </Typography>
                         </CardContent>

@@ -5,11 +5,16 @@ import {
     Card,
     CardContent,
     CircularProgress,
+    InputAdornment,
     TextField,
 } from "@mui/material";
 import {styled} from "@mui/material/styles";
 import React, {useMemo, useRef, useState} from "react";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import ContactMail from "@mui/icons-material/ContactMail";
+import MessageIcon from "@mui/icons-material/Message";
 
+import styles from "../styles/main/contact.module.css";
 import {type Store, useLanguage} from "../../store/language";
 
 const FormStyled = styled(Box)(() => ({
@@ -25,11 +30,13 @@ const InputStyled = styled(TextField)(() => ({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
+    // border: "2px solid #667eea",
+
     input: {
-        minWidth: "300px",
+        minWidth: "250px",
     },
     textarea: {
-        minWidth: "300px",
+        minWidth: "250px",
     },
 }));
 
@@ -92,9 +99,10 @@ function SectionContact(): React.ReactElement {
             sx={{
                 width: "fit-content",
                 margin: "auto",
-                borderRadius: "16px",
-                boxShadow: "0 0 10px 5px rgb(118,75,162,0.5)",
-                background: theme === "dark" ? "#667eea" : undefined,
+                border: "none",
+                boxShadow: "none",
+                background: "none",
+                // background: theme === "dark" ? "#667eea" : "#ffffff",
             }}
         >
             <CardContent>
@@ -105,16 +113,24 @@ function SectionContact(): React.ReactElement {
                 >
                     <InputStyled
                         required
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment position="start">
+                                    <AccountCircle sx={{color: "#667eea"}} />
+                                </InputAdornment>
+                            ),
+                        }}
                         label={language === "sp" ? "Nombre" : "Name"}
                         name="username"
                         sx={{
                             "& .MuiInputLabel-root": {
-                                color: theme === "dark" ? "white" : "black", // Reemplaza con el color deseado
+                                fontSize: "20px",
+                                fontWeight: "600",
                             },
                         }}
-                        type="text"
+                        type="standard"
                         value={username}
-                        variant="outlined"
+                        variant="standard"
                         onChange={e => {
                             setUsername(e.target.value);
                             if (messageSent) setMessageSent(false);
@@ -122,16 +138,24 @@ function SectionContact(): React.ReactElement {
                     />
                     <InputStyled
                         required
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment position="start">
+                                    <ContactMail sx={{color: "#667eea"}} />
+                                </InputAdornment>
+                            ),
+                        }}
                         label="Email"
                         name="email"
                         sx={{
                             "& .MuiInputLabel-root": {
-                                color: theme === "dark" ? "white" : "black", // Reemplaza con el color deseado
+                                fontSize: "20px",
+                                fontWeight: "600",
                             },
                         }}
                         type="email"
                         value={email}
-                        variant="outlined"
+                        variant="standard"
                         onChange={e => {
                             setEmail(e.target.value);
                             if (messageSent) setMessageSent(false);
@@ -140,29 +164,50 @@ function SectionContact(): React.ReactElement {
                     <InputStyled
                         multiline
                         required
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment position="start">
+                                    <MessageIcon sx={{color: "#667eea"}} />
+                                </InputAdornment>
+                            ),
+                        }}
                         label={language === "en" ? "Message" : "Mensaje"}
                         name="message"
-                        rows={4}
+                        rows={2}
                         sx={{
                             "& .MuiInputLabel-root": {
-                                color: theme === "dark" ? "white" : "black", // Reemplaza con el color deseado
+                                fontWeight: "600",
+
+                                fontSize: "20px",
                             },
                         }}
                         type="text"
                         value={message}
-                        variant="outlined"
+                        variant="standard"
                         onChange={e => {
                             setMessage(e.target.value);
                             if (messageSent) setMessageSent(false);
                         }}
                     />
+                    {/* <TextField
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment position="start">
+                                    <AccountCircle />
+                                </InputAdornment>
+                            ),
+                        }}
+                        id="input-with-icon-textfield"
+                        label="TextField"
+                        variant="standard"
+                    /> */}
                     <Button
+                        className={styles.btnSubmit}
                         color="primary"
                         disabled={isLoading || messageSent}
                         sx={{
                             minWidth: "150px",
-                            background: "#764ba2",
-                            color: "white",
+                            color: theme === "dark" ? "white" : "black",
                         }}
                         type="submit"
                         variant="contained"

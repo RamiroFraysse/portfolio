@@ -30,7 +30,7 @@ export const CONTACT = [
 ];
 
 function SectionCoverPage(): React.ReactElement {
-    const {language} = useLanguage(state => state);
+    const {language, theme} = useLanguage(state => state);
 
     return (
         <Card
@@ -39,9 +39,12 @@ function SectionCoverPage(): React.ReactElement {
                 flexDirection: {xs: "column", sm: "column", md: "row"},
                 width: "700px",
                 margin: "auto",
-                marginTop: "100px",
                 background: "none",
-                boxShadow: "none",
+                boxShadow: {
+                    xs: "0px 0px 20px 20px #667eea77",
+                    sm: "0px 0px 20px 20px #667eea77",
+                },
+                borderRadius: "8px",
                 border: "none",
                 color: "white",
             }}
@@ -81,15 +84,39 @@ function SectionCoverPage(): React.ReactElement {
                             justifyContent: "center",
                         }}
                     >
-                        <Typography component="div" variant="h5">
+                        <Typography
+                            className={styles.titleGradient}
+                            component="div"
+                            sx={{
+                                backgroundClip:
+                                    theme === "dark" ? "text" : undefined,
+                                textFillColor:
+                                    theme === "dark"
+                                        ? "transparent"
+                                        : undefined,
+                                backgroundImage:
+                                    theme === "dark"
+                                        ? "linear-gradient(90deg,#667eea,#FFFFFF)"
+                                        : undefined,
+                            }}
+                            variant="h5"
+                        >
                             Ramiro Fraysse
                         </Typography>
-                        <Typography component="div" variant="subtitle1">
+                        <Typography
+                            className={styles.titleGradient}
+                            component="div"
+                            variant="subtitle1"
+                        >
                             {language === "sp"
                                 ? "Ingeniero en Computación"
                                 : "Computer Engineer"}
                         </Typography>
-                        <Typography component="div" variant="subtitle1">
+                        <Typography
+                            className={styles.titleGradient}
+                            component="div"
+                            variant="subtitle1"
+                        >
                             Frontend Engineer
                         </Typography>
                         <Box
@@ -107,6 +134,7 @@ function SectionCoverPage(): React.ReactElement {
                                 >
                                     <svg
                                         key={con.url}
+                                        className={styles.action}
                                         height={28}
                                         width={28}
                                         xmlns="http://www.w3.org/2000/svg"
@@ -131,7 +159,7 @@ function SectionCoverPage(): React.ReactElement {
                     >
                         <Typography>{DESCRIPTION[language]}</Typography>
                     </Box>
-                    <Box sx={{gridArea: "img", padding: "1em"}}>
+                    <Box sx={{gridArea: "img", margin: "auto", padding: "1em"}}>
                         <Image
                             alt="imagen propia"
                             className={styles.imgBorder}
