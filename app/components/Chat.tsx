@@ -290,7 +290,8 @@ function Chat(): React.ReactElement {
             sx={{
                 display: "flex",
                 flexDirection: "column",
-                background: "#090b13",
+                // background: "#090b13",
+                background: "rgb(0, 30, 60)",
                 gap: "16px",
                 border: "1px solid gray",
                 borderRadius: "8px",
@@ -346,6 +347,9 @@ function Chat(): React.ReactElement {
                     id="outlined-basic"
                     inputRef={question}
                     name="question"
+                    sx={{
+                        input: {border: "1px solid gray", borderRadius: "4px"},
+                    }}
                     type="text"
                     variant="outlined"
                 />

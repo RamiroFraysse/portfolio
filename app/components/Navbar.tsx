@@ -216,7 +216,11 @@ export default function Navbar(props: Props): React.ReactElement {
                         : "radial-gradient(circle at 50% 50%, #667eea, #764ba2)",
                 margin: "auto",
                 transition: "background ease .3s",
-                height: {md: "100vh", sm: "100vh", xs: "100vh"},
+                height: {
+                    md: "100vh",
+                    sm: "calc(100vh+56px)",
+                    xs: "calc(100vh+56px)",
+                },
             }}
         >
             <AppBar
