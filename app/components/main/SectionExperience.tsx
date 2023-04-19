@@ -153,6 +153,7 @@ function SectionExperience(): React.ReactElement {
                         <Typography
                             component="p"
                             fontWeight={500}
+                            sx={{marginTop: "1em"}}
                             variant="subtitle2"
                         >
                             {language === "sp"
@@ -163,8 +164,9 @@ function SectionExperience(): React.ReactElement {
                             {item.responsabilities[language]}
                         </Typography>
                         <Typography
-                            component="span"
+                            component="p"
                             fontWeight={500}
+                            sx={{marginTop: "1em"}}
                             variant="subtitle2"
                         >
                             {language === "sp"
