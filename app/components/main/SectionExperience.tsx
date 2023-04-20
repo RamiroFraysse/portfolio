@@ -27,8 +27,6 @@ function SectionExperience(): React.ReactElement {
                 marginBottom: 0,
                 paddingTop: 0,
                 borderRadius: "16px",
-
-                // background: theme === "dark" ? "#667eea" : "#ffffff",
             }}
         >
             {MODEL_EXPERIENCE.map(item => (

@@ -58,7 +58,7 @@ function Mobile({
             <Box
                 sx={{
                     textAlign: "center",
-                    height: "100vh",
+                    height: {xs: "100%", sm: "100%", md: "100vh"},
                     background:
                         "linear-gradient(to bottom right, #667eea, #764ba2)!important",
                 }}

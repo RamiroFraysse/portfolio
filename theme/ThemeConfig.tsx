@@ -8,8 +8,15 @@ interface ThemeProp {
 }
 
 export enum themePaletteDark {
-    BG = "#rgb(0, 30, 60)",
-    LIME = "#7400b8",
+    BG_MAIN = "#rgb(0, 30, 60)",
+    BG_NAVBAR_FIRST = "#667eea",
+    BG_NAVBAR_SECOND = "#3d235a",
+    TITLE_SHADOW_FIRST = "#667eea",
+    TITLE_SHADOW_SECOND = "#ffffff",
+    TEXT_COLOR_PRIMARY = "#ffffff",
+    TEXT_COLOR_SECONDARY = "#F5CDA7",
+    BTN_BG = "transparent",
+    BTN_BG_HOVER_PRIMARY = "#667eea",
 }
 
 export enum themePaletteLight {
