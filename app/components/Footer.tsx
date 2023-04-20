@@ -4,8 +4,9 @@ import Link from "next/link";
 
 import {useLanguage} from "@/app/store/language";
 
+import {CONTACT_LINKS} from "./models/contactLinks";
 import styles from "./styles/footer.module.css";
-import {CONTACT} from "./main/SectionCoverPage";
+import Logo from "./ui/Logo";
 
 function Footer(): React.ReactElement {
     const {theme} = useLanguage(state => state);
@@ -17,16 +18,12 @@ function Footer(): React.ReactElement {
             sx={{
                 padding: "16px",
                 background:
-                    theme === "dark"
-                        ? "radial-gradient(circle at 50% 50%, #667eea, #3d235a)"
-                        : "radial-gradient(circle at 50% 50%, #667eea, #7721bf)!important",
+                    "radial-gradient(circle at 50% 50%, #667eea, #3d235a)",
             }}
         >
             <Toolbar sx={{display: "flex", justifyContent: "space-around"}}>
                 <Box>
-                    <Typography color="inherit" variant="body1">
-                        RF
-                    </Typography>
+                    <Logo />
                 </Box>
                 <Box>
                     <Link
@@ -43,7 +40,7 @@ function Footer(): React.ReactElement {
                             marginTop: "6px",
                         }}
                     >
-                        {CONTACT.map(con => (
+                        {CONTACT_LINKS.map(con => (
                             <Link
                                 key={con.url}
                                 className={styles.link500}

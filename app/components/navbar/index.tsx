@@ -1,96 +1,23 @@
 "use client";
-import {useState, type ElementType} from "react";
-import {
-    AppBar,
-    Box,
-    Divider,
-    Drawer,
-    List,
-    ListItem,
-    ListItemButton,
-    ListItemText,
-    Toolbar,
-    IconButton,
-    Typography,
-    Button,
-} from "@mui/material";
-import {
-    LightMode as LightModeIcon,
-    Bedtime as BedtimeIcon,
-    Menu as MenuIcon,
-} from "@mui/icons-material";
+import {AppBar, Box, Toolbar, IconButton, Button} from "@mui/material";
 import Link from "next/link";
 import {Link as Scroll} from "react-scroll";
+import {Menu as MenuIcon} from "@mui/icons-material";
+import {useState} from "react";
 
-import {useLanguage} from "../store/language";
+import {useLanguage} from "../../store/language";
+import Logo from "../ui/Logo";
+import SectionCoverPage from "../main/SectionCoverPage";
 
-import styles from "./styles/navbar.module.css";
-import SectionCoverPage from "./main/SectionCoverPage";
+import Mobile from "./Mobile";
+import {navItems, navItemsActions} from "./navItems";
 
 interface Props {
-    window?: () => Window;
     scrolling: boolean;
 }
 
-const drawerWidth = 240;
-
-type LanguageStrings = Record<string, string>;
-
-interface NavItemsProps {
-    text: LanguageStrings | undefined;
-    icon?: {
-        dark: ElementType;
-        light: ElementType;
-    };
-    key: string;
-}
-
-const navItems: NavItemsProps[] = [
-    {
-        text: {
-            sp: "Contacto",
-            en: "Contact",
-        },
-        key: "Contact",
-    },
-    {
-        text: {
-            sp: "Educacion",
-            en: "Education",
-        },
-        key: "Education",
-    },
-
-    {
-        text: {
-            sp: "Experiencia",
-            en: "Experience",
-        },
-        key: "Experience",
-    },
-];
-const navItemsActions: NavItemsProps[] = [
-    {
-        text: {sp: "CV", en: "CV"},
-        key: "cvAction",
-    },
-    {
-        text: {sp: "INGLÉS", en: "SPANISH"},
-        key: "lanAction",
-    },
-    {
-        icon: {
-            dark: LightModeIcon,
-            light: BedtimeIcon,
-        },
-        key: "themeAction",
-        text: undefined,
-    },
-];
-
 export default function Navbar(props: Props): React.ReactElement {
-    const {window, scrolling} = props;
-    const [mobileOpen, setMobileOpen] = useState(false);
+    const {scrolling} = props;
 
     const {theme, language, toggleLanguage, toggleTheme} = useLanguage(
         state => state,
@@ -109,6 +36,12 @@ export default function Navbar(props: Props): React.ReactElement {
         }
     };
 
+    const [mobileOpen, setMobileOpen] = useState(false);
+
+    const handleDrawerToggle = (): void => {
+        setMobileOpen(prevState => !prevState);
+    };
+
     const handleClickNavItem = (key: string): void => {
         const targetSection = document.getElementById(key);
 
@@ -119,101 +52,14 @@ export default function Navbar(props: Props): React.ReactElement {
         }
     };
 
-    const handleDrawerToggle = (): void => {
-        setMobileOpen(prevState => !prevState);
-    };
-
-    const drawer = (
-        <Box
-            sx={{
-                textAlign: "center",
-                height: "100vh",
-                background:
-                    "linear-gradient(to bottom right, #667eea, #764ba2)!important",
-            }}
-            onClick={handleDrawerToggle}
-        >
-            <Typography sx={{my: 2, color: "#ffff"}} variant="h6">
-                RF
-            </Typography>
-            <Divider />
-            <List sx={{display: "flex", flexDirection: "column"}}>
-                {navItems.map(item => (
-                    <Scroll
-                        key={item.key}
-                        duration={400}
-                        offset={-100}
-                        smooth={true}
-                        to={item.key}
-                    >
-                        <ListItem disablePadding>
-                            <ListItemButton sx={{textAlign: "center"}}>
-                                <ListItemText
-                                    primary={
-                                        item?.text != null
-                                            ? item.text[language]
-                                            : ""
-                                    }
-                                    sx={{color: "#fff"}}
-                                />
-                            </ListItemButton>
-                        </ListItem>
-                    </Scroll>
-                ))}
-                {navItemsActions.map(action => (
-                    <ListItem key={action.key} disablePadding>
-                        <ListItemButton
-                            sx={{textAlign: "center"}}
-                            onClick={() => {
-                                handleClickAction(action.key);
-                            }}
-                        >
-                            {action.key === "cvAction" ? (
-                                <Link
-                                    download
-                                    className={styles.linkCv}
-                                    href="/docs/cv.pdf"
-                                    target="_blank"
-                                >
-                                    CV
-                                </Link>
-                            ) : (
-                                <ListItemText
-                                    primary={
-                                        action?.key === "themeAction" &&
-                                        action?.icon != null ? (
-                                            theme === "dark" ? (
-                                                <action.icon.dark />
-                                            ) : (
-                                                <action.icon.light />
-                                            )
-                                        ) : action?.text != null &&
-                                          action?.text[language] !== "" ? (
-                                            action?.text[language]
-                                        ) : null
-                                    }
-                                    sx={{color: "#fff"}}
-                                />
-                            )}
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
-        </Box>
-    );
-
-    const container =
-        window !== undefined ? () => window().document.body : undefined;
-
     return (
         <Box
             className="cover"
+            component="nav"
             sx={{
                 display: "flex",
                 background:
-                    theme === "dark"
-                        ? "radial-gradient(circle at 50% 50%, #667eea, #3d235a)"
-                        : "radial-gradient(circle at 50% 50%, #667eea, #764ba2)",
+                    "radial-gradient(circle at 50% 50%, #667eea, #3d235a)",
                 margin: "auto",
                 transition: "background ease .3s",
                 height: {
@@ -230,9 +76,7 @@ export default function Navbar(props: Props): React.ReactElement {
                     paddingRight: {xs: "0px", sm: "0px", md: "100px"},
                     paddingLeft: {xs: "0px", sm: "0px", md: "100px"},
                     background: scrolling
-                        ? theme === "dark"
-                            ? "radial-gradient(circle at 50% 50%, #667eea, #3d235a)"
-                            : "radial-gradient(circle at 50% 50%, #667eea, #764ba2)"
+                        ? "radial-gradient(circle at 50% 50%, #667eea, #3d235a)"
                         : "none",
                     boxShadow: scrolling ? undefined : "none",
                     border: scrolling ? undefined : "none",
@@ -256,19 +100,16 @@ export default function Navbar(props: Props): React.ReactElement {
                         sx={{display: {sm: "none"}}}
                         onClick={handleDrawerToggle}
                     >
-                        <MenuIcon />
+                        <MenuIcon sx={{color: "#F5CDA7"}} />
                     </IconButton>
-                    <Typography
-                        sx={{
-                            color: "#fff",
+                    <Logo
+                        styles={{
                             display: {xs: "flex", sm: "flex"},
                             flexDirection: "row",
                             justifyContent: "space-between",
                             width: {md: "300px"},
                         }}
-                    >
-                        RF
-                    </Typography>
+                    />
                     <Box
                         sx={{margin: "auto", display: {xs: "none", sm: "flex"}}}
                     >
@@ -379,24 +220,11 @@ export default function Navbar(props: Props): React.ReactElement {
                 component="nav"
                 sx={{display: "flex", justifyContent: "space-between"}}
             >
-                <Drawer
-                    ModalProps={{
-                        keepMounted: true, // Better open performance on mobile.
-                    }}
-                    container={container}
-                    open={mobileOpen}
-                    sx={{
-                        "display": {xs: "block", sm: "none"},
-                        "& .MuiDrawer-paper": {
-                            boxSizing: "border-box",
-                            width: drawerWidth,
-                        },
-                    }}
-                    variant="temporary"
-                    onClose={handleDrawerToggle}
-                >
-                    {drawer}
-                </Drawer>
+                <Mobile
+                    isOpen={mobileOpen}
+                    onClickAction={handleClickAction}
+                    onDrawerToggle={handleDrawerToggle}
+                />
             </Box>
             <SectionCoverPage />
         </Box>

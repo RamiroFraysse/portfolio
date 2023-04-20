@@ -189,18 +189,6 @@ function SectionContact(): React.ReactElement {
                             if (messageSent) setMessageSent(false);
                         }}
                     />
-                    {/* <TextField
-                        InputProps={{
-                            startAdornment: (
-                                <InputAdornment position="start">
-                                    <AccountCircle />
-                                </InputAdornment>
-                            ),
-                        }}
-                        id="input-with-icon-textfield"
-                        label="TextField"
-                        variant="standard"
-                    /> */}
                     <Button
                         className={styles.btnSubmit}
                         color="primary"

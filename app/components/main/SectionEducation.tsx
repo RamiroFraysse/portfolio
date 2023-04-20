@@ -89,7 +89,7 @@ function SectionEducation(): React.ReactElement {
                             theme === "dark"
                                 ? "0px 0px 8px 4px #667eea77"
                                 : "0px 0px 8px 4px #3d235a77",
-                        // "background": theme === "dark" ? "#3d235a" : "none",
+
                         "background": "none",
                         ":hover": {
                             transform: "translateY(-5px)",
@@ -127,14 +127,19 @@ function SectionEducation(): React.ReactElement {
                         >
                             <Typography
                                 gutterBottom
-                                component="div"
+                                component="h6"
                                 sx={{
+                                    fontWeight: 600,
                                     backgroundClip: "text",
                                     textFillColor: "transparent",
                                     backgroundImage:
                                         theme === "dark"
                                             ? "linear-gradient(90deg,#667eea,#FFFFFF)"
                                             : "linear-gradient(90deg,#3d235a,#FF0080)",
+                                    filter:
+                                        theme === "dark"
+                                            ? "sepia(1)"
+                                            : undefined,
                                 }}
                                 variant="h6"
                             >

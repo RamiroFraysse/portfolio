@@ -8,29 +8,11 @@ import {useLanguage} from "@/app/store/language";
 
 import meImg from "../../../public/img/me.webp";
 import styles from "../styles/main/cover.module.css";
-
-const DESCRIPTION = {
-    sp: "Hola! Mi nombre es Ramiro. Soy Ingeniero en Computación y mi fuerte es el desarrollo Frontend, aunque tambien he trabajado como Full stack. Llevo mas de 3 años trabajando en equipos de alta performance, desarrollando productos de alta calidad con agilidad y eficiencia. Soy una persona proactiva y un jugador de equipo apasionado por lo que hace.",
-    en: "Hi! My name is Ramiro. I am a computer engineer, and my strength is Frontend development, although I have also worked as a Full Stack developer. I have more than 3 years of experience participating in high-performance teams to develop quality products with agility and efficiency. I have a proactive mind and am a team player who is passionate about what I do.",
-};
-
-export const CONTACT = [
-    {
-        icon: "https://icongr.am/entypo/linkedin-with-circle.svg?size=28&color=ffffff",
-        url: "https://www.linkedin.com/in/ramiro-fraysse-404991215/",
-    },
-    {
-        icon: "https://icongr.am/entypo/github.svg?size=28&color=ffffff",
-        url: "https://github.com/RamiroFraysse/",
-    },
-    {
-        icon: "https://icongr.am/entypo/instagram.svg?size=20&color=ffffff",
-        url: "https://www.instagram.com/ramirofraysse/",
-    },
-];
+import {COVERPAGE_TEXT} from "../models/coverText";
+import {CONTACT_LINKS} from "../models/contactLinks";
 
 function SectionCoverPage(): React.ReactElement {
-    const {language, theme} = useLanguage(state => state);
+    const {language} = useLanguage(state => state);
 
     return (
         <Card
@@ -52,9 +34,13 @@ function SectionCoverPage(): React.ReactElement {
             }}
         >
             <CardContent
+                style={{paddingBottom: "16px"}}
                 sx={{
-                    display: "flex",
-                    flexDirection: "column",
+                    "display": "flex",
+                    "flexDirection": "column",
+                    ".MuiCardContent-root:last-child": {
+                        paddingBottom: "0px",
+                    },
                 }}
             >
                 <Box
@@ -88,38 +74,33 @@ function SectionCoverPage(): React.ReactElement {
                     >
                         <Typography
                             className={styles.titleGradient}
-                            component="div"
+                            component="h1"
                             sx={{
-                                backgroundClip:
-                                    theme === "dark" ? "text" : undefined,
-                                textFillColor:
-                                    theme === "dark"
-                                        ? "transparent"
-                                        : undefined,
+                                marginLeft: "-2px",
+                                fontWeight: 800,
+                                backgroundClip: "text",
+                                textFillColor: "transparent",
                                 backgroundImage:
-                                    theme === "dark"
-                                        ? "linear-gradient(90deg,#667eea,#FFFFFF)"
-                                        : undefined,
+                                    "linear-gradient(90deg,#667eea,#FFFFFF)",
+                                filter: "sepia(1)",
                             }}
-                            variant="h5"
+                            variant="h4"
                         >
-                            Ramiro Fraysse
+                            {COVERPAGE_TEXT.TITLE}
                         </Typography>
                         <Typography
                             className={styles.titleGradient}
-                            component="div"
-                            variant="subtitle1"
+                            component="h6"
+                            variant="h6"
                         >
-                            {language === "sp"
-                                ? "Ingeniero en Computación"
-                                : "Computer Engineer"}
+                            {COVERPAGE_TEXT.SUBTITLE1[language]}
                         </Typography>
                         <Typography
                             className={styles.titleGradient}
-                            component="div"
-                            variant="subtitle1"
+                            component="h6"
+                            variant="h6"
                         >
-                            Frontend Engineer
+                            {COVERPAGE_TEXT.SUBTITLE2}
                         </Typography>
                         <Box
                             sx={{
@@ -128,7 +109,7 @@ function SectionCoverPage(): React.ReactElement {
                                 marginTop: "6px",
                             }}
                         >
-                            {CONTACT.map(con => (
+                            {CONTACT_LINKS.map(con => (
                                 <Link
                                     key={con.url}
                                     href={con.url}
@@ -159,7 +140,9 @@ function SectionCoverPage(): React.ReactElement {
                             padding: "1em",
                         }}
                     >
-                        <Typography>{DESCRIPTION[language]}</Typography>
+                        <Typography component="p">
+                            {COVERPAGE_TEXT.DESCRIPTION[language]}
+                        </Typography>
                     </Box>
                     <Box sx={{gridArea: "img", margin: "auto", padding: "1em"}}>
                         <Image
