@@ -1,10 +1,10 @@
 import {
     LightMode as LightModeIcon,
     Bedtime as BedtimeIcon,
-  
 } from "@mui/icons-material";
 import {type ElementType} from "react";
-import { NAVTEXT } from "../models/navText";
+
+import {MODEL_NAV_TEXT} from "../../../models/sectionNav";
 
 type LanguageStrings = Record<string, string>;
 
@@ -19,27 +19,27 @@ export interface NavItemsProps {
 
 export const navItems: NavItemsProps[] = [
     {
-        text: NAVTEXT.CONTACT,
+        text: MODEL_NAV_TEXT.CONTACT,
         key: "Contact",
     },
     {
-        text: NAVTEXT.EDUCATION,
+        text: MODEL_NAV_TEXT.EDUCATION,
         key: "Education",
     },
 
     {
-        text: NAVTEXT.EXPERIENCE,
+        text: MODEL_NAV_TEXT.EXPERIENCE,
         key: "Experience",
     },
 ];
 
 export const navItemsActions: NavItemsProps[] = [
     {
-        text: NAVTEXT.CV,
+        text: MODEL_NAV_TEXT.CV,
         key: "cvAction",
     },
     {
-        text: NAVTEXT.LANGUAGE,
+        text: MODEL_NAV_TEXT.LANGUAGE,
         key: "lanAction",
     },
     {

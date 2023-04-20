@@ -4,12 +4,12 @@ import {Box, Card, CardContent, Typography} from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 
-import {useLanguage} from "@/app/store/language";
+import {useLanguage} from "@/store/language";
 
 import meImg from "../../../public/img/me.webp";
 import styles from "../styles/main/cover.module.css";
-import {COVERPAGE_TEXT} from "../models/coverText";
-import {CONTACT_LINKS} from "../models/contactLinks";
+import {COVERPAGE_TEXT} from "../../../models/sectionCoverpage";
+import {CONTACT_LINKS} from "../../../models/contactLinks";
 
 function SectionCoverPage(): React.ReactElement {
     const {language} = useLanguage(state => state);

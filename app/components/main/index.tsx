@@ -3,7 +3,7 @@
 import {Box, Typography} from "@mui/material";
 import React from "react";
 
-import {useLanguage} from "@/app/store/language";
+import {useLanguage} from "@/store/language";
 
 import SectionContact from "./SectionContact";
 import SectionEducation from "./SectionEducation";

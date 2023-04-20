@@ -2,14 +2,16 @@
 import {AppBar, Toolbar, Box, Typography} from "@mui/material";
 import Link from "next/link";
 
-import {useLanguage} from "@/app/store/language";
+import {useLanguage} from "@/store/language";
 
-import {CONTACT_LINKS} from "./models/contactLinks";
+import {CONTACT_LINKS} from "../../models/contactLinks";
+import {MODEL_FOOTER_TEXT} from "../../models/footer";
+
 import styles from "./styles/footer.module.css";
 import Logo from "./ui/Logo";
 
 function Footer(): React.ReactElement {
-    const {theme} = useLanguage(state => state);
+    const {language} = useLanguage(state => state);
 
     return (
         <AppBar
@@ -69,7 +71,7 @@ function Footer(): React.ReactElement {
                         href="/docs/cv.pdf"
                         target="_blank"
                     >
-                        Descargar CV
+                        {MODEL_FOOTER_TEXT.DOWNLOAD_CV[language]}
                     </Link>
                 </Box>
             </Toolbar>

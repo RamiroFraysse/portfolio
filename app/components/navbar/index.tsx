@@ -5,7 +5,7 @@ import {Link as Scroll} from "react-scroll";
 import {Menu as MenuIcon} from "@mui/icons-material";
 import {useState} from "react";
 
-import {useLanguage} from "../../store/language";
+import {useLanguage} from "../../../store/language";
 import Logo from "../ui/Logo";
 import SectionCoverPage from "../main/SectionCoverPage";
 

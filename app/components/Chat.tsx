@@ -2,7 +2,7 @@ import SendIcon from "@mui/icons-material/Send";
 import {Box, Button, TextField} from "@mui/material";
 import React, {useEffect, useRef, useState} from "react";
 
-import {useLanguage} from "../store/language";
+import {useLanguage} from "../../store/language";
 
 import styles from "./styles/chat.module.css";
 

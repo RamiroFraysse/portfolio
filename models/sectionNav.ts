@@ -1,4 +1,4 @@
-export const NAVTEXT = {
+export const MODEL_NAV_TEXT = {
     CONTACT: {
         sp: "Contacto",
         en: "Contact",

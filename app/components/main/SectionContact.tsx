@@ -15,7 +15,8 @@ import ContactMail from "@mui/icons-material/ContactMail";
 import MessageIcon from "@mui/icons-material/Message";
 
 import styles from "../styles/main/contact.module.css";
-import {type Store, useLanguage} from "../../store/language";
+import {type Store, useLanguage} from "../../../store/language";
+import {MODAL_CONTACT_TEXT} from "../../../models/sectionContact";
 
 const FormStyled = styled(Box)(() => ({
     display: "flex",
@@ -39,16 +40,6 @@ const InputStyled = styled(TextField)(() => ({
         minWidth: "250px",
     },
 }));
-
-const TEXT_BUTTON = {
-    sp: "Enviar",
-    en: "Send",
-};
-
-const TEXT_BUTTON_SENT = {
-    sp: "Enviado",
-    en: "Sent",
-};
 
 function SectionContact(): React.ReactElement {
     const {language, theme} = useLanguage<Store>(state => state);
@@ -89,9 +80,9 @@ function SectionContact(): React.ReactElement {
     };
     const textButtonSubmit = useMemo(() => {
         if (isLoading) return <CircularProgress size={24} />;
-        if (messageSent) return TEXT_BUTTON_SENT[language];
+        if (messageSent) return MODAL_CONTACT_TEXT.BUTTON_SENT[language];
 
-        return TEXT_BUTTON[language];
+        return MODAL_CONTACT_TEXT.BUTTON[language];
     }, [isLoading, language, messageSent]);
 
     return (
@@ -120,7 +111,7 @@ function SectionContact(): React.ReactElement {
                                 </InputAdornment>
                             ),
                         }}
-                        label={language === "sp" ? "Nombre" : "Name"}
+                        label={MODAL_CONTACT_TEXT.FORM.NAME[language]}
                         name="username"
                         sx={{
                             "& .MuiInputLabel-root": {
@@ -145,7 +136,7 @@ function SectionContact(): React.ReactElement {
                                 </InputAdornment>
                             ),
                         }}
-                        label="Email"
+                        label={MODAL_CONTACT_TEXT.FORM.EMAIL[language]}
                         name="email"
                         sx={{
                             "& .MuiInputLabel-root": {
@@ -171,7 +162,7 @@ function SectionContact(): React.ReactElement {
                                 </InputAdornment>
                             ),
                         }}
-                        label={language === "en" ? "Message" : "Mensaje"}
+                        label={MODAL_CONTACT_TEXT.FORM.MESSAGE[language]}
                         name="message"
                         rows={2}
                         sx={{

@@ -11,7 +11,7 @@ import React from "react";
 import {Link as Scroll} from "react-scroll";
 import Link from "next/link";
 
-import {useLanguage} from "@/app/store/language";
+import {useLanguage} from "@/store/language";
 
 import Logo from "../ui/Logo";
 import styles from "../styles/navbar.module.css";

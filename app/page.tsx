@@ -3,12 +3,12 @@ import {useState, useEffect} from "react";
 import {Box} from "@mui/material";
 import {Open_Sans as OpenSans} from "next/font/google";
 
-import {useLanguage} from "./store/language";
+import {useLanguage} from "../store/language";
 import Footer from "./components/Footer";
 import Navbar from "./components/navbar";
 import Main from "./components/main";
 import PopoverChat from "./components/PopoverChat";
-import {ThemeConfig} from "./theme/ThemeConfig";
+import {ThemeConfig} from "../theme/ThemeConfig";
 
 const openSans = OpenSans({
     weight: ["400", "700"],
