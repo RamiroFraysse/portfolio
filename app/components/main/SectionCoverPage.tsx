@@ -144,7 +144,14 @@ function SectionCoverPage(): React.ReactElement {
                             {COVERPAGE_TEXT.DESCRIPTION[language]}
                         </Typography>
                     </Box>
-                    <Box sx={{gridArea: "img", margin: "auto", padding: "1em"}}>
+                    <Box
+                        sx={{
+                            gridArea: "img",
+                            display: "flex",
+                            margin: "auto",
+                            padding: "1em",
+                        }}
+                    >
                         <Image
                             alt="imagen propia"
                             className={styles.imgBorder}

@@ -8,7 +8,7 @@ interface ThemeProp {
 }
 
 export enum themePaletteDark {
-    BG = "#12181b",
+    BG = "#rgb(0, 30, 60)",
     LIME = "#7400b8",
 }
 

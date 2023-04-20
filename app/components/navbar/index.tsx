@@ -42,16 +42,6 @@ export default function Navbar(props: Props): React.ReactElement {
         setMobileOpen(prevState => !prevState);
     };
 
-    const handleClickNavItem = (key: string): void => {
-        const targetSection = document.getElementById(key);
-
-        if (targetSection !== null) {
-            targetSection.scrollIntoView({
-                behavior: "smooth",
-            });
-        }
-    };
-
     return (
         <Box
             className="cover"
@@ -114,31 +104,39 @@ export default function Navbar(props: Props): React.ReactElement {
                         sx={{margin: "auto", display: {xs: "none", sm: "flex"}}}
                     >
                         {navItems.map(item => (
-                            <Button
+                            <Scroll
                                 key={item.key}
-                                sx={{
-                                    "color": "#fff",
-                                    "transition": "transform 0.3s ease-in-out", // Agregar transición para hacerlo más suave
-
-                                    ":hover": {
-                                        background: "#667eea",
-                                        transform: "translateY(-2px)",
-                                        boxShadow: "0px 4px 2px rgb(0,0,0,0.4)",
-                                    },
-                                }}
-                                onClick={() => {
-                                    handleClickNavItem(item.key);
-                                }}
+                                duration={400}
+                                offset={-64}
+                                smooth={true}
+                                to={item.key}
                             >
-                                {item.key === "themeAction" &&
-                                    item.icon != null &&
-                                    (theme === "dark" ? (
-                                        <item.icon.dark />
-                                    ) : (
-                                        <item.icon.light />
-                                    ))}
-                                {item?.text != null ? item.text[language] : ""}
-                            </Button>
+                                <Button
+                                    sx={{
+                                        "color": "#fff",
+                                        "transition":
+                                            "transform 0.3s ease-in-out", // Agregar transición para hacerlo más suave
+
+                                        ":hover": {
+                                            background: "#667eea",
+                                            transform: "translateY(-2px)",
+                                            boxShadow:
+                                                "0px 4px 2px rgb(0,0,0,0.4)",
+                                        },
+                                    }}
+                                >
+                                    {item.key === "themeAction" &&
+                                        item.icon != null &&
+                                        (theme === "dark" ? (
+                                            <item.icon.dark />
+                                        ) : (
+                                            <item.icon.light />
+                                        ))}
+                                    {item?.text != null
+                                        ? item.text[language]
+                                        : ""}
+                                </Button>
+                            </Scroll>
                         ))}
                     </Box>
                     <Box
