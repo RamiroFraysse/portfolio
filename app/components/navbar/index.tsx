@@ -54,8 +54,8 @@ export default function Navbar(props: Props): React.ReactElement {
                 transition: "background ease .3s",
                 height: {
                     md: "100vh",
-                    sm: "calc(100vh + 64px)",
-                    xs: "calc(100vh + 64px)",
+                    sm: "100vh",
+                    xs: "100vh",
                 },
             }}
         >
