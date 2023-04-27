@@ -29,7 +29,7 @@ function Footer(): React.ReactElement {
                 </Box>
                 <Box>
                     <Link
-                        className={styles.link500}
+                        className={`${styles.link500} ${styles.link}`}
                         href="mailto:ramirofraysse@gmail.com"
                         target="_blank"
                     >
@@ -67,7 +67,7 @@ function Footer(): React.ReactElement {
                     </Box>
                     <Link
                         download
-                        className={styles.link500}
+                        className={`${styles.link500} ${styles.link}`}
                         href="/docs/cv.pdf"
                         target="_blank"
                     >

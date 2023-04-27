@@ -1,14 +1,15 @@
 "use client";
 import {AppBar, Box, Toolbar, IconButton, Button} from "@mui/material";
 import Link from "next/link";
-import {Link as Scroll} from "react-scroll";
 import {Menu as MenuIcon} from "@mui/icons-material";
 import {useState} from "react";
 
 import {useLanguage} from "../../../store/language";
 import Logo from "../ui/Logo";
 import SectionCoverPage from "../main/SectionCoverPage";
+import styles from "../styles/navbar.module.css";
 
+import NavItem from "./NavItem";
 import Mobile from "./Mobile";
 import {navItems, navItemsActions} from "./navItems";
 
@@ -101,42 +102,20 @@ export default function Navbar(props: Props): React.ReactElement {
                         }}
                     />
                     <Box
-                        sx={{margin: "auto", display: {xs: "none", sm: "flex"}}}
+                        sx={{
+                            margin: "auto",
+                            gap: "16px",
+                            display: {xs: "none", sm: "flex"},
+                        }}
                     >
                         {navItems.map(item => (
-                            <Scroll
+                            <NavItem
                                 key={item.key}
-                                duration={400}
-                                offset={-64}
-                                smooth={true}
-                                to={item.key}
-                            >
-                                <Button
-                                    sx={{
-                                        "color": "#fff",
-                                        "transition":
-                                            "transform 0.3s ease-in-out", // Agregar transición para hacerlo más suave
-
-                                        ":hover": {
-                                            background: "#667eea",
-                                            transform: "translateY(-2px)",
-                                            boxShadow:
-                                                "0px 4px 2px rgb(0,0,0,0.4)",
-                                        },
-                                    }}
-                                >
-                                    {item.key === "themeAction" &&
-                                        item.icon != null &&
-                                        (theme === "dark" ? (
-                                            <item.icon.dark />
-                                        ) : (
-                                            <item.icon.light />
-                                        ))}
-                                    {item?.text != null
-                                        ? item.text[language]
-                                        : ""}
-                                </Button>
-                            </Scroll>
+                                item={item}
+                                text={
+                                    item.text != null ? item.text[language] : ""
+                                }
+                            />
                         ))}
                     </Box>
                     <Box
@@ -144,7 +123,7 @@ export default function Navbar(props: Props): React.ReactElement {
                             display: {xs: "none", sm: "flex"},
                             width: "300px",
                             justifyContent: "end",
-                            a: {textDecoration: "none"},
+                            gap: "16px",
                         }}
                     >
                         {navItemsActions.map(item => {
@@ -152,47 +131,20 @@ export default function Navbar(props: Props): React.ReactElement {
                                 return (
                                     <Link
                                         key={item.key}
+                                        className={styles.navItem}
                                         href="https://ramirofraysse.notion.site/Ramiro-Fraysse-Computer-Engineer-fa8303a305964f90b8cbae8e78f95040"
                                         target="_blank"
                                     >
-                                        <Button
-                                            sx={{
-                                                "color": "#fff",
-                                                "textDecoration": "none",
-                                                "transition":
-                                                    "transform 0.3s ease-in-out", // Agregar transición para hacerlo más suave
-
-                                                ":hover": {
-                                                    background: "#667eea",
-                                                    transform:
-                                                        "translateY(-2px)",
-                                                    boxShadow:
-                                                        "0px 4px 2px rgb(0,0,0,0.4)",
-                                                },
-                                            }}
-                                        >
-                                            {item?.text != null
-                                                ? item.text[language]
-                                                : ""}
-                                        </Button>
+                                        {item?.text != null
+                                            ? item.text[language]
+                                            : ""}
                                     </Link>
                                 );
 
                             return (
                                 <Button
                                     key={item.key}
-                                    sx={{
-                                        "color": "#fff",
-                                        "transition":
-                                            "transform 0.3s ease-in-out", // Agregar transición para hacerlo más suave
-
-                                        ":hover": {
-                                            background: "#667eea",
-                                            transform: "translateY(-2px)",
-                                            boxShadow:
-                                                "0px 4px 2px rgb(0,0,0,0.4)",
-                                        },
-                                    }}
+                                    className={styles.navItemAction}
                                     onClick={() => {
                                         handleClickAction(item.key);
                                     }}

@@ -4,7 +4,7 @@ export const MODEL_NAV_TEXT = {
         en: "Contact",
     },
     EDUCATION: {
-        sp: "Educacion",
+        sp: "Educación",
         en: "Education",
     },
     EXPERIENCE: {

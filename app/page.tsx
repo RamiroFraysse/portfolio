@@ -4,11 +4,12 @@ import {Box} from "@mui/material";
 import {Open_Sans as OpenSans} from "next/font/google";
 
 import {useLanguage} from "../store/language";
+import {ThemeConfig} from "../theme/ThemeConfig";
+
 import Footer from "./components/Footer";
-import Navbar from "./components/navbar";
+import Navbar from "./components/navbar/Navbar";
 import Main from "./components/main";
 import PopoverChat from "./components/PopoverChat";
-import {ThemeConfig} from "../theme/ThemeConfig";
 
 const openSans = OpenSans({
     weight: ["400", "700"],

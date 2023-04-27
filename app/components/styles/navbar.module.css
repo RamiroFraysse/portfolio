@@ -1,6 +1,47 @@
-.linkCv{
-  color: #ffff;
-  text-decoration: none;
-  text-align: center;
-  margin: auto;
+.linkCv {
+    color: #ffff;
+    text-decoration: none;
+    text-align: center;
+    margin: auto;
+}
+
+.navItem {
+    text-decoration: none;
+    color: #fff;
+    /* min-width: 64px; */
+    text-align: center;
+    padding: 6px 8px;
+    font-size: 0.875rem;
+    box-sizing: border-box;
+    line-height: 1.75;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3;
+    /* transition: padding-bottom 0.3s ease; */
+}
+
+.navItem:hover {
+    border-bottom: 3px solid #f5cda7;
+    padding-bottom: 3px;
+}
+
+.navItemAction {
+    box-sizing: border-box;
+    color: white;
+    borderradius: 8px;
+    background: radial-gradient(
+        circle at 50% 50%,
+        transparent,
+        #667eea
+    ) !important;
+    background-size: 1000% !important;
+    background-position: center !important;
+    transition: background-position 0.3s;
+    transition: background-size 0.2s;
+}
+
+.navItemAction:hover {
+    background-size: 100% !important;
+    background-position: center !important;
 }

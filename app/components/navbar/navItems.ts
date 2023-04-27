@@ -19,10 +19,6 @@ export interface NavItemsProps {
 
 export const navItems: NavItemsProps[] = [
     {
-        text: MODEL_NAV_TEXT.CONTACT,
-        key: "Contact",
-    },
-    {
         text: MODEL_NAV_TEXT.EDUCATION,
         key: "Education",
     },
@@ -30,6 +26,10 @@ export const navItems: NavItemsProps[] = [
     {
         text: MODEL_NAV_TEXT.EXPERIENCE,
         key: "Experience",
+    },
+    {
+        text: MODEL_NAV_TEXT.CONTACT,
+        key: "Contact",
     },
 ];
 
