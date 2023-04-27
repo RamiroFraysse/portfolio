@@ -48,7 +48,7 @@ const themeLight = createTheme({
                         borderRadius: 20,
                     },
                     "*::-webkit-scrollbar-thumb": {
-                        backgroundColor: " #667eea",
+                        backgroundColor: "rgba(0,0,0,.8)",
                         borderRadius: 20,
                     },
                     "input::-webkit-inner-spin-button": {
