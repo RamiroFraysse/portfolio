@@ -145,6 +145,7 @@ export default function Navbar(props: Props): React.ReactElement {
                                 <Button
                                     key={item.key}
                                     className={styles.navItemAction}
+                                    sx={{color: "#fff"}}
                                     onClick={() => {
                                         handleClickAction(item.key);
                                     }}

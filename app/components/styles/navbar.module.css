@@ -27,8 +27,8 @@
 }
 
 .navItemAction {
+    color: #fff !important;
     box-sizing: border-box;
-    color: white;
     borderradius: 8px;
     background: radial-gradient(
         circle at 50% 50%,
