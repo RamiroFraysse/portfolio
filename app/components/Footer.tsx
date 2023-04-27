@@ -68,7 +68,7 @@ function Footer(): React.ReactElement {
                     <Link
                         download
                         className={`${styles.link500} ${styles.link}`}
-                        href="/docs/cv.pdf"
+                        href="/docs/CVRamiroFraysse.pdf"
                         target="_blank"
                     >
                         {MODEL_FOOTER_TEXT.DOWNLOAD_CV[language]}
