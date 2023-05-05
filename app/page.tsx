@@ -2,6 +2,7 @@
 import {useState, useEffect} from "react";
 import {Box} from "@mui/material";
 import {Open_Sans as OpenSans} from "next/font/google";
+import {Analytics} from "@vercel/analytics/react";
 
 import {useLanguage} from "../store/language";
 import {ThemeConfig} from "../theme/ThemeConfig";
@@ -50,6 +51,7 @@ export default function Home(): React.ReactElement {
                 <Main />
                 <Footer />
                 <PopoverChat />
+                <Analytics />
             </Box>
         </ThemeConfig>
     );
