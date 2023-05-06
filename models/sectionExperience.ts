@@ -9,42 +9,51 @@ export const MODEL_EXPERIENCE = [
         },
         technologies: [
             {
-                dark: "https://icongr.am/devicon/javascript-original.svg?size=128&color=currentColor",
-                light: "https://icongr.am/devicon/javascript-original.svg?size=128&color=currentColor",
+              name: "Javascript",
+              dark: "https://icongr.am/devicon/javascript-original.svg?size=28&color=currentColor",
+              light: "https://icongr.am/devicon/javascript-original.svg?size=28&color=currentColor",
             },
             {
-                dark: "https://icongr.am/devicon/typescript-original.svg?size=128&color=currentColor",
-                light: "https://icongr.am/devicon/typescript-original.svg?size=128&color=currentColor",
+              name: "Typescript",
+              dark: "https://icongr.am/devicon/typescript-original.svg?size=28&color=currentColor",
+              light: "https://icongr.am/devicon/typescript-original.svg?size=28&color=currentColor",
             },
             {
-                dark: "https://icongr.am/devicon/react-original.svg?size=128&color=currentColor",
-                light: "https://icongr.am/devicon/react-original.svg?size=128&color=currentColor",
+              name: "React",
+              dark: "https://icongr.am/devicon/react-original.svg?size=28&color=currentColor",
+              light: "https://icongr.am/devicon/react-original.svg?size=28&color=currentColor",
             },
             {
-                dark: "./icons/next.svg",
-                light: "./icons/nextjs-rounded.svg",
+              name: "Next.js",
+              dark: "/icons/nextjs-rounded.svg",
+              light: "/icons/nextjs-rounded.svg",
             },
             {
-                dark: "./icons/mui.svg",
-                light: "./icons/mui.svg",
+              name: "Material-UI",
+              dark: "/icons/mui.svg",
+              light: "/icons/mui.svg",
             },
             {
-                dark: "./icons/react-query-icon.svg",
-                light: "./icons/react-query-icon.svg",
+              name: "React Query",
+              dark: "/icons/react-query-icon.svg",
+              light: "/icons/react-query-icon.svg",
             },
             {
-                dark: "./icons/cypress-icon.svg",
-                light: "./icons/cypress-icon.svg",
+              name: "Cypress",
+              dark: "/icons/cypress-icon.svg",
+              light: "/icons/cypress-icon.svg",
             },
             {
-                dark: "./icons/recoil.svg",
-                light: "./icons/recoil.svg",
+              name: "Recoil",
+              dark: "/icons/recoil-icon.svg",
+              light: "/icons/recoil-icon.svg",
             },
             {
-                dark: "./icons/bit.svg",
-                light: "./icons/bit.svg",
+              name: "Bit",
+              dark: "/icons/bit.svg",
+              light: "/icons/bit.svg",
             },
-        ],
+          ],
         responsabilities: {
             title: {
                 en: "RESPONSABILITIES",
@@ -76,34 +85,42 @@ export const MODEL_EXPERIENCE = [
         },
         technologies: [
             {
+                name: "JavaScript",
                 dark: "https://icongr.am/devicon/javascript-original.svg?size=28&color=currentColor",
                 light: "https://icongr.am/devicon/javascript-original.svg?size=28&color=currentColor",
             },
             {
+                name: "CSS",
                 dark: "https://icongr.am/devicon/css3-original-wordmark.svg?size=28&color=currentColor",
                 light: "https://icongr.am/devicon/css3-original-wordmark.svg?size=28&color=currentColor",
             },
             {
+                name: "HTML",
                 dark: "https://icongr.am/devicon/html5-original-wordmark.svg?size=28&color=currentColor",
                 light: "https://icongr.am/devicon/html5-original-wordmark.svg?size=28&color=currentColor",
             },
             {
+                name: "PHP",
                 dark: "https://icongr.am/devicon/php-original.svg?size=28&color=currentColor",
                 light: "https://icongr.am/devicon/php-original.svg?size=28&color=currentColor",
             },
             {
+                name: "React",
                 dark: "https://icongr.am/devicon/react-original.svg?size=28&color=currentColor",
                 light: "https://icongr.am/devicon/react-original.svg?size=28&color=currentColor",
             },
             {
+                name: "Laravel",
                 dark: "https://icongr.am/material/laravel.svg?size=128&color=c20000",
                 light: "https://icongr.am/material/laravel.svg?size=128&color=c20000",
             },
             {
+                name: "PostgreSQL",
                 dark: "https://icongr.am/devicon/postgresql-original-wordmark.svg?size=28&color=currentColor",
                 light: "https://icongr.am/devicon/postgresql-original-wordmark.svg?size=28&color=currentColor",
             },
             {
+                name: "MySQL",
                 dark: "./icons/mysql.svg",
                 light: "./icons/mysql.svg",
             },

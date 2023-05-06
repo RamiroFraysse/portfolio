@@ -7,7 +7,7 @@ import TimelineOppositeContent, {
     timelineOppositeContentClasses,
 } from "@mui/lab/TimelineOppositeContent";
 import TimelineSeparator from "@mui/lab/TimelineSeparator";
-import {Box, Typography} from "@mui/material";
+import {Box, Tooltip, Typography} from "@mui/material";
 
 import {MODEL_EXPERIENCE} from "@/models/sectionExperience";
 
@@ -83,22 +83,29 @@ function SectionExperience(): React.ReactElement {
                             }}
                         >
                             {item.technologies.map(tec => (
-                                <svg
-                                    key={tec[theme]}
-                                    className={styles.boxShadow}
-                                    height={34}
-                                    width={34}
-                                    xmlns="http://www.w3.org/2000/svg"
+                                <Tooltip
+                                    key={tec.name}
+                                    sx={{
+                                        backgroundColor: "#f5cda7",
+                                        cursor: "pointer",
+                                    }}
+                                    title={tec.name}
                                 >
-                                    <image
-                                        dominant-baseline="central"
-                                        height={34}
-                                        href={tec[theme]}
-                                        style={{objectFit: "contain"}}
-                                        text-anchor="middle"
-                                        width={34}
-                                    />
-                                </svg>
+                                    <svg
+                                        className={styles.boxShadow}
+                                        height={30}
+                                        width={30}
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <image
+                                            height={30}
+                                            href={tec[theme]}
+                                            style={{objectFit: "contain"}}
+                                            text-anchor="middle"
+                                            width={30}
+                                        />
+                                    </svg>
+                                </Tooltip>
                             ))}
                         </Box>
                         <Typography

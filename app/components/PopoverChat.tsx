@@ -38,7 +38,7 @@ function PopoverChat(): React.ReactElement {
             <ButtonWrapper
                 aria-describedby={id}
                 sx={{
-                    "left": {xs: "85vw", sm: "85vw", md: "92vw"},
+                    "left": {xs: "83vw", sm: "83vw", md: "92vw"},
                     "width": "50px",
                     "height": "50px",
                     ":hover": {
