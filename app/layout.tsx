@@ -1,4 +1,12 @@
-import React from "react";
+import {Open_Sans as OpenSans} from "next/font/google";
+
+// import MainLayout from "./components/main/MainLayout";
+
+const openSans = OpenSans({
+    weight: ["400", "700"],
+    style: ["normal", "italic"],
+    subsets: ["latin"],
+});
 
 export const metadata = {
     title: "Ramiro Fraysse",
@@ -11,7 +19,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }): React.ReactElement {
     return (
-        <html lang="en">
+        <html className={openSans.className}>
             <body>{children}</body>
         </html>
     );

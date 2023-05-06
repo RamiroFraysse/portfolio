@@ -1,7 +1,6 @@
 "use client";
 import {useState, useEffect} from "react";
 import {Box} from "@mui/material";
-import {Open_Sans as OpenSans} from "next/font/google";
 import {Analytics} from "@vercel/analytics/react";
 
 import {useLanguage} from "../store/language";
@@ -9,12 +8,6 @@ import {ThemeConfig} from "../theme/ThemeConfig";
 
 // import MainLayout from "./components/main/MainLayout";
 import {Navbar, PopoverChat, MainLayout, Footer} from "./components";
-
-const openSans = OpenSans({
-    weight: ["400", "700"],
-    style: ["normal", "italic"],
-    subsets: ["latin"],
-});
 
 export default function Home(): React.ReactElement {
     const [scrolling, setScrolling] = useState(false);
@@ -35,22 +28,11 @@ export default function Home(): React.ReactElement {
 
     return (
         <ThemeConfig>
-            <style global jsx>{`
-                html {
-                    font-family: ${openSans.style.fontFamily};
-                }
-            `}</style>
-            <Box
-                sx={{
-                    background: theme === "dark" ? "rgb(0, 30, 60)" : "#667eea",
-                }}
-            >
-                <Navbar scrolling={scrolling} />
-                <MainLayout />
-                <Footer />
-                <PopoverChat />
-                <Analytics />
-            </Box>
+            <Navbar scrolling={scrolling} />
+            <MainLayout />
+            <Footer />
+            <PopoverChat />
+            <Analytics />
         </ThemeConfig>
     );
 }

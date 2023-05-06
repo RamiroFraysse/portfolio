@@ -94,7 +94,7 @@ const themeDark = createTheme({
     },
 });
 
-export const ThemeConfig: React.FC<ThemeProp> = ({children}) => {
+export const ThemeConfig: React.FC<ThemeProp> = ({children}: JSX.Element) => {
     const {theme} = useLanguage(state => state);
 
     return (

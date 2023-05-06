@@ -6,7 +6,7 @@ import Link from "next/link";
 
 import {useLanguage} from "@/store/language";
 
-import meImg from "../../../public/img/mee.jpeg";
+import meImg from "../../../public/img/mee.webp";
 import {COVERPAGE_TEXT} from "../../../models/sectionCoverpage";
 import {CONTACT_LINKS} from "../../../models/contactLinks";
 

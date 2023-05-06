@@ -1,7 +1,7 @@
 /* eslint-disable import/no-absolute-path */
 import pwaImg from "public/img/courses/pwa.webp";
 import reactProImg from "public/img/courses/reactPro.webp";
-import titleImg from "public/img/title.jpeg";
+import titleImg from "public/img/title.webp";
 
 export const MODEL_EDUCATION = [
     {
