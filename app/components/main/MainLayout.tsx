@@ -9,7 +9,7 @@ import SectionContact from "./SectionContact";
 import SectionEducation from "./SectionEducation";
 import SectionExperience from "./SectionExperience";
 
-function Main(): React.ReactElement {
+function MainLayout(): React.ReactElement {
     const {language, theme} = useLanguage(state => state);
 
     return (
@@ -81,4 +81,4 @@ function Main(): React.ReactElement {
     );
 }
 
-export default Main;
+export default MainLayout;

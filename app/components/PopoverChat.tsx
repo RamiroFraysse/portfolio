@@ -1,6 +1,9 @@
 import {Button, Popover} from "@mui/material";
 import {styled} from "@mui/material/styles";
 import {useState} from "react";
+import Image from "next/image";
+
+import ChatIcon from "../../public/icons/messenger.svg";
 
 import Chat from "./Chat";
 
@@ -35,17 +38,16 @@ function PopoverChat(): React.ReactElement {
             <ButtonWrapper
                 aria-describedby={id}
                 sx={{
-                    left: {xs: "80vw", sm: "80vw", md: "92vw"},
-                    backgroundColor: "#ffff",
-                    boxShadow: "0 0 5px 5px rgb(118,75,162,0.5)",
+                    "left": {xs: "85vw", sm: "85vw", md: "92vw"},
+                    "width": "50px",
+                    "height": "50px",
+                    ":hover": {
+                        background: "none",
+                    },
                 }}
                 onClick={handleClick}
             >
-                <object
-                    aria-label="SVG icon"
-                    data="https://icongr.am/jam/messenger.svg?size=40&color=667eea"
-                    type="image/svg+xml"
-                />
+                <Image fill alt="chat icon" src={ChatIcon} />
             </ButtonWrapper>
 
             <Popover

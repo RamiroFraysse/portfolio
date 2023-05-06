@@ -7,10 +7,8 @@ import {Analytics} from "@vercel/analytics/react";
 import {useLanguage} from "../store/language";
 import {ThemeConfig} from "../theme/ThemeConfig";
 
-import Footer from "./components/Footer";
-import Navbar from "./components/navbar/Navbar";
-import Main from "./components/main";
-import PopoverChat from "./components/PopoverChat";
+// import MainLayout from "./components/main/MainLayout";
+import {Navbar, PopoverChat, MainLayout, Footer} from "./components";
 
 const openSans = OpenSans({
     weight: ["400", "700"],
@@ -48,7 +46,7 @@ export default function Home(): React.ReactElement {
                 }}
             >
                 <Navbar scrolling={scrolling} />
-                <Main />
+                <MainLayout />
                 <Footer />
                 <PopoverChat />
                 <Analytics />

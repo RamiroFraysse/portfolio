@@ -14,9 +14,10 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import ContactMail from "@mui/icons-material/ContactMail";
 import MessageIcon from "@mui/icons-material/Message";
 
-import styles from "../styles/main/contact.module.css";
 import {type Store, useLanguage} from "../../../store/language";
 import {MODAL_CONTACT_TEXT} from "../../../models/sectionContact";
+
+import styles from "./styles/main/contact.module.css";
 
 const FormStyled = styled(Box)(() => ({
     display: "flex",

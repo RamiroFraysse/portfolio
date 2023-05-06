@@ -28,6 +28,22 @@ export const MODEL_EXPERIENCE = [
                 dark: "./icons/mui.svg",
                 light: "./icons/mui.svg",
             },
+            {
+                dark: "./icons/react-query-icon.svg",
+                light: "./icons/react-query-icon.svg",
+            },
+            {
+                dark: "./icons/cypress-icon.svg",
+                light: "./icons/cypress-icon.svg",
+            },
+            {
+                dark: "./icons/recoil.svg",
+                light: "./icons/recoil.svg",
+            },
+            {
+                dark: "./icons/bit.svg",
+                light: "./icons/bit.svg",
+            },
         ],
         responsabilities: {
             title: {
@@ -88,8 +104,8 @@ export const MODEL_EXPERIENCE = [
                 light: "https://icongr.am/devicon/postgresql-original-wordmark.svg?size=28&color=currentColor",
             },
             {
-                dark: "https://icongr.am/devicon/mysql-original-wordmark.svg?size=28&color=currentColor",
-                light: "https://icongr.am/devicon/mysql-original-wordmark.svg?size=28&color=currentColor",
+                dark: "./icons/mysql.svg",
+                light: "./icons/mysql.svg",
             },
         ],
 
@@ -105,8 +121,8 @@ export const MODEL_EXPERIENCE = [
         },
         accomplishments: {
             title: {
-                en: "RESPONSABILITIES",
-                sp: "RESPONSABILIDADES",
+                en: "KEY ACCOMPLISHMENTS",
+                sp: "PRINCIPALES LOGROS",
             },
             description: {
                 en: "Working in multiple projects (Healthcare, Marketplace, social networks, environmental)",

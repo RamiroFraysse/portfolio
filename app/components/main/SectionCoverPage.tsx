@@ -6,16 +6,18 @@ import Link from "next/link";
 
 import {useLanguage} from "@/store/language";
 
-import meImg from "../../../public/img/me.webp";
-import styles from "../styles/main/cover.module.css";
+import meImg from "../../../public/img/mee.jpeg";
 import {COVERPAGE_TEXT} from "../../../models/sectionCoverpage";
 import {CONTACT_LINKS} from "../../../models/contactLinks";
+
+import styles from "./styles/main/cover.module.css";
 
 function SectionCoverPage(): React.ReactElement {
     const {language} = useLanguage(state => state);
 
     return (
         <Card
+            id="Presentation"
             sx={{
                 display: "flex",
                 flexDirection: {xs: "column", sm: "column", md: "row"},

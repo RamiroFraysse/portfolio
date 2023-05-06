@@ -8,16 +8,26 @@ import {MODEL_NAV_TEXT} from "../../../models/sectionNav";
 
 type LanguageStrings = Record<string, string>;
 
+
+
 export interface NavItemsProps {
     text: LanguageStrings | undefined;
+    key: string;
+}
+
+export interface NavitemsActionsProps extends NavItemsProps{
     icon?: {
         dark: ElementType;
         light: ElementType;
     };
-    key: string;
+    hideInMobile:boolean;
 }
 
 export const navItems: NavItemsProps[] = [
+    {
+        text: MODEL_NAV_TEXT.PRESENTATION,
+        key: "Presentation",
+    },
     {
         text: MODEL_NAV_TEXT.EDUCATION,
         key: "Education",
@@ -33,14 +43,16 @@ export const navItems: NavItemsProps[] = [
     },
 ];
 
-export const navItemsActions: NavItemsProps[] = [
+export const navItemsActions: NavitemsActionsProps[] = [
     {
         text: MODEL_NAV_TEXT.CV,
         key: "cvAction",
+        hideInMobile:true
     },
     {
         text: MODEL_NAV_TEXT.LANGUAGE,
         key: "lanAction",
+        hideInMobile:true,
     },
     {
         icon: {
@@ -49,5 +61,6 @@ export const navItemsActions: NavItemsProps[] = [
         },
         key: "themeAction",
         text: undefined,
+        hideInMobile:true,
     },
 ];

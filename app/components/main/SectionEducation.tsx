@@ -8,7 +8,7 @@ import {
 import Image from "next/image";
 
 import {useLanguage} from "../../../store/language";
-import styles from "../styles/main/education.module.css";
+import styles from "./styles/main/education.module.css";
 import {MODEL_EDUCATION} from "../../../models/sectionEducation";
 
 function SectionEducation(): React.ReactElement {

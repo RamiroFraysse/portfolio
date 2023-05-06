@@ -1,22 +1,17 @@
-import {
-    Box,
-    Divider,
-    Drawer,
-    List,
-    ListItem,
-    ListItemButton,
-    ListItemText,
-} from "@mui/material";
+import {Box, Divider, Drawer} from "@mui/material";
 import React from "react";
-import {Link as Scroll} from "react-scroll";
-import Link from "next/link";
+import {
+    LightMode as LightModeIcon,
+    Bedtime as BedtimeIcon,
+} from "@mui/icons-material";
 
 import {useLanguage} from "@/store/language";
 
 import Logo from "../ui/Logo";
-import styles from "../styles/navbar.module.css";
 
-import {navItems, navItemsActions} from "./navItems";
+import NavItems from "./NavItems";
+import NavItemsAction from "./NavItemsAction";
+import {navItemsActions} from "./utils";
 
 interface Props {
     onClickAction: (key: string) => void;
@@ -27,13 +22,8 @@ interface Props {
 
 const drawerWidth = 240;
 
-function Mobile({
-    onClickAction,
-    isOpen,
-    onDrawerToggle,
-    window,
-}: Props): React.ReactElement {
-    const {theme, language} = useLanguage(state => state);
+function Mobile({isOpen, onDrawerToggle, window}: Props): React.ReactElement {
+    const {language} = useLanguage(state => state);
 
     const container =
         window !== undefined ? () => window().document.body : undefined;
@@ -46,7 +36,7 @@ function Mobile({
             container={container}
             open={isOpen}
             sx={{
-                "display": {xs: "block", sm: "none"},
+                "display": {xs: "block", sm: "block", md: "block", lg: "none"},
                 "& .MuiDrawer-paper": {
                     boxSizing: "border-box",
                     width: drawerWidth,
@@ -66,67 +56,28 @@ function Mobile({
             >
                 <Logo />
                 <Divider />
-                <List sx={{display: "flex", flexDirection: "column"}}>
-                    {navItems.map(item => (
-                        <Scroll
-                            key={item.key}
-                            duration={400}
-                            offset={-100}
-                            smooth={true}
-                            to={item.key}
-                        >
-                            <ListItem disablePadding>
-                                <ListItemButton sx={{textAlign: "center"}}>
-                                    <ListItemText
-                                        primary={
-                                            item?.text != null
-                                                ? item.text[language]
-                                                : ""
-                                        }
-                                    />
-                                </ListItemButton>
-                            </ListItem>
-                        </Scroll>
-                    ))}
-                    {navItemsActions.map(action => (
-                        <ListItem key={action.key} disablePadding>
-                            <ListItemButton
-                                sx={{textAlign: "center"}}
-                                onClick={() => {
-                                    onClickAction(action.key);
-                                }}
-                            >
-                                {action.key === "cvAction" ? (
-                                    <Link
-                                        download
-                                        className={styles.linkCv}
-                                        href="/docs/cv.pdf"
-                                        target="_blank"
-                                    >
-                                        CV
-                                    </Link>
-                                ) : (
-                                    <ListItemText
-                                        primary={
-                                            action?.key === "themeAction" &&
-                                            action?.icon != null ? (
-                                                theme === "dark" ? (
-                                                    <action.icon.dark />
-                                                ) : (
-                                                    <action.icon.light />
-                                                )
-                                            ) : action?.text != null &&
-                                              action?.text[language] !== "" ? (
-                                                action?.text[language]
-                                            ) : null
-                                        }
-                                        sx={{color: "#fff"}}
-                                    />
-                                )}
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List>
+
+                <NavItems
+                    language={language}
+                    style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        alignItems: "center",
+                    }}
+                />
+                <NavItemsAction
+                    items={navItemsActions.filter(
+                        item => item.key === "cvAction",
+                    )}
+                    style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        width: "100%",
+                    }}
+                />
             </Box>
         </Drawer>
     );

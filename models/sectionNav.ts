@@ -11,6 +11,10 @@ export const MODEL_NAV_TEXT = {
         sp: "Experiencia",
         en: "Experience",
     },
+    PRESENTATION:{
+        sp: "Sobre mi",
+        en: "about me",
+    },
     CV: {sp: "CV", en: "CV"},
-    LANGUAGE: {sp: "INGLÉS", en: "SPANISH"},
+    LANGUAGE: {sp: "EN", en: "ES"},
 };

@@ -12,7 +12,8 @@ import {Box, Typography} from "@mui/material";
 import {MODEL_EXPERIENCE} from "@/models/sectionExperience";
 
 import {useLanguage} from "../../../store/language";
-import styles from "../styles/main/experience.module.css";
+
+import styles from "./styles/main/experience.module.css";
 
 function SectionExperience(): React.ReactElement {
     const {language, theme} = useLanguage(state => state);
@@ -85,14 +86,17 @@ function SectionExperience(): React.ReactElement {
                                 <svg
                                     key={tec[theme]}
                                     className={styles.boxShadow}
-                                    height={28}
-                                    width={28}
+                                    height={34}
+                                    width={34}
                                     xmlns="http://www.w3.org/2000/svg"
                                 >
                                     <image
-                                        height={28}
+                                        dominant-baseline="central"
+                                        height={34}
                                         href={tec[theme]}
-                                        width={28}
+                                        style={{objectFit: "contain"}}
+                                        text-anchor="middle"
+                                        width={34}
                                     />
                                 </svg>
                             ))}

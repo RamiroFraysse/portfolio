@@ -1,17 +1,12 @@
 "use client";
-import {AppBar, Box, Toolbar, IconButton, Button} from "@mui/material";
-import Link from "next/link";
+import {AppBar, Box, Toolbar, IconButton} from "@mui/material";
 import {Menu as MenuIcon} from "@mui/icons-material";
 import {useState} from "react";
 
 import {useLanguage} from "../../../store/language";
 import Logo from "../ui/Logo";
 import SectionCoverPage from "../main/SectionCoverPage";
-import styles from "../styles/navbar.module.css";
-
-import NavItem from "./NavItem";
-import Mobile from "./Mobile";
-import {navItems, navItemsActions} from "./navItems";
+import {NavItemsAction, Mobile, NavItems} from "../../components";
 
 interface Props {
     scrolling: boolean;
@@ -20,9 +15,7 @@ interface Props {
 export default function Navbar(props: Props): React.ReactElement {
     const {scrolling} = props;
 
-    const {theme, language, toggleLanguage, toggleTheme} = useLanguage(
-        state => state,
-    );
+    const {language, toggleLanguage, toggleTheme} = useLanguage(state => state);
 
     const handleClickAction = (key: string): void => {
         switch (key) {
@@ -53,7 +46,7 @@ export default function Navbar(props: Props): React.ReactElement {
                     "radial-gradient(circle at 50% 50%, #667eea, #3d235a)",
                 margin: "auto",
                 transition: "background ease .3s",
-                height: {
+                minHeight: {
                     md: "100vh",
                     sm: "100vh",
                     xs: "100vh",
@@ -75,11 +68,14 @@ export default function Navbar(props: Props): React.ReactElement {
             >
                 <Toolbar
                     sx={{
-                        display: "flex",
+                        display: {md: "flex", lg: "grid"},
+                        gridTemplateColumns: {
+                            lg: "1fr 2fr 1fr",
+                        },
                         justifyContent: {
                             xs: "space-between",
                             sm: "space-between",
-                            md: "space-evenly",
+                            md: "space-between",
                         },
                         width: "100%",
                     }}
@@ -88,86 +84,46 @@ export default function Navbar(props: Props): React.ReactElement {
                         aria-label="open drawer"
                         color="inherit"
                         edge="start"
-                        sx={{display: {sm: "none"}}}
+                        sx={{display: {lg: "none"}, justifyContent: "start"}}
                         onClick={handleDrawerToggle}
                     >
                         <MenuIcon sx={{color: "#F5CDA7"}} />
                     </IconButton>
                     <Logo
                         styles={{
-                            display: {xs: "flex", sm: "flex"},
+                            display: {
+                                xs: "none",
+                                sm: "none",
+                                md: "none",
+                                lg: "flex",
+                            },
                             flexDirection: "row",
                             justifyContent: "space-between",
-                            width: {md: "300px"},
                         }}
                     />
-                    <Box
-                        sx={{
-                            margin: "auto",
-                            gap: "16px",
-                            display: {xs: "none", sm: "flex"},
+                    <NavItems
+                        language={language}
+                        style={{
+                            display: {
+                                xs: "none",
+                                sm: "none",
+                                md: "none",
+                                lg: "flex",
+                            },
+                            justifyContent: "center",
                         }}
-                    >
-                        {navItems.map(item => (
-                            <NavItem
-                                key={item.key}
-                                item={item}
-                                text={
-                                    item.text != null ? item.text[language] : ""
-                                }
-                            />
-                        ))}
-                    </Box>
-                    <Box
-                        sx={{
-                            display: {xs: "none", sm: "flex"},
-                            width: "300px",
+                    />
+                    <NavItemsAction
+                        style={{
+                            display: {
+                                lg: "flex",
+                            },
                             justifyContent: "end",
-                            gap: "16px",
                         }}
-                    >
-                        {navItemsActions.map(item => {
-                            if (item.key === "cvAction")
-                                return (
-                                    <Link
-                                        key={item.key}
-                                        className={styles.navItem}
-                                        href="https://ramirofraysse.notion.site/Ramiro-Fraysse-Computer-Engineer-fa8303a305964f90b8cbae8e78f95040"
-                                        target="_blank"
-                                    >
-                                        {item?.text != null
-                                            ? item.text[language]
-                                            : ""}
-                                    </Link>
-                                );
-
-                            return (
-                                <Button
-                                    key={item.key}
-                                    className={styles.navItemAction}
-                                    sx={{color: "#fff"}}
-                                    onClick={() => {
-                                        handleClickAction(item.key);
-                                    }}
-                                >
-                                    {item.key === "themeAction" &&
-                                        item.icon != null &&
-                                        (theme === "dark" ? (
-                                            <item.icon.dark />
-                                        ) : (
-                                            <item.icon.light />
-                                        ))}
-                                    {item?.text != null
-                                        ? item.text[language]
-                                        : ""}
-                                </Button>
-                            );
-                        })}
-                    </Box>
+                    />
                 </Toolbar>
             </AppBar>
             <Box
-                className="este"
                 component="nav"
                 sx={{display: "flex", justifyContent: "space-between"}}
             >
