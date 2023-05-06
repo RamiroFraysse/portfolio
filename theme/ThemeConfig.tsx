@@ -4,7 +4,7 @@ import {ThemeProvider, createTheme} from "@mui/material/styles";
 import {useLanguage} from "../store/language";
 
 interface ThemeProp {
-    children: JSX.Element[];
+    children: JSX.Element[] | JSX.Element;
 }
 
 export enum themePaletteDark {
@@ -94,7 +94,7 @@ const themeDark = createTheme({
     },
 });
 
-export const ThemeConfig: React.FC<ThemeProp> = ({children}: JSX.Element) => {
+export const ThemeConfig: React.FC<ThemeProp> = ({children}) => {
     const {theme} = useLanguage(state => state);
 
     return (

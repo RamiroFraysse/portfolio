@@ -28,11 +28,17 @@ export default function Home(): React.ReactElement {
 
     return (
         <ThemeConfig>
-            <Navbar scrolling={scrolling} />
-            <MainLayout />
-            <Footer />
-            <PopoverChat />
-            <Analytics />
+            <Box
+                sx={{
+                    background: theme === "dark" ? "rgb(0, 30, 60)" : "#667eea",
+                }}
+            >
+                <Navbar scrolling={scrolling} />
+                <MainLayout />
+                <Footer />
+                <PopoverChat />
+                <Analytics />
+            </Box>
         </ThemeConfig>
     );
 }
