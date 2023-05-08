@@ -1,6 +1,6 @@
 "use client";
 import {useState, useEffect} from "react";
-import {Box} from "@mui/material";
+import {Box, CssBaseline} from "@mui/material";
 import {Analytics} from "@vercel/analytics/react";
 
 import {useLanguage} from "../store/language";
@@ -28,6 +28,7 @@ export default function Home(): React.ReactElement {
 
     return (
         <ThemeConfig>
+            <CssBaseline />
             <Box
                 sx={{
                     background: theme === "dark" ? "rgb(0, 30, 60)" : "#667eea",

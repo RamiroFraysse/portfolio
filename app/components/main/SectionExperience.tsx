@@ -101,7 +101,7 @@ function SectionExperience(): React.ReactElement {
                                             height={30}
                                             href={tec[theme]}
                                             style={{objectFit: "contain"}}
-                                            text-anchor="middle"
+                                            textAnchor="middle"
                                             width={30}
                                         />
                                     </svg>

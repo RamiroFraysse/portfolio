@@ -1,7 +1,21 @@
 import {CssBaseline} from "@mui/material";
 import {ThemeProvider, createTheme} from "@mui/material/styles";
+import {Open_Sans as OpenSans} from "next/font/google";
 
 import {useLanguage} from "../store/language";
+
+const openSans = OpenSans({
+    weight: ["400", "500", "600", "700", "800"],
+    style: ["normal", "italic"],
+    subsets: ["latin"],
+    variable: "--font-opensans",
+    display: "optional",
+});
+
+export const metadata = {
+    title: "Ramiro Fraysse",
+    description: "Portfolio builded on NextJS",
+};
 
 interface ThemeProp {
     children: JSX.Element[] | JSX.Element;
