@@ -1,21 +1,9 @@
 import {CssBaseline} from "@mui/material";
 import {ThemeProvider, createTheme} from "@mui/material/styles";
-import {Open_Sans as OpenSans} from "next/font/google";
+import {CacheProvider} from "@emotion/react";
+import createCache from "@emotion/cache";
 
 import {useLanguage} from "../store/language";
-
-const openSans = OpenSans({
-    weight: ["400", "500", "600", "700", "800"],
-    style: ["normal", "italic"],
-    subsets: ["latin"],
-    variable: "--font-opensans",
-    display: "optional",
-});
-
-export const metadata = {
-    title: "Ramiro Fraysse",
-    description: "Portfolio builded on NextJS",
-};
 
 interface ThemeProp {
     children: JSX.Element[] | JSX.Element;
@@ -47,6 +35,8 @@ const themeLight = createTheme({
     },
     typography: {
         fontFamily: "Open Sans",
+        fontWeightRegular: 400,
+        fontWeightMedium: 600,
     },
     components: {
         MuiCssBaseline: {
@@ -80,6 +70,8 @@ const themeDark = createTheme({
     },
     typography: {
         fontFamily: "Open Sans",
+        fontWeightRegular: 400,
+        fontWeightMedium: 600,
     },
     components: {
         MuiCssBaseline: {
@@ -108,13 +100,20 @@ const themeDark = createTheme({
     },
 });
 
+const cache = createCache({
+    key: "css",
+    prepend: true,
+});
+
 export const ThemeConfig: React.FC<ThemeProp> = ({children}) => {
     const {theme} = useLanguage(state => state);
 
     return (
-        <ThemeProvider theme={theme === "light" ? themeLight : themeDark}>
-            <CssBaseline />
-            {children}
-        </ThemeProvider>
+        <CacheProvider value={cache}>
+            <ThemeProvider theme={theme === "light" ? themeLight : themeDark}>
+                <CssBaseline />
+                {children}
+            </ThemeProvider>
+        </CacheProvider>
     );
 };
