@@ -7,7 +7,15 @@ import TimelineOppositeContent, {
     timelineOppositeContentClasses,
 } from "@mui/lab/TimelineOppositeContent";
 import TimelineSeparator from "@mui/lab/TimelineSeparator";
-import {Box, Tooltip, Typography} from "@mui/material";
+import {
+    Box,
+    List,
+    ListItem,
+    ListItemIcon,
+    Tooltip,
+    Typography,
+} from "@mui/material";
+import {StarBorder, TaskAlt} from "@mui/icons-material";
 
 import {MODEL_EXPERIENCE} from "@/models/sectionExperience";
 
@@ -108,28 +116,83 @@ function SectionExperience(): React.ReactElement {
                                 </Tooltip>
                             ))}
                         </Box>
-                        <Typography
-                            component="p"
-                            fontWeight={500}
-                            sx={{marginTop: "1em"}}
-                            variant="subtitle2"
-                        >
-                            {item.responsabilities.title[language]}
-                        </Typography>
-                        <Typography component="p" variant="subtitle2">
-                            {item.responsabilities.description[language]}
-                        </Typography>
-                        <Typography
-                            component="p"
-                            fontWeight={500}
-                            sx={{marginTop: "1em"}}
-                            variant="subtitle2"
-                        >
-                            {item.accomplishments.title[language]}
-                        </Typography>
-                        <Typography component="p" variant="subtitle2">
-                            {item.accomplishments.description[language]}
-                        </Typography>
+
+                        <List component="ul">
+                            <Typography
+                                component="p"
+                                fontWeight={500}
+                                sx={{marginTop: "1em"}}
+                                variant="subtitle2"
+                            >
+                                {item.responsabilities.title[language]}
+                            </Typography>
+                            {item.responsabilities.description[language].map(
+                                responsability => {
+                                    return (
+                                        <ListItem
+                                            key={responsability}
+                                            dense
+                                            component="li"
+                                            sx={{paddingLeft: 0}}
+                                        >
+                                            <ListItemIcon
+                                                sx={{
+                                                    minWidth: "fit-content",
+                                                    paddingRight: "8px",
+                                                }}
+                                            >
+                                                <TaskAlt
+                                                    fontSize="small"
+                                                    sx={{color: "#667eea"}}
+                                                />
+                                            </ListItemIcon>
+                                            <Typography
+                                                sx={{
+                                                    marginLeft: "0px",
+                                                }}
+                                                variant="subtitle2"
+                                            >
+                                                {responsability}
+                                            </Typography>
+                                        </ListItem>
+                                    );
+                                },
+                            )}
+                        </List>
+                        <List component="ul">
+                            <Typography
+                                component="p"
+                                fontWeight={500}
+                                variant="subtitle2"
+                            >
+                                {item.accomplishments.title[language]}
+                            </Typography>
+                            {item.accomplishments.description[language].map(
+                                accomplishment => (
+                                    <ListItem
+                                        key={accomplishment}
+                                        dense
+                                        component="li"
+                                        sx={{paddingLeft: 0}}
+                                    >
+                                        <ListItemIcon
+                                            sx={{
+                                                minWidth: "fit-content",
+                                                paddingRight: "8px",
+                                            }}
+                                        >
+                                            <StarBorder
+                                                fontSize="small"
+                                                sx={{color: "#667eea"}}
+                                            />
+                                        </ListItemIcon>
+                                        <Typography variant="subtitle2">
+                                            {accomplishment}
+                                        </Typography>
+                                    </ListItem>
+                                ),
+                            )}
+                        </List>
                     </TimelineContent>
                 </TimelineItem>
             ))}

@@ -42,6 +42,7 @@ const themeLight = createTheme({
         MuiCssBaseline: {
             styleOverrides: {
                 html: {
+                    "fontFamily": "Open Sans",
                     "*::-webkit-scrollbar-track": {
                         webkitBoxShadow: "inset 0 0 6px rgba(0, 0, 0, .4)",
                         backgroundColor: "#CFCFCF",
@@ -77,6 +78,7 @@ const themeDark = createTheme({
         MuiCssBaseline: {
             styleOverrides: {
                 html: {
+                    "fontFamily": "Open Sans",
                     "*::-webkit-scrollbar-track": {
                         webkitBoxShadow: "inset 0 0 6px rgba(0, 0, 0, .4)",
                         backgroundColor: "#FFFFFF",
