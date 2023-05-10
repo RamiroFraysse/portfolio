@@ -15,7 +15,7 @@ export function NavItem({item, text}: PropsNavItem): React.ReactElement {
             activeClass={styles.active}
             className={styles.navItem}
             duration={500}
-            offset={-250}
+            offset={-450}
             smooth={true}
             spy={true}
             to={item.key}

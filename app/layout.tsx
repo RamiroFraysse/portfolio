@@ -1,12 +1,18 @@
 import "../styles/global.css";
-
-// eslint-disable-next-line camelcase
+import {Open_Sans as OpenSans} from "next/font/google";
 
 export const metadata = {
     title: "Ramiro Fraysse",
     description: "Portfolio builded on NextJS",
 };
-// import MainLayout from "./components/main/MainLayout";
+const openSans = OpenSans({
+    weight: ["400", "500", "700"],
+    style: ["normal", "italic"],
+    subsets: ["latin"],
+    variable: "--font-opensans",
+    preload: true,
+    display: "swap",
+});
 
 export default function RootLayout({
     children,
@@ -14,7 +20,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }): React.ReactElement {
     return (
-        <html>
+        <html className={openSans.className}>
             <body>{children}</body>
         </html>
     );

@@ -4,9 +4,6 @@ dependencies:
   '@emailjs/browser':
     specifier: ^3.11.0
     version: 3.11.0
-  '@emotion/cache':
-    specifier: ^11.11.0
-    version: 11.11.0
   '@emotion/react':
     specifier: ^11.10.6
     version: 11.10.6(@types/react@18.0.31)(react@18.2.0)
@@ -52,9 +49,6 @@ dependencies:
   react-scroll:
     specifier: ^1.8.9
     version: 1.8.9(react-dom@18.2.0)(react@18.2.0)
-  react-svg:
-    specifier: ^16.1.11
-    version: 16.1.11(react-dom@18.2.0)(react@18.2.0)
   typescript:
     specifier: 5.0.3
     version: 5.0.3
@@ -931,14 +925,6 @@ packages:
       tslib: 2.5.0
     dev: false
 
-  /@tanem/svg-injector@10.1.53:
-    resolution: {integrity: sha512-tR2Kh0GcTk+7hFTUsCo7JcEsAxz7j28dvaeC77jDp+acgGVdWXtk1v6lY8G0v1g813sgBrBzUr3St8RPBSmjEQ==}
-    dependencies:
-      '@babel/runtime': 7.21.5
-      content-type: 1.0.5
-      tslib: 2.5.0
-    dev: false
-
   /@trivago/prettier-plugin-sort-imports@4.1.1(prettier@2.8.7):
     resolution: {integrity: sha512-dQ2r2uzNr1x6pJsuh/8x0IRA3CBUB+pWEW3J/7N98axqt7SQSm+2fy0FLNXvXGg77xEDC7KHxJlHfLYyi7PDcw==}
     peerDependencies:
@@ -1430,11 +1416,6 @@ packages:
 
   /concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
-
-  /content-type@1.0.5:
-    resolution: {integrity: sha512-nTjqfcBFEipKdXCv4YDQWCfmcLZKm81ldF0pAopTvyrFGVbcR6P/VAAd5G7N+0tTr8QqiU0tFadD6FK4NtJwOA==}
-    engines: {node: '>= 0.6'}
-    dev: false
 
   /convert-source-map@1.9.0:
     resolution: {integrity: sha512-ASFBup0Mz1uyiIjANan1jzLQami9z1PoYSZCiiYW2FczPbenXc45FZdBZLzOT+r6+iciuEModtmCti+hjaAk0A==}
@@ -2991,20 +2972,6 @@ packages:
       react-dom: ^15.5.4 || ^16.0.0 || ^17.0.0 || ^18.0.0
     dependencies:
       lodash.throttle: 4.1.1
-      prop-types: 15.8.1
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
-  /react-svg@16.1.11(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-Utrm1NATp/1PVML4g97yrFyLvbKZ9HhzFydSsUPuCd8eEYf8llj8sBaYgLO1d5UX5sJ9j2sLgSbOLrGGRhd8NQ==}
-    peerDependencies:
-      react: ^16.0.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0
-    dependencies:
-      '@babel/runtime': 7.21.5
-      '@tanem/svg-injector': 10.1.53
-      '@types/prop-types': 15.7.5
       prop-types: 15.8.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)

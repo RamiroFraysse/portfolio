@@ -1,7 +1,5 @@
 import {CssBaseline} from "@mui/material";
 import {ThemeProvider, createTheme} from "@mui/material/styles";
-import {CacheProvider} from "@emotion/react";
-import createCache from "@emotion/cache";
 
 import {useLanguage} from "../store/language";
 
@@ -34,7 +32,7 @@ const themeLight = createTheme({
         },
     },
     typography: {
-        fontFamily: "Open Sans",
+        fontFamily: "var(--font-opensans)",
         fontWeightRegular: 400,
         fontWeightMedium: 600,
     },
@@ -42,7 +40,7 @@ const themeLight = createTheme({
         MuiCssBaseline: {
             styleOverrides: {
                 html: {
-                    "fontFamily": "Open Sans",
+                    "fontFamily": "var(--font-opensans)",
                     "*::-webkit-scrollbar-track": {
                         webkitBoxShadow: "inset 0 0 6px rgba(0, 0, 0, .4)",
                         backgroundColor: "#CFCFCF",
@@ -70,7 +68,7 @@ const themeDark = createTheme({
         mode: "dark",
     },
     typography: {
-        fontFamily: "Open Sans",
+        fontFamily: "var(--font-opensans)",
         fontWeightRegular: 400,
         fontWeightMedium: 600,
     },
@@ -102,20 +100,13 @@ const themeDark = createTheme({
     },
 });
 
-const cache = createCache({
-    key: "css",
-    prepend: true,
-});
-
 export const ThemeConfig: React.FC<ThemeProp> = ({children}) => {
     const {theme} = useLanguage(state => state);
 
     return (
-        <CacheProvider value={cache}>
-            <ThemeProvider theme={theme === "light" ? themeLight : themeDark}>
-                <CssBaseline />
-                {children}
-            </ThemeProvider>
-        </CacheProvider>
+        <ThemeProvider theme={theme === "light" ? themeLight : themeDark}>
+            <CssBaseline />
+            {children}
+        </ThemeProvider>
     );
 };

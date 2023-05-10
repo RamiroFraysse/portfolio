@@ -21,7 +21,6 @@ function MainLayout(): React.ReactElement {
                 flexDirection: "column",
                 rowGap: 4,
                 padding: {xs: "16px", sm: "16px", md: "32px"},
-                // background: theme === "dark" ? "#090b13" : "#ffffff",
                 background: theme === "dark" ? "rgb(0, 30, 60)" : "#ffffff",
             }}
         >
