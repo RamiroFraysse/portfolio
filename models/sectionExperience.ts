@@ -2,7 +2,7 @@ export const MODEL_EXPERIENCE = [
     {
         key: "cooperativaobrera",
         position: "Fullstack Developer",
-        company: "Nuqlea",
+        company: "Cooperativa Obrera",
         date: {
             en: ["Jun 2023", "act"],
             sp: ["Jun 2023", "act"],
@@ -22,6 +22,11 @@ export const MODEL_EXPERIENCE = [
                 name: "Next.js",
                 dark: "/icons/nextjs-rounded.svg",
                 light: "/icons/nextjs-rounded.svg",
+            },
+            {
+                name: "React Native",
+                dark: "https://icongr.am/devicon/react-original.svg?size=28&color=currentColor",
+                light: "https://icongr.am/devicon/react-original.svg?size=28&color=currentColor",
             },
             {
                 name: "PHP",
