@@ -57,8 +57,10 @@ export default function Navbar(props: Props): React.ReactElement {
                 position="fixed"
                 sx={{
                     marginBottom: "100px",
-                    paddingRight: {xs: "0px", sm: "0px", md: "100px"},
-                    paddingLeft: {xs: "0px", sm: "0px", md: "100px"},
+                    display: "flex",
+                    justifyContent: "space-around",
+                    // paddingRight: {xs: "0px", sm: "0px", md: "100px"},
+                    // paddingLeft: {xs: "0px", sm: "0px", md: "100px"},
                     background: scrolling
                         ? "radial-gradient(circle at 50% 50%, #667eea, #3d235a)"
                         : "none",

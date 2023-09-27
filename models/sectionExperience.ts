@@ -1,5 +1,78 @@
 export const MODEL_EXPERIENCE = [
     {
+        key: "cooperativaobrera",
+        position: "Fullstack Developer",
+        company: "Nuqlea",
+        date: {
+            en: ["Jun 2023", "act"],
+            sp: ["Jun 2023", "act"],
+        },
+        technologies: [
+            {
+                name: "Javascript",
+                dark: "https://icongr.am/devicon/javascript-original.svg?size=28&color=currentColor",
+                light: "https://icongr.am/devicon/javascript-original.svg?size=28&color=currentColor",
+            },
+            {
+                name: "React",
+                dark: "https://icongr.am/devicon/react-original.svg?size=28&color=currentColor",
+                light: "https://icongr.am/devicon/react-original.svg?size=28&color=currentColor",
+            },
+            {
+                name: "Next.js",
+                dark: "/icons/nextjs-rounded.svg",
+                light: "/icons/nextjs-rounded.svg",
+            },
+            {
+                name: "PHP",
+                dark: "https://icongr.am/devicon/php-original.svg?size=28&color=currentColor",
+                light: "https://icongr.am/devicon/php-original.svg?size=28&color=currentColor",
+            },
+            {
+                name: "Codeigniter",
+                dark: "https://icongr.am/devicon/codeigniter-plain-wordmark.svg?size=128&color=currentColor",
+                light: "https://icongr.am/devicon/codeigniter-plain-wordmark.svg?size=128&color=currentColor",
+            },
+            {
+                name: "MySQL",
+                dark: "./icons/mysql.svg",
+                light: "./icons/mysql.svg",
+            },
+        ],
+        responsabilities: {
+            title: {
+                en: "RESPONSABILITIES",
+                sp: "RESPONSABILIDADES",
+            },
+            description: {
+                en: [
+                    "Developing web applications based on frontend:React JS, Next JS. backend:Codeigniter, MySQL",
+                    "Developing app applications based on React Native",
+                ],
+                sp: [
+                    "Desarrollo de aplicaciones web basadas en frontend:React JS, Next JS. Backend: Codeigniter, MySQL",
+                    "Desarrollo de aplicaciones móviles basadas en React Native.",
+                ],
+            },
+        },
+        accomplishments: {
+            title: {
+                en: "KEY ACCOMPLISHMENTS",
+                sp: "PRINCIPALES LOGROS",
+            },
+            description: {
+                en: [
+                    "Migrating a system from React JS to Next JS",
+                    "Maintaining Web and Mobile Applications, Adding New Features",
+                ],
+                sp: [
+                    "Migración de un sistema hecho en React JS a Next JS",
+                    "Mantenimiento de aplicaciones webs y móviles. Agregando nuevas features",
+                ],
+            },
+        },
+    },
+    {
         key: "nuqlea",
         position: "Frontend Engineer",
         company: "Nuqlea",
