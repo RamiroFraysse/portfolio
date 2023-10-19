@@ -4,8 +4,8 @@ export const MODEL_EXPERIENCE = [
         position: "Fullstack Developer",
         company: "Cooperativa Obrera",
         date: {
-            en: ["Jun 2023", "act"],
-            sp: ["Jun 2023", "act"],
+            en: ["Jun 2023", "Sep 2023"],
+            sp: ["Jun 2023", "Sep 2023"],
         },
         technologies: [
             {
@@ -231,12 +231,12 @@ export const MODEL_EXPERIENCE = [
             },
             description: {
                 en: [
-                    "Backend techologies: Laravel, PHP, MYSQL, PostgreSQL.",
-                    "Frontend technologies: React JS, JavaScript, CSS, Boostrap, SASS",
+                    "Developing web aplications based on React.js, Javascript Vanilla, CSS Vanilla, Boostrap.",
+                    "Developing API REST based on Laravel and Vanilla PHP",
                 ],
                 sp: [
-                    "Tecnologías Backend: Laravel, PHP, MYSQL, PostgreSQL.",
-                    "Tecnologías Frontend: React JS, JavaScript, CSS, Boostrap, SASS",
+                    "Desarrollo de aplicaciones web basadas en React.js, Javascript Vanilla, CSS Vanilla, Boostrap.",
+                    "Desarrollo de API REST basadas en Laravel y Vanilla PHP",
                 ],
             },
         },
@@ -247,10 +247,12 @@ export const MODEL_EXPERIENCE = [
             },
             description: {
                 en: [
-                    "Working in multiple projects (Healthcare, Marketplace, social networks, environmental)",
+                    "Working and maintanence in multiple projects (Healthcare, Marketplace, social networks, environmental care)",
+                    "Migrating a API REST from Vanilla PHP to Laravel",
                 ],
                 sp: [
-                    "Desarrollo y mantenimiento en múltiples proyectos: Salud, Marketplace, redes sociales, ambientales.",
+                    "Trabajo y mantenimiento en múltiples proyectos(Salud, Marketplace, redes sociales, cuidado del medioambiente)",
+                    "Migración de una API REST de Vanilla PHP a Laravel",
                 ],
             },
         },
